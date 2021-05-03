@@ -10,8 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="@android:dimen/app_icon_size">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/hello_name"
@@ -19,10 +18,22 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginLeft="@android:dimen/app_icon_size"
+            android:layout_marginRight="@android:dimen/app_icon_size"
+
+            android:text="שלום עמית"
+            android:textColor="#F4EFEF"
+            android:fontFamily="@font/varelaroundregular"
+            android:textSize="50dp" />
+        <TextView
+            android:id="@+id/play_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginLeft="@android:dimen/app_icon_size"
             android:layout_marginTop="@android:dimen/app_icon_size"
             android:layout_marginRight="@android:dimen/app_icon_size"
-            android:layout_marginBottom="@android:dimen/notification_large_icon_height"
-            android:text="שלום עמית"
+            android:layout_marginBottom="@android:dimen/app_icon_size"
+            android:text="כמה זמן תרצה לתרגל?"
             android:textColor="#F4EFEF"
             android:fontFamily="@font/varelaroundregular"
             android:textSize="50dp" />
@@ -32,9 +43,8 @@
             android:gravity="center"
             android:layout_gravity="center"
             android:text="קצר"
-            android:id="@+id/short-time"
+            android:id="@+id/short_time"
             android:fontFamily="@font/varelaroundregular"
-
             android:layout_marginTop="@android:dimen/app_icon_size"
             android:textStyle="bold"
             android:textSize="30dp"
@@ -44,7 +54,7 @@
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:text="בינוני"
-            android:id="@+id/mid-time"
+            android:id="@+id/mid_time"
             android:gravity="center"
             android:textStyle="bold"
             android:textSize="30dp"
@@ -59,12 +69,11 @@
         <Button
             android:layout_width="250dp"
             android:layout_height="60dp"
-            android:text="ארוךך"
+            android:text="ארוך"
             android:fontFamily="@font/varelaroundregular"
-
             android:textStyle="bold"
             android:textSize="30dp"
-            android:id="@+id/long-time"
+            android:id="@+id/long_time"
             android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginRight="@android:dimen/app_icon_size"

@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ChooseExc"></activity>
+        <activity android:name=".cards_games.whats_in_the_picture"></activity>
+        <activity android:name=".Face_Reco" />
+        <activity android:name=".Cards_Game" />
+        <activity android:name=".ChooseExc" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
