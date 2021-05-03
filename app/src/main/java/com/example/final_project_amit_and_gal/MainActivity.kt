@@ -13,19 +13,19 @@ class MainActivity : AppCompatActivity() {
         val button_short = findViewById<Button>(R.id.short_time)
         button_short.setOnClickListener {
             val intent = Intent(this, ChooseExc::class.java)
-            intent.putExtra("time","0")
+            intent.putExtra("time","20")
             startActivity(intent)
         }
         val button_med = findViewById<Button>(R.id.mid_time)
         button_med.setOnClickListener {
             val intent = Intent(this, ChooseExc::class.java)
-            intent.putExtra("time","1")
+            intent.putExtra("time","40")
             startActivity(intent)
         }
         val button_long = findViewById<Button>(R.id.long_time)
         button_long.setOnClickListener {
             val intent = Intent(this, ChooseExc::class.java)
-            intent.putExtra("time","2")
+            intent.putExtra("time","60")
             startActivity(intent)
         }
     }
