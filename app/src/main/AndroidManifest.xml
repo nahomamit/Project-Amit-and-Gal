@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cards_games.find_the_diffrent"></activity>
+        <activity android:name=".cards_games.specific_game"></activity>
+        <activity android:name=".cards_games.game_concept" />
+        <activity android:name=".cards_games.find_the_diffrent" />
         <activity android:name=".cards_games.whats_in_the_picture" />
         <activity android:name=".Face_Reco" />
         <activity android:name=".Cards_Game" />
