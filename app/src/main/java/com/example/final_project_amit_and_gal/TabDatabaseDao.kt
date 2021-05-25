@@ -34,4 +34,6 @@ interface TabDatabaseDao {
     @Query("SELECT * FROM tabs_table WHERE category = :cate and difficulty = :diff")
     fun getTabs(cate: String, diff:Int): List<Tab>
 
+    @Query("SELECT COUNT(*) FROM tabs_table")
+    fun getNumTabs(): Int
 }
