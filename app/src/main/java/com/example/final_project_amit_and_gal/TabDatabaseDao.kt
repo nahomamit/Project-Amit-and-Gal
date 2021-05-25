@@ -1,7 +1,6 @@
 package com.example.final_project_amit_and_gal
 
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -36,4 +35,7 @@ interface TabDatabaseDao {
 
     @Query("SELECT COUNT(*) FROM tabs_table")
     fun getNumTabs(): Int
+
+    //@Query("SELECT category FROM (SELECT DISTINCT category FROM tabs_table) ORDER BY RAND() LIMIT 1")
+
 }
