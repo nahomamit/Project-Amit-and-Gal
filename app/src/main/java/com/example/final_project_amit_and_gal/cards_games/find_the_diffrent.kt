@@ -26,10 +26,19 @@ class find_the_diffrent : AppCompatActivity() {
 
         initDB()
 
-        var time:String = intent.getStringExtra("time").toString()
-        var questions:Int = time.toInt()
-        var score:Int = intent.getStringExtra("score").toInt()
-
+        val t = intent.getStringExtra("time")
+        val time:String
+        val score:Int
+        if (t == null) {
+            throw Exception("extra t is null !")
+        }
+        time = t.toString()
+        val questions:Int = time.toInt()
+        if (intent.getStringExtra("score") != null){
+            score = intent.getStringExtra("score").toInt()
+        } else {
+            throw Exception("extra score is null !")
+        }
         val score_text = findViewById<TextView>(R.id.score)
         score_text.text = score.toString()
 
@@ -91,16 +100,16 @@ class find_the_diffrent : AppCompatActivity() {
     }
 
     private fun setButtonImages(answerBtnArr: Array<Button>, tabs: MutableList<Tab>,
-                                currect: Int, questions: Int, score: Int) {
-        val currect_ans = answerBtnArr[currect]
+                                correct: Int, questions: Int, score: Int) {
+        val correct_ans = answerBtnArr[correct]
         answerBtnArr.forEachIndexed { ind, btn ->
             try {
                 val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
                 val d = Drawable.createFromStream(ims, null)
                 if (d != null) {
                     btn.setBackgroundDrawable(d)
-                    if (ind != currect) {
-                        btn.setOnClickListener{wrongAnsOnClick(btn, currect_ans, questions, score)}
+                    if (ind != correct) {
+                        btn.setOnClickListener{wrongAnsOnClick(btn, correct_ans, questions, score)}
                     } else {
                         btn.setOnClickListener {currentAnsOnClick(btn, questions, score)}
                     }
@@ -116,9 +125,9 @@ class find_the_diffrent : AppCompatActivity() {
         val categories = tabsDao.getCategories()
         var mainCategory: String
         var diffCategory: String
-        var tabs: MutableList<Tab>
-        var diffTab: Tab
-        var currect: Int = 0
+        val tabs: MutableList<Tab>
+        val diffTab: Tab
+        var correct = 0
 
         do {
             mainCategory = categories[(0..categories.size-1).random()]
@@ -126,7 +135,7 @@ class find_the_diffrent : AppCompatActivity() {
 
         do {
             diffCategory = categories[(0..categories.size-1).random()]
-        } while (mainCategory == diffCategory);
+        } while (mainCategory == diffCategory)
 
         tabs = tabsDao.get3TabsByCategory(mainCategory)
         if (tabs.size < 3) {
@@ -141,7 +150,7 @@ class find_the_diffrent : AppCompatActivity() {
         }
 
         tabs.add(diffTab)
-        currect = 3
+        correct = 3
 
         tabs.forEachIndexed{ind, t ->
             try {
@@ -155,7 +164,7 @@ class find_the_diffrent : AppCompatActivity() {
             }
 
         }
-        return Pair(tabs, currect)
+        return Pair(tabs, correct)
     }
 
     private fun currentAnsOnClick(correct_ans: Button, questions: Int, score: Int ) {
