@@ -66,6 +66,7 @@ class find_the_diffrent : AppCompatActivity() {
             nextActivity(0,questions, score)
         }
     }
+
     fun nextExcercize(questions:Int): Class<out AppCompatActivity> {
         val exc_arr = listOf(whats_in_the_picture::class.java)
         val chosen = exc_arr.random()
@@ -74,6 +75,7 @@ class find_the_diffrent : AppCompatActivity() {
         }
         return chosen
     }
+
     fun nextActivity(num :Int,questions:Int, score:Int){
         val next_exc = nextExcercize(questions)
         val intent = Intent(this, next_exc)
