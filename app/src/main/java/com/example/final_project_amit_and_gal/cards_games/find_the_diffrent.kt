@@ -150,7 +150,11 @@ class find_the_diffrent : AppCompatActivity() {
         }
 
         tabs.add(diffTab)
-        correct = 3
+        tabs.shuffle()
+
+        correct = tabs.indexOf(diffTab)
+        Log.i("Shuffle", "correct is: " +correct)
+
 
         tabs.forEachIndexed{ind, t ->
             try {
