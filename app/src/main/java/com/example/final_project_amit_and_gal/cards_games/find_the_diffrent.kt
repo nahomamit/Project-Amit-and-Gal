@@ -2,24 +2,33 @@ package com.example.final_project_amit_and_gal.cards_games
 
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.example.final_project_amit_and_gal.MainActivity
-import com.example.final_project_amit_and_gal.R
+import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import com.example.final_project_amit_and_gal.*
+import java.io.InputStream
+import java.lang.Exception
+
 
 class find_the_diffrent : AppCompatActivity() {
+    private lateinit var tabsDao: TabDatabaseDao
+    private lateinit var db: TabDataBase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_the_diffrent)
 
-        val time:String = intent.getStringExtra("time").toString()
-        val questions:Int = time.toInt()
-        val score:Int = intent.getStringExtra("score").toInt()
+        initDB()
+
+        var time:String = intent.getStringExtra("time").toString()
+        var questions:Int = time.toInt()
+        var score:Int = intent.getStringExtra("score").toInt()
 
         val score_text = findViewById<TextView>(R.id.score)
         score_text.text = score.toString()
@@ -33,44 +42,144 @@ class find_the_diffrent : AppCompatActivity() {
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener { backBtnOnClick() }
 
+        setAnswers(questions, score)
+        /*
         val correct_ans = findViewById<Button>(R.id.ans_1)
-        correct_ans.setOnClickListener {
-            correct_ans.setBackgroundResource(R.color.Green)
-            nextActivity(1,questions, score)
-        }
+        correct_ans.setOnClickListener {currentAnsOnClick(correct_ans, questions, score)}
 
         val wrong_ans = findViewById<Button>(R.id.ans_2)
-        wrong_ans.setOnClickListener{
-            wrong_ans.setBackgroundResource(R.color.colorAccent)
-            correct_ans.setBackgroundResource(R.color.Green)
-            nextActivity(0,questions, score)
-        }
+        wrong_ans.setOnClickListener{wrongAnsOnClick(wrong_ans, correct_ans, questions, score)}
 
         val wrong_ans2 = findViewById<Button>(R.id.ans_3)
-        wrong_ans2.setOnClickListener{
-            wrong_ans2.setBackgroundResource(R.color.colorAccent)
-            correct_ans.setBackgroundResource(R.color.Green)
-            nextActivity(0,questions, score)
-        }
+        wrong_ans2.setOnClickListener{wrongAnsOnClick(wrong_ans2, correct_ans, questions, score)}
 
         val wrong_ans3 = findViewById<Button>(R.id.ans_4)
-        wrong_ans3.setOnClickListener{
-            wrong_ans3.setBackgroundResource(R.color.colorAccent)
-            correct_ans.setBackgroundResource(R.color.Green)
-            nextActivity(0,questions, score)
+        wrong_ans3.setOnClickListener{wrongAnsOnClick(wrong_ans3, correct_ans, questions, score)}
+
+         */
+    }
+
+    private fun getAnsBtnList(): Array<Button> {
+        val ans1 = findViewById<Button>(R.id.ans_1)
+        val ans2 = findViewById<Button>(R.id.ans_2)
+        val ans3 = findViewById<Button>(R.id.ans_3)
+        val ans4 = findViewById<Button>(R.id.ans_4)
+        return (arrayOf<Button>(ans1, ans2, ans3, ans4))
+    }
+
+    private fun setAnswers(questions: Int, score: Int) {
+        val answerBtnArr = getAnsBtnList()
+        var temp: Pair<MutableList<Tab>, Int>?
+
+        do {
+            temp = getTabs()
+        } while(temp == null)
+
+        val tabs = temp.first
+        val wrong = temp.second
+
+        tabs.forEachIndexed{ind, t ->
+            try {
+                Log.i("Tab setAnswer "+ ind, tabs[ind].toString())
+            } catch (e: Exception) {
+                Log.e("Error", "error in tab number " + ind)
+            }
+        }
+
+        setButtonImages(answerBtnArr, tabs, wrong, questions, score)
+
+    }
+
+    private fun setButtonImages(answerBtnArr: Array<Button>, tabs: MutableList<Tab>,
+                                currect: Int, questions: Int, score: Int) {
+        val currect_ans = answerBtnArr[currect]
+        answerBtnArr.forEachIndexed { ind, btn ->
+            try {
+                val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
+                val d = Drawable.createFromStream(ims, null)
+                if (d != null) {
+                    btn.setBackgroundDrawable(d)
+                    if (ind != currect) {
+                        btn.setOnClickListener{wrongAnsOnClick(btn, currect_ans, questions, score)}
+                    } else {
+                        btn.setOnClickListener {currentAnsOnClick(btn, questions, score)}
+                    }
+                }
+            } catch (e: Exception) {
+                Log.e("Error setButtonImages", "Tab number: " + ind)
+            }
+
         }
     }
 
-    fun nextExcercize(questions:Int): Class<out AppCompatActivity> {
-        val exc_arr = listOf(whats_in_the_picture::class.java)
-        val chosen = exc_arr.random()
+    private fun getTabs(): Pair<MutableList<Tab>, Int>? {
+        val categories = tabsDao.getCategories()
+        var mainCategory: String
+        var diffCategory: String
+        var tabs: MutableList<Tab>
+        var diffTab: Tab
+        var currect: Int = 0
+
+        do {
+            mainCategory = categories[(0..categories.size-1).random()]
+        } while (mainCategory == "כללי")
+
+        do {
+            diffCategory = categories[(0..categories.size-1).random()]
+        } while (mainCategory == diffCategory);
+
+        tabs = tabsDao.get3TabsByCategory(mainCategory)
+        if (tabs.size < 3) {
+            Log.i("Size Err ", tabs.size.toString())
+            return null
+        }
+
+        diffTab = tabsDao.getTabByCategory(diffCategory)
+        if (diffTab == null) {
+            Log.e("Error ", "diff tab is null try again")
+            return null
+        }
+
+        tabs.add(diffTab)
+        currect = 3
+
+        tabs.forEachIndexed{ind, t ->
+            try {
+                Log.i("Tab getTabs " +ind , t.toString())
+            } catch (e: Exception) {
+                if (t == null) {
+                    Log.e("ERROR getTabs", "Error in tab number " + ind + "is null !")
+                } else {
+                    Log.e("ERROR getTabs", "Error in tab number " + ind + "is NOT null !")
+                }
+            }
+
+        }
+        return Pair(tabs, currect)
+    }
+
+    private fun currentAnsOnClick(correct_ans: Button, questions: Int, score: Int ) {
+        correct_ans.setBackgroundResource(R.color.Green)
+        nextActivity(1,questions, score)
+    }
+
+    private fun wrongAnsOnClick(wrong_ans: Button, correct_ans: Button, questions: Int, score: Int) {
+        wrong_ans.setBackgroundResource(R.color.colorAccent)
+        correct_ans.setBackgroundResource(R.color.Green)
+        nextActivity(0,questions, score)
+    }
+
+    private fun nextExcercize(questions:Int): Class<out AppCompatActivity> {
+        //val exc_arr = listOf(whats_in_the_picture::class.java)
+        //val chosen = exc_arr.random()
+        val chosen = find_the_diffrent::class.java
         if(questions == 1){
             return MainActivity::class.java
         }
         return chosen
     }
 
-    fun nextActivity(num :Int,questions:Int, score:Int){
+    private fun nextActivity(num :Int,questions:Int, score:Int){
         val next_exc = nextExcercize(questions)
         val intent = Intent(this, next_exc)
         intent.putExtra("time",(questions-1).toString())
@@ -78,7 +187,7 @@ class find_the_diffrent : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun backBtnOnClick() {
+    private fun backBtnOnClick() {
         val builder = AlertDialog.Builder(this)
         builder.setMessage(getString(R.string.sure_end_excercize))
             .setCancelable(false)
@@ -92,5 +201,14 @@ class find_the_diffrent : AppCompatActivity() {
             }
         val alert = builder.create()
         alert.show()
+    }
+
+    private fun initDB() {
+        db = Room.databaseBuilder(
+            applicationContext,
+            TabDataBase::class.java,
+            "tabs_database"
+        ).allowMainThreadQueries().build()
+        tabsDao = db.tabDao
     }
 }
