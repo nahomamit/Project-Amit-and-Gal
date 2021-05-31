@@ -86,11 +86,11 @@ class Face_Reco : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         camera_view.onStart()
-
     }
 
     private val updateRect = object : Runnable {
         override fun run() {
+
             camera_view.captureImage { cameraKitView, byteArray ->
                 //camera_view.onStop()
                 //alertDialog.show()
