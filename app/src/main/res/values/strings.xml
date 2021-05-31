@@ -1,3 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <string name="app_name">Final-project-Amit-and-Gal</string>
+    <string name="sure_end_excercize">האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי</string>
+    <string name="yes">"כן"</string>
+    <string name="no">"לא"</string>
+    <string name="who_is_diff"> מי יוצא הדופן? </string>
+    <string name="remain_questions">"שאלות שנותרו: "</string>
+
 </resources>

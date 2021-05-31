@@ -1,7 +1,6 @@
 package com.example.final_project_amit_and_gal
 
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
@@ -33,5 +32,16 @@ interface TabDatabaseDao {
 
     @Query("SELECT * FROM tabs_table WHERE category = :cate and difficulty = :diff")
     fun getTabs(cate: String, diff:Int): List<Tab>
+
+    @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 3")
+    fun get3TabsByCategory(cate: String): MutableList<Tab>
+
+    @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 1")
+    fun getTabByCategory(cate: String): Tab
+
+    @Query("SELECT COUNT(*) FROM tabs_table")
+    fun getNumTabs(): Int
+
+    //@Query("SELECT category FROM (SELECT DISTINCT category FROM tabs_table) ORDER BY RAND() LIMIT 1")
 
 }
