@@ -23,31 +23,22 @@ class whats_in_the_picture : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_whats_in_the_picture)
+        //questions left
         val time:String = intent.getStringExtra("time").toString()
         val questions:Int = time.toInt()
+        val time_left = findViewById<TextView>(R.id.remaining_questions)
+        time_left.text = "שאלות שנותרו:" + time
+        //correct ans until now
         val score:Int = intent.getStringExtra("score").toInt()
         val score_text = findViewById<TextView>(R.id.score)
         score_text.text = score.toString()
-        //val time:String = intent.getStringExtra("time").toString()
-        val time_left = findViewById<TextView>(R.id.remaining_questions)
-        time_left.text = "שאלות שנותרו:" + time
+        //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
         text.text = "מה בתמונה?"
+
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener {
-            val builder = AlertDialog.Builder(this)
-            builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
-                .setCancelable(false)
-                .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
-                }
-                .setNegativeButton("לא") { dialog, id ->
-                    // Dismiss the dialog
-                    dialog.dismiss()
-                }
-            val alert = builder.create()
-            alert.show()
+           back_btn()
         }
         val arr_ans = correctAns()
 
@@ -99,6 +90,22 @@ class whats_in_the_picture : AppCompatActivity() {
         val answers_arr = listOf(R.id.ans_4,R.id.ans_3,R.id.ans_2,R.id.ans_1)
         shuffle(answers_arr)
         return answers_arr
+    }
+    fun back_btn(){
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
+            .setCancelable(false)
+            .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            }
+            .setNegativeButton("לא") { dialog, id ->
+                // Dismiss the dialog
+                dialog.dismiss()
+            }
+        val alert = builder.create()
+        alert.show()
     }
 
 }
