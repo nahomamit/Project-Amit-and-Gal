@@ -54,7 +54,8 @@ class letters_choose : AppCompatActivity() {
             ,whats_in_the_picture::class.java,
             letters_choose::class.java,
             find_the_different_category::class.java,
-            fix_letter_order::class.java)
+            fix_letter_order::class.java,
+            similar_category::class.java)
         val chosen = exc_arr.random()
         if(questions == 1){
             return MainActivity::class.java
