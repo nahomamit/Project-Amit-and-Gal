@@ -3,6 +3,7 @@ package com.example.final_project_amit_and_gal.cards_games
 import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -10,19 +11,22 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import com.example.final_project_amit_and_gal.ChooseExc
-import com.example.final_project_amit_and_gal.MainActivity
-import com.example.final_project_amit_and_gal.R
+import androidx.room.Room
+import com.example.final_project_amit_and_gal.*
 import com.example.final_project_amit_and_gal.R.color.Green
 import com.example.final_project_amit_and_gal.R.color.colorAccent
+import java.io.InputStream
+import java.lang.Exception
 import java.util.Collections.shuffle
 
 class whats_in_the_picture : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
-
+    private lateinit var tabsDao: TabDatabaseDao
+    private lateinit var db: TabDataBase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_whats_in_the_picture)
+        initDB()
         //questions left
         val time:String = intent.getStringExtra("time").toString()
         val questions:Int = time.toInt()
@@ -41,7 +45,7 @@ class whats_in_the_picture : AppCompatActivity() {
            back_btn()
         }
         val arr_ans = correctAns()
-
+/*
         val correct_ans = findViewById<Button>(arr_ans[0])
         correct_ans.text="true"
         correct_ans.setOnClickListener {
@@ -69,10 +73,17 @@ class whats_in_the_picture : AppCompatActivity() {
             correct_ans.setBackgroundResource(Green)
             nextActivity(0,questions,score)
         }
+
+ */
+        setAnswers(questions, score)
         //text.text = current_exercize
     }
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
-        val exc_arr = listOf(find_the_diffrent::class.java)
+        val exc_arr = listOf(find_the_diffrent::class.java
+            ,whats_in_the_picture::class.java,
+            letters_choose::class.java,
+            find_the_different_category::class.java,
+            fix_letter_order::class.java)
         val chosen = exc_arr.random()
         if(questions == 1){
             return MainActivity::class.java
@@ -108,4 +119,107 @@ class whats_in_the_picture : AppCompatActivity() {
         alert.show()
     }
 
+    private fun getAnsBtnList(): Array<Button> {
+        val ans1 = findViewById<Button>(R.id.ans_1)
+        val ans2 = findViewById<Button>(R.id.ans_2)
+        val ans3 = findViewById<Button>(R.id.ans_3)
+        val ans4 = findViewById<Button>(R.id.ans_4)
+        return (arrayOf<Button>(ans1, ans2, ans3, ans4))
+    }
+
+    private fun setAnswers(questions: Int, score: Int) {
+        val answerBtnArr = getAnsBtnList()
+        var temp: Pair<MutableList<Tab>, Int>?
+
+        do {
+            temp = getTabs()
+        } while(temp == null)
+
+        val tabs = temp.first
+        val wrong = temp.second
+
+        tabs.forEachIndexed{ind, t ->
+            try {
+                Log.i("Tab setAnswer "+ ind, tabs[ind].toString())
+            } catch (e: Exception) {
+                Log.e("Error", "error in tab number " + ind)
+            }
+        }
+
+        setButtonText(answerBtnArr, tabs, wrong, questions, score)
+
+    }
+
+    private fun setButtonText(answerBtnArr: Array<Button>, tabs: MutableList<Tab>,
+                                correct: Int, questions: Int, score: Int) {
+        val correct_ans = answerBtnArr[correct]
+        answerBtnArr.forEachIndexed { ind, btn ->
+            try {
+              //  val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
+                btn.text = tabs.get(ind).name
+                ////val d = Drawable.createFromStream(ims, null)
+              //  if (d != null) {
+                //    btn.setImageDrawable(d)
+                    if (ind != correct) {
+                        btn.setOnClickListener{wrongAnsOnClick(btn, correct_ans, questions, score)}
+                    } else {
+                        val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
+                        val d = Drawable.createFromStream(ims, null)
+                        findViewById<ImageView>(R.id.picture).setImageDrawable(d)
+                        btn.setOnClickListener {currentAnsOnClick(btn, questions, score)}
+                    }
+                //}
+            } catch (e: Exception) {
+                Log.e("Error setButtonText", "Tab number: " + ind)
+            }
+
+        }
+    }
+
+    private fun getTabs(): Pair<MutableList<Tab>, Int>? {
+
+
+        val tabs: MutableList<Tab>
+        var correct = 0
+
+        tabs = tabsDao.getFourTabs()
+        tabs.shuffle()
+
+
+        Log.i("Shuffle", "correct is: " +correct)
+
+
+        tabs.forEachIndexed{ind, t ->
+            try {
+                Log.i("Tab getTabs " +ind , t.toString())
+            } catch (e: Exception) {
+                if (t == null) {
+                    Log.e("ERROR getTabs", "Error in tab number " + ind + "is null !")
+                } else {
+                    Log.e("ERROR getTabs", "Error in tab number " + ind + "is NOT null !")
+                }
+            }
+        }
+        return Pair(tabs, correct)
+    }
+
+    private fun currentAnsOnClick(correct_ans: Button, questions: Int, score: Int ) {
+        correct_ans.setBackgroundResource(R.color.Green)
+        nextActivity(1,questions, score)
+    }
+
+    private fun wrongAnsOnClick(wrong_ans: Button, correct_ans: Button, questions: Int, score: Int) {
+        wrong_ans.setBackgroundResource(R.color.colorAccent)
+        correct_ans.setBackgroundResource(R.color.Green)
+        nextActivity(0,questions, score)
+    }
+
+    private fun initDB() {
+        db = Room.databaseBuilder(
+            applicationContext,
+            TabDataBase::class.java,
+            "tabs_database"
+        ).allowMainThreadQueries().build()
+        tabsDao = db.tabDao
+    }
 }

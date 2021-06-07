@@ -39,6 +39,12 @@ interface TabDatabaseDao {
     @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 1")
     fun getTabByCategory(cate: String): Tab
 
+    @Query("SELECT * FROM tabs_table WHERE url != '' ORDER BY RANDOM()")
+    fun getOneTab(): Tab
+
+    @Query("SELECT * FROM tabs_table WHERE url != '' ORDER BY RANDOM() LIMIT 4")
+    fun getFourTabs(): MutableList<Tab>
+
     @Query("SELECT COUNT(*) FROM tabs_table")
     fun getNumTabs(): Int
 

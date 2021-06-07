@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.final_project_amit_and_gal.cards_games.find_the_diffrent
-import com.example.final_project_amit_and_gal.cards_games.specific_game
 import com.example.final_project_amit_and_gal.cards_games.whats_in_the_picture
 
 class ChooseExc : AppCompatActivity() {

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_weight="1">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+           <include layout="@layout/letter_button_bank" android:id="@+id/letter1"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter2"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter3"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter4"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter5"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter6"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter7"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter8"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter9"/>
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter10"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

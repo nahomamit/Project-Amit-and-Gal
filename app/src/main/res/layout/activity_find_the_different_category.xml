@@ -4,15 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".cards_games.specific_game">
-    android:background="@drawable/background_app">
+    android:background="@drawable/background_app"
+    tools:context=".cards_games.find_the_different_category">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
         <include layout="@layout/toolbar"/>
+
         <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"
@@ -35,15 +35,8 @@
             android:layout_marginBottom="@android:dimen/notification_large_icon_height"
             android:fontFamily="@font/varelaroundregular"
             android:textColor="#F4EFEF"
-            android:text="מה בתמונה?"
+            android:text="מה יוצא דופן?"
             android:textSize="50dp"/>
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:id="@+id/picture"
-            android:src="@color/colorPrimaryDark"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@android:dimen/app_icon_size"/>
         <include layout="@layout/four_options"/>
     </LinearLayout>
 
