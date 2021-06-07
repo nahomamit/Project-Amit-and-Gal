@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "765142311707",
+    "project_id": "amit-and-gal-final-project",
+    "storage_bucket": "amit-and-gal-final-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765142311707:android:d5694d54e6acb48f34a9be",
+        "android_client_info": {
+          "package_name": "com.example.final_project_amit_and_gal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765142311707-g6fkvj71inas4dg0cssdntq502v5jhhv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPTgWGsTrsQSkkFl3Ny-4UPO-VAz2KitU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765142311707-g6fkvj71inas4dg0cssdntq502v5jhhv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

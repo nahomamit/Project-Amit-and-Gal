@@ -23,9 +23,9 @@ class ChooseExc : AppCompatActivity() {
         }
         val face = findViewById<Button>(R.id.face)
         face.setOnClickListener {
-            val intent = Intent(this, find_the_diffrent::class.java)
-            intent.putExtra("time", time)
-            intent.putExtra("score","0")
+            val intent = Intent(this, Face_Reco::class.java)
+            /*intent.putExtra("time", time)
+            intent.putExtra("score","0")*/
             startActivity(intent)
         }
     }
