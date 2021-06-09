@@ -23,7 +23,7 @@ class ChooseExc : AppCompatActivity() {
         }
         val face = findViewById<Button>(R.id.face)
         face.setOnClickListener {
-            val intent = Intent(this, Face_Reco::class.java)
+            val intent = Intent(this, Face_Recognition::class.java)
             /*intent.putExtra("time", time)
             intent.putExtra("score","0")*/
             startActivity(intent)
