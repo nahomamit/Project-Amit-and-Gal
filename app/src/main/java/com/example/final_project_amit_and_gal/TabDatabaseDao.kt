@@ -36,6 +36,9 @@ interface TabDatabaseDao {
     @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 3")
     fun get3TabsByCategory(cate: String): MutableList<Tab>
 
+    @Query("SELECT * FROM tabs_table WHERE category != :cate and url != '' ORDER BY RANDOM() LIMIT 3")
+    fun get3TabsByNotCategory(cate: String): MutableList<Tab>
+
     @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 1")
     fun getTabByCategory(cate: String): Tab
 

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.final_project_amit_and_gal">
-
-    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -19,6 +18,7 @@
         <activity android:name=".cards_games.game_concept" />
         <activity android:name=".cards_games.find_the_diffrent" />
         <activity android:name=".cards_games.whats_in_the_picture" />
+        <activity android:name=".Face_Reco" />
         <activity android:name=".Cards_Game" />
         <activity android:name=".ChooseExc" />
         <activity android:name=".MainActivity">
@@ -28,19 +28,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".Face_Recognition"
-            android:label="@string/app_name"
-
-            android:screenOrientation="landscape">
-            <!-- configure this activity to use landscape orientation -->
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face"/>
     </application>
 
 </manifest>

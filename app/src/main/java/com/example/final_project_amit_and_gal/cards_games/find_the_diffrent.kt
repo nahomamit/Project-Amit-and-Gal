@@ -187,7 +187,8 @@ class find_the_diffrent : AppCompatActivity() {
             ,whats_in_the_picture::class.java,
             letters_choose::class.java,
             find_the_different_category::class.java,
-            fix_letter_order::class.java)
+            fix_letter_order::class.java,
+            similar_category::class.java)
         val chosen = exc_arr.random()
         //val chosen = find_the_diffrent::class.java
         if(questions == 1){

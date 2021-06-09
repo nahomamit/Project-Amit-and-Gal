@@ -1,6 +1,5 @@
 package com.example.final_project_amit_and_gal.cards_games
 
-import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.drawable.Drawable
@@ -13,20 +12,16 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.room.Room
 import com.example.final_project_amit_and_gal.*
-import com.example.final_project_amit_and_gal.R.color.Green
-import com.example.final_project_amit_and_gal.R.color.colorAccent
 import java.io.InputStream
 import java.lang.Exception
-import java.util.Collections.shuffle
-import kotlin.random.Random
+import java.util.*
 
-class whats_in_the_picture : AppCompatActivity() {
-    @SuppressLint("ResourceAsColor")
+class similar_category : AppCompatActivity() {
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_whats_in_the_picture)
+        setContentView(R.layout.activity_similar_category)
         initDB()
         //questions left
         val time:String = intent.getStringExtra("time").toString()
@@ -39,17 +34,17 @@ class whats_in_the_picture : AppCompatActivity() {
         score_text.text = score.toString()
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
-        text.text = "מה בתמונה?"
+        text.text = "מה מהבאים מאותו " +
+                "קטגוריה של התמונה"
 
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener {
-           back_btn()
+            back_btn()
         }
-    //    val arr_ans = correctAns()
-
+        val arr_ans = correctAns()
         setAnswers(questions, score)
-        //text.text = current_exercize
     }
+
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
         val exc_arr = listOf(find_the_diffrent::class.java
             ,whats_in_the_picture::class.java,
@@ -72,7 +67,7 @@ class whats_in_the_picture : AppCompatActivity() {
     }
     fun correctAns(): List<Int> {
         val answers_arr = listOf(R.id.ans_4,R.id.ans_3,R.id.ans_2,R.id.ans_1)
-        shuffle(answers_arr)
+        Collections.shuffle(answers_arr)
         return answers_arr
     }
     fun back_btn(){
@@ -102,36 +97,42 @@ class whats_in_the_picture : AppCompatActivity() {
 
     private fun setAnswers(questions: Int, score: Int) {
         val answerBtnArr = getAnsBtnList()
-        var tabs: MutableList<Tab>?
+        var temp: Pair<MutableList<Tab>, Int>?
 
         do {
-            tabs = getTabs()
-        } while(tabs == null)
+            temp = getTabs()
+        } while(temp == null)
 
+        val tabs = temp.first
+        val wrong = temp.second
 
+        tabs.forEachIndexed{ind, t ->
+            try {
+                Log.i("Tab setAnswer "+ ind, tabs[ind].toString())
+            } catch (e: Exception) {
+                Log.e("Error", "error in tab number " + ind)
+            }
+        }
 
-
-        setButtonText(answerBtnArr, tabs,  questions, score)
+        setButtonText(answerBtnArr, tabs, wrong, questions, score)
 
     }
 
     private fun setButtonText(answerBtnArr: Array<Button>, tabs: MutableList<Tab>,
-                              questions: Int, score: Int) {
-       var correct = Random.nextInt(0, 3)
+                              correct: Int, questions: Int, score: Int) {
         val correct_ans = answerBtnArr[correct]
         answerBtnArr.forEachIndexed { ind, btn ->
             try {
-
+                //  val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
                 btn.text = tabs.get(ind).name
-
-                    if (ind != correct) {
-                        btn.setOnClickListener{wrongAnsOnClick(btn, correct_ans, questions, score)}
-                    } else {
-                        val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
-                        val d = Drawable.createFromStream(ims, null)
-                        findViewById<ImageView>(R.id.picture).setImageDrawable(d)
-                        btn.setOnClickListener {currentAnsOnClick(btn, questions, score)}
-                    }
+                ////val d = Drawable.createFromStream(ims, null)
+                //  if (d != null) {
+                //    btn.setImageDrawable(d)
+                if (ind != correct) {
+                    btn.setOnClickListener{wrongAnsOnClick(btn, correct_ans, questions, score)}
+                } else {
+                    btn.setOnClickListener {currentAnsOnClick(btn, questions, score)}
+                }
                 //}
             } catch (e: Exception) {
                 Log.e("Error setButtonText", "Tab number: " + ind)
@@ -140,11 +141,35 @@ class whats_in_the_picture : AppCompatActivity() {
         }
     }
 
-    private fun getTabs(): MutableList<Tab>? {
+    private fun getTabs(): Pair<MutableList<Tab>, Int>? {
+
+
         val tabs: MutableList<Tab>
-        tabs = tabsDao.getFourTabs()
+        var correct = 0
+        var in_picture = tabsDao.getOneTab()
+        var correct_ans = tabsDao.getTabByCategory(in_picture.category)
+        tabs = tabsDao.get3TabsByNotCategory(correct_ans.category)
+        tabs.add(correct_ans)
         tabs.shuffle()
-        return tabs
+        val ims: InputStream = assets.open("images/" + in_picture.url)
+        val d = Drawable.createFromStream(ims, null)
+        findViewById<ImageView>(R.id.picture).setImageDrawable(d)
+        correct = tabs.indexOf(correct_ans)
+        Log.i("Shuffle", "correct is: " +correct)
+
+
+        tabs.forEachIndexed{ind, t ->
+            try {
+                Log.i("Tab getTabs " +ind , t.toString())
+            } catch (e: Exception) {
+                if (t == null) {
+                    Log.e("ERROR getTabs", "Error in tab number " + ind + "is null !")
+                } else {
+                    Log.e("ERROR getTabs", "Error in tab number " + ind + "is NOT null !")
+                }
+            }
+        }
+        return Pair(tabs, correct)
     }
 
     private fun currentAnsOnClick(correct_ans: Button, questions: Int, score: Int ) {
