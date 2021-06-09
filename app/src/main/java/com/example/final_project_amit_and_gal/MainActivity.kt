@@ -4,13 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.google.gson.Gson
 import java.io.BufferedReader
-import java.io.IOException
 import java.io.InputStream
 import java.io.InputStreamReader
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var tabsDao: TabDatabaseDao
@@ -30,7 +31,12 @@ class MainActivity : AppCompatActivity() {
         tabsDao.clear()
         createDB()
         Log.i("Num Of Rows", tabsDao.getNumTabs().toString())
+        var name = findViewById<TextView>(R.id.hello_name)
+        val sp1 = getSharedPreferences("Login", MODE_PRIVATE)
 
+        val name_text = sp1.getString("Name", null)
+
+        name.text = "שלום " + name_text
         val button_short = findViewById<Button>(R.id.short_time)
         button_short.setOnClickListener {
             moveActivity("20")
@@ -59,9 +65,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun moveActivity(time: String) {
         val intent = Intent(this, ChooseExc::class.java)
-        intent.putExtra("time",time)
+        intent.putExtra("time", time)
         //למה צריך את הסקור באקטיביטי הזה ?
-        intent.putExtra("score","0")
+        intent.putExtra("score", "0")
         startActivity(intent)
     }
 
@@ -96,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             } else {
                 return(list)
             }
-        } catch(e:Exception) {
+        } catch (e: Exception) {
             Log.e("ERROR", e.toString())
 
         }
