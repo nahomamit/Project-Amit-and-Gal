@@ -6,28 +6,9 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/btn_detect"
-        android:text="Detect"/>
-
-    <com.camerakit.CameraKitView
-        android:layout_above="@id/btn_detect"
-        android:layout_width="match_parent"
-        android:id="@+id/camera_view"
-        android:layout_height="match_parent"
-        android:adjustViewBounds="true"
-        android:keepScreenOn="true"
-        app:camera_flash="auto"
-        app:camera_facing="front"
-        app:camera_focus="continuous"
-        app:camera_permissions="camera">
-
-    </com.camerakit.CameraKitView>
-
-    <com.example.final_project_amit_and_gal.GraphicOverlay
-        android:id="@+id/graphic_overlay"
-        android:layout_width="match_parent" android:layout_height="match_parent"/>
-
+    <org.opencv.android.JavaCameraView
+        android:id="@+id/my_camera_view"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"/>
+        
 </RelativeLayout>
