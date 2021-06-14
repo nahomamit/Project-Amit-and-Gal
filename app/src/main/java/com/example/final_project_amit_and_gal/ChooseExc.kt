@@ -4,8 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.example.final_project_amit_and_gal.cards_games.find_the_diffrent
-import com.example.final_project_amit_and_gal.cards_games.whats_in_the_picture
+import com.example.final_project_amit_and_gal.cards_games.*
 
 class ChooseExc : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +15,7 @@ class ChooseExc : AppCompatActivity() {
 
         val cards = findViewById<Button>(R.id.cards)
         cards.setOnClickListener {
-            val intent = Intent(this, whats_in_the_picture::class.java)
+            val intent = Intent(this, fix_letter_order::class.java)
             intent.putExtra("time", time)
             intent.putExtra("score","0")
             startActivity(intent)

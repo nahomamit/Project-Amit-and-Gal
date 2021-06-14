@@ -1,12 +1,17 @@
 package com.example.final_project_amit_and_gal.cards_games
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.LightingColorFilter
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,6 +29,7 @@ class whats_in_the_picture : AppCompatActivity() {
     @SuppressLint("ResourceAsColor")
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
+    private var hint_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_whats_in_the_picture)
@@ -51,17 +57,27 @@ class whats_in_the_picture : AppCompatActivity() {
         //text.text = current_exercize
     }
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
-        val exc_arr = listOf(find_the_diffrent::class.java
-            ,whats_in_the_picture::class.java,
-            letters_choose::class.java,
-            find_the_different_category::class.java,
-            fix_letter_order::class.java,
-            similar_category::class.java)
-        val chosen = exc_arr.random()
-        if(questions == 1){
-            return MainActivity::class.java
+
+
+        if((questions-1)%5 == 0){
+            var chosen = find_the_diffrent::class.java;
+            return chosen
+        } else {
+            val exc_arr = listOf(
+                find_the_diffrent::class.java, whats_in_the_picture::class.java,
+                letters_choose::class.java,
+                find_the_different_category::class.java,
+                fix_letter_order::class.java,
+                similar_category::class.java
+            )
+            var chosen = exc_arr.random()
+            if(questions == 1){
+                return MainActivity::class.java
+            }
+            return chosen
         }
-        return chosen
+
+
     }
     fun nextActivity(num :Int,questions:Int, score:Int){
         val next_exc = nextExcercize(questions)
@@ -118,6 +134,7 @@ class whats_in_the_picture : AppCompatActivity() {
     private fun setButtonText(answerBtnArr: Array<Button>, tabs: MutableList<Tab>,
                               questions: Int, score: Int) {
        var correct = Random.nextInt(0, 3)
+        hint(correct)
         val correct_ans = answerBtnArr[correct]
         answerBtnArr.forEachIndexed { ind, btn ->
             try {
@@ -165,5 +182,43 @@ class whats_in_the_picture : AppCompatActivity() {
             "tabs_database"
         ).allowMainThreadQueries().build()
         tabsDao = db.tabDao
+    }
+
+    private fun hint(correct: Int){
+        val hint1 =  findViewById<ImageView>(R.id.hint)
+        hint1.setOnClickListener{
+            if(hint_count == 1) {
+                return@setOnClickListener
+            }
+
+            hint1.setColorFilter(LightingColorFilter(Color.WHITE,Color.GRAY))
+            val ans1 = findViewById<Button>(R.id.ans_1)
+            val ans2 = findViewById<Button>(R.id.ans_2)
+            val ans3 = findViewById<Button>(R.id.ans_3)
+            val ans4 = findViewById<Button>(R.id.ans_4)
+            loop@ while(true) {
+                var x = Random.nextInt(0,3)
+
+                when (x) {
+                    correct -> continue@loop
+                    0 -> {
+                        ans1.visibility = View.INVISIBLE
+                        break@loop
+                    }
+                    1 -> {
+                        ans2.visibility = View.INVISIBLE
+                        break@loop
+                    }
+                    2 -> {ans3.visibility = View.INVISIBLE
+                        break@loop
+                    }
+                    3 -> {
+                        ans4.visibility = View.INVISIBLE
+                        break@loop
+                    }
+                }
+            }
+        }
+
     }
 }

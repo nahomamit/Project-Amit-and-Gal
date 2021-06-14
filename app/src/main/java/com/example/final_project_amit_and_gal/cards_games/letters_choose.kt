@@ -4,6 +4,8 @@ import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.LightingColorFilter
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,10 +19,12 @@ import com.example.final_project_amit_and_gal.*
 import java.io.InputStream
 import java.lang.Exception
 import java.util.*
+import kotlin.random.Random
 
 class letters_choose : AppCompatActivity() {
     private var mistakes = 0
     protected var correct: Int = 0
+    protected var hint_count: Int = 0
 
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
@@ -50,17 +54,23 @@ class letters_choose : AppCompatActivity() {
         setAnswers(questions, score)
     }
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
-        val exc_arr = listOf(find_the_diffrent::class.java
-            ,whats_in_the_picture::class.java,
-            letters_choose::class.java,
-            find_the_different_category::class.java,
-            fix_letter_order::class.java,
-            similar_category::class.java)
-        val chosen = exc_arr.random()
-        if(questions == 1){
-            return MainActivity::class.java
+        if((questions-1)%5 == 0){
+            var chosen = letters_choose::class.java;
+            return chosen
+        } else {
+            val exc_arr = listOf(
+                find_the_diffrent::class.java, whats_in_the_picture::class.java,
+                letters_choose::class.java,
+                find_the_different_category::class.java,
+                fix_letter_order::class.java,
+                similar_category::class.java
+            )
+            var chosen = exc_arr.random()
+            if(questions == 1){
+                return MainActivity::class.java
+            }
+            return chosen
         }
-        return chosen
     }
     fun nextActivity(num :Int,questions:Int, score:Int){
         val next_exc = nextExcercize(questions)
@@ -144,7 +154,7 @@ class letters_choose : AppCompatActivity() {
 
     private fun setButtonText(answerBtnArr: Array<Button>,  tabs :List<Char> ,bank :List<Char>,
                               questions: Int, score: Int, id_list: MutableList<Int>) {
-
+        hint(answerBtnArr,id_list)
         answerBtnArr.forEachIndexed { ind, btn ->
             try {
                 //  val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
@@ -229,6 +239,33 @@ class letters_choose : AppCompatActivity() {
     fun <T> merge(first: List<T>, second: List<T>): List<T> {
         return (first + second).toMutableList().shuffled()
     }
+    private fun hint(answerBtnArr: Array<Button>, id_list:List<Int>){
 
+        val hint1 =  findViewById<ImageView>(R.id.hint)
+        hint1.setOnClickListener{
+            if(hint_count == 1 || correct == (id_list.size - 1)) {
+                return@setOnClickListener
+            }
+            hint1.setColorFilter(LightingColorFilter(Color.WHITE,Color.GRAY))
+            for(btn in 0..(id_list.size-1)) {
+
+
+                    if(findViewById<Button>(id_list[btn]).visibility == View.INVISIBLE) {
+                        findViewById<Button>(id_list[btn]).visibility = View.VISIBLE
+                        for(i in 0..(answerBtnArr.size-1)) {
+                            if(answerBtnArr[i].text ==  findViewById<Button>(id_list[btn]).text) {
+                                answerBtnArr[i].visibility = View.INVISIBLE
+
+                            }
+                        }
+                        correct++
+                        hint_count++
+                       break
+
+                    }
+
+            }
+        }
+    }
 }
 
