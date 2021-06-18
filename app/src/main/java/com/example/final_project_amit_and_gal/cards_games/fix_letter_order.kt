@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.LightingColorFilter
 import android.graphics.drawable.Drawable
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
@@ -24,6 +25,7 @@ import java.util.*
 class fix_letter_order : AppCompatActivity() {
     private var mistakes = 0
     private var counter = 0
+    private var hint_count = 0
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,23 +53,36 @@ class fix_letter_order : AppCompatActivity() {
         setAnswers(questions, score)
     }
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
-        val exc_arr = listOf(find_the_diffrent::class.java
-            ,whats_in_the_picture::class.java,
-            letters_choose::class.java,
-            find_the_different_category::class.java,
-        fix_letter_order::class.java,
-            similar_category::class.java)
-        val chosen = exc_arr.random()
+        val type:String = intent.getStringExtra("type").toString()
         if(questions == 1){
-            return MainActivity::class.java
+            return MainMenu::class.java
         }
-        return chosen
+        if(type == "0") {
+            var chosen = fix_letter_order::class.java;
+            return chosen
+        }
+        if((questions-1)%5 != 0){
+            var chosen = fix_letter_order::class.java;
+            return chosen
+        } else {
+            val exc_arr = listOf(
+                find_the_diffrent::class.java, whats_in_the_picture::class.java,
+                letters_choose::class.java,
+                find_the_different_category::class.java,
+                fix_letter_order::class.java,
+                similar_category::class.java
+            )
+            var chosen = exc_arr.random()
+
+            return chosen
+        }
     }
     fun nextActivity(num :Int,questions:Int, score:Int){
         val next_exc = nextExcercize(questions)
         val intent = Intent(this, next_exc)
         intent.putExtra("time",(questions-1).toString())
         intent.putExtra("score",(score+num).toString())
+        intent.putExtra("type",getIntent().getStringExtra("type").toString())
         startActivity(intent)
     }
     fun back_btn(){
@@ -143,12 +158,12 @@ class fix_letter_order : AppCompatActivity() {
 
     private fun setButtonText(answer :List<Char>, bank :List<Char>,
                               questions: Int, score: Int, id_list: MutableList<Int>,  bank_id_list: MutableList<Int>) {
-
+        hint(id_list, bank_id_list)
         id_list.forEachIndexed { ind, btn ->
             try {
                 var button_cur =  findViewById<Button>(bank_id_list[ind])
                 //  val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
-               button_cur.text = bank[ind].toString()
+                button_cur.text = bank[ind].toString()
                 ////val d = Drawable.createFromStream(ims, null)
                 //  if (d != null) {
                 //    btn.setImageDrawable(d)
@@ -205,5 +220,33 @@ class fix_letter_order : AppCompatActivity() {
             "tabs_database"
         ).allowMainThreadQueries().build()
         tabsDao = db.tabDao
+    }
+    private fun hint(id_list:List<Int>, bank_id_list:List<Int>){
+
+        val hint1 =  findViewById<ImageView>(R.id.hint)
+        hint1.setOnClickListener{
+            if(hint_count == 1 || counter == (id_list.size-1)) {
+                return@setOnClickListener
+            }
+            hint1.setColorFilter(LightingColorFilter(Color.WHITE,Color.GRAY))
+            for(btn in 0..(id_list.size-1)) {
+
+
+                if(findViewById<Button>(id_list[btn]).visibility == View.INVISIBLE) {
+                    findViewById<Button>(id_list[btn]).visibility = View.VISIBLE
+                    for(i in 0..(bank_id_list.size-1)) {
+                        if(findViewById<Button>(bank_id_list[i]).text ==  findViewById<Button>(id_list[btn]).text) {
+                            findViewById<Button>(bank_id_list[i]).visibility = View.INVISIBLE
+                            break
+                        }
+                    }
+                    counter++
+                    hint_count++
+                    break
+
+                }
+
+            }
+        }
     }
 }

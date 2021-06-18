@@ -1,5 +1,5 @@
 package com.example.final_project_amit_and_gal
-
+/*
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager

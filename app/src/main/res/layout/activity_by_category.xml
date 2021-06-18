@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    tools:context=".ByCategory">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_margin="30dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+
+            android:gravity="center"
+            android:layout_weight="1">
+
+
+            <include
+                android:id="@+id/game_similar_category"
+                layout="@layout/button_by_category" />
+            <include
+                android:id="@+id/game_what_in_pic"
+                layout="@layout/button_by_category" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1">
+
+
+            <include
+                android:id="@+id/game_letter_choose"
+                layout="@layout/button_by_category" />
+            <include
+                android:id="@+id/game_fix_order"
+                layout="@layout/button_by_category" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1">
+
+
+            <include
+                android:id="@+id/game_find_dif"
+                layout="@layout/button_by_category" />
+            <include
+                android:id="@+id/game_find_dif_by_cat"
+                layout="@layout/button_by_category" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_weight="1">
+
+
+            <include
+                android:id="@+id/game_voice"
+                layout="@layout/button_by_category" />
+            <include
+                android:id="@+id/return_btn"
+                layout="@layout/button_by_category" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -82,8 +82,7 @@ public class Face_Recognition extends AppCompatActivity implements CameraBridgeV
         javaCameraView=(JavaCameraView)findViewById(R.id.my_camera_view);
         javaCameraView.setCvCameraViewListener(this);
         javaCameraView.setCameraIndex(2);
-       // javaCameraView.setRotation(90);
-
+        //javaCameraView.setMaxFrameSize(500,500);
 
         /*
         if(!OpenCVLoader.initDebug()) {
@@ -118,11 +117,12 @@ public class Face_Recognition extends AppCompatActivity implements CameraBridgeV
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-
         mRGBA= inputFrame.rgba();
-        //Core.rotate(mRGBA, mRGBA.t(),Core.ROTATE_90_COUNTERCLOCKWISE);
+
         mGREY = inputFrame.gray();
-        //Core.rotate(mGREY, mGREY.t(),Core.ROTATE_90_COUNTERCLOCKWISE);
+        Core.flip(mRGBA.t(), mRGBA, -1);
+        Core.flip(mGREY.t(), mGREY, -1);
+        Log.i("MYMAT", String.valueOf(mRGBA.dims()));
 
         MatOfRect faceDetections = new MatOfRect();
         face_detector.detectMultiScale(mGREY,faceDetections);

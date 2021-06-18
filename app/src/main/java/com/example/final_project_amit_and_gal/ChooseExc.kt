@@ -19,6 +19,8 @@ class ChooseExc : AppCompatActivity() {
             val intent = Intent(this, whats_in_the_picture::class.java)
             intent.putExtra("time", time)
             intent.putExtra("score","0")
+            intent.putExtra("type",getIntent().getStringExtra("type"))
+            
             startActivity(intent)
         }
         val face = findViewById<Button>(R.id.face)

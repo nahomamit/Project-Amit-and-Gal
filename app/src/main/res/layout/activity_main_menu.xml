@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_app"
+    tools:context=".MainMenu"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/hello_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginLeft="@android:dimen/app_icon_size"
+        android:layout_marginRight="@android:dimen/app_icon_size"
+        android:layout_marginTop="30dp"
+        android:text="שלום עמית"
+        android:textColor="#F4EFEF"
+        android:fontFamily="@font/varelaroundregular"
+        android:textSize="50dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:text="תרגול רץ"
+            android:id="@+id/random_play"
+            android:fontFamily="@font/varelaroundregular"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:background="@drawable/custom_bottom">
+        </Button>
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="תרגול לפי משחק"
+            android:id="@+id/by_category"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/varelaroundregular"
+
+            android:layout_marginRight="@android:dimen/app_icon_size"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:layout_marginLeft="@android:dimen/app_icon_size"
+            android:background="@drawable/custom_bottom">
+        </Button>
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="משימות שבועיות"
+            android:fontFamily="@font/varelaroundregular"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:id="@+id/weekly_practice"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_marginRight="@android:dimen/app_icon_size"
+            android:layout_marginTop="@android:dimen/app_icon_size"
+            android:layout_marginLeft="@android:dimen/app_icon_size"
+            android:background="@drawable/custom_bottom">
+        </Button>
+    </LinearLayout>
+</LinearLayout>
