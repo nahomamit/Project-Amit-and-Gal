@@ -22,7 +22,8 @@ class MainMenu : AppCompatActivity() {
         }
         val button_long = findViewById<Button>(R.id.weekly_practice)
         button_long.setOnClickListener {
-
+            val intent = Intent(this, WeeklySched::class.java)
+            startActivity(intent)
         }
     }
 }

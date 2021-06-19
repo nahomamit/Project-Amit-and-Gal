@@ -29,7 +29,9 @@ class CheckActivity : AppCompatActivity() {
         tabsDao.clear()
         createDB()
         var pref = getSharedPreferences("Login", Context.MODE_PRIVATE);
+        var weekly = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
         if (pref.getString("Name",null) == null) {
+
             val intent = Intent(this, FirstTimeEnter::class.java)
             startActivity(intent)
         } else {

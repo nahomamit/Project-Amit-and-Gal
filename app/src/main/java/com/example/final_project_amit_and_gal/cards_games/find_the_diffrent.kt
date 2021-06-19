@@ -227,7 +227,7 @@ class find_the_diffrent : AppCompatActivity() {
         builder.setMessage(getString(R.string.sure_end_excercize))
             .setCancelable(false)
             .setPositiveButton(getString(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)
             }
             .setNegativeButton(getString(R.string.no)) { dialog, id ->

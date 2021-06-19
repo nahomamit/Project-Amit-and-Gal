@@ -7,5 +7,15 @@
     <string name="no">"לא"</string>
     <string name="who_is_diff"> מי יוצא הדופן? </string>
     <string name="remain_questions">"שאלות שנותרו: "</string>
-
+    <string-array name="tasks">
+        <item>תרגול רץ קצר</item>
+        <item>תרגול רץ בינוני</item>
+        <item>תרגול רץ ארוך</item>
+        <item>מה בתמונה?</item>
+        <item>מצא את ההבדלים</item>
+        <item>מצא את הקטגוריה השונה</item>
+        <item>מילים מבלוגנות</item>
+        <item>קטגוריה דומה</item>
+        <item>מילים מבנק אותיות</item>
+    </string-array>
 </resources>

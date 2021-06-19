@@ -95,7 +95,7 @@ class letters_choose : AppCompatActivity() {
         builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
             .setCancelable(false)
             .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)
             }
             .setNegativeButton("לא") { dialog, id ->

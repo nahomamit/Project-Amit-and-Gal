@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ByCategory"></activity>
+        <activity android:name=".WeeklySched"></activity>
+        <activity android:name=".ByCategory" />
         <activity android:name=".MainMenu" />
         <activity android:name=".Face_Recognition" />
         <activity android:name=".CheckActivity">
