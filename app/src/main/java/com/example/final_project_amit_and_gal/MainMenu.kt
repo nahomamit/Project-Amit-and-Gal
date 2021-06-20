@@ -1,14 +1,19 @@
 package com.example.final_project_amit_and_gal
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 
 class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main_menu)
+        setupPermissions()
         val button_short = findViewById<Button>(R.id.random_play)
         button_short.setOnClickListener {
 
@@ -25,5 +30,19 @@ class MainMenu : AppCompatActivity() {
             val intent = Intent(this, WeeklySched::class.java)
             startActivity(intent)
         }
+    }
+    private fun setupPermissions() {
+        val permission = ContextCompat.checkSelfPermission(this,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            Log.i("TAG", "Permission to record denied")
+        }
+        makeRequest()
+    }
+    private fun makeRequest() {
+        ActivityCompat.requestPermissions(this,
+            arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE),
+            101)
     }
 }

@@ -1,18 +1,35 @@
 package com.example.final_project_amit_and_gal
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.ContextWrapper
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
-import android.widget.Button
-import android.widget.ProgressBar
-import android.widget.TextView
+import android.view.View
+import android.widget.*
+import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_task_summary.*
+import java.io.*
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.util.*
+import java.util.jar.Manifest
 
 class TaskSummary : AppCompatActivity() {
     @SuppressLint("ResourceType")
+    private val REQUEST_CODE = 101
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_summary)
@@ -31,17 +48,27 @@ class TaskSummary : AppCompatActivity() {
         var progress = score + "/" + maxScore
         findViewById<TextView>(R.id.score).text = progress
         findViewById<TextView>(R.id.task_name).text = name
-        findViewById<Button>(R.id.save_button).setOnClickListener{
-
+        var saveBtn = findViewById<Button>(R.id.save_button)
+        var backBtn = findViewById<Button>(R.id.return_button)
+        saveBtn.setOnClickListener{
+            saveBtn.visibility = View.INVISIBLE
+            backBtn.visibility = View.INVISIBLE
+            val relativeLayout: RelativeLayout= findViewById(R.id.layout_screen)
+            //setupPermissions()
+            //ActivityCompat.requestPermissions(this,
+              //  arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_CODE);
+            storeImage(getScreenShot(relativeLayout))
+            saveBtn.visibility = View.VISIBLE
+            backBtn.visibility = View.VISIBLE
           // it.setBackgroundResource(Color.GREEN)
         }
 
-        findViewById<Button>(R.id.return_button).setOnClickListener{
+        backBtn.setOnClickListener{
             var intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
         }
     }
-    fun nameToNumber(name :String): String {
+    fun nameToNumber(name: String): String {
         when(name) {
             "תרגול רץ ארוך" -> return "60"
             "תרגול רץ בינוני" -> return "40"
@@ -50,4 +77,42 @@ class TaskSummary : AppCompatActivity() {
         }
 
     }
+    private fun getScreenShot(view: View): Bitmap {
+        val returnedBitmap = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(returnedBitmap)
+        val bgDrawable = view.background
+        if (bgDrawable != null) bgDrawable.draw(canvas)
+        else canvas.drawColor(Color.WHITE)
+        view.draw(canvas)
+        return returnedBitmap
+    }
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun storeImage(bitmap: Bitmap):Uri{
+        var title = LocalDateTime.now().toString()
+
+        // Save image to gallery
+        val savedImageURL = MediaStore.Images.Media.insertImage(
+            contentResolver,
+            bitmap,
+            title,
+            "Image of $title"
+        )
+
+        // Parse the gallery image url to uri
+        return Uri.parse(savedImageURL)
+    }
+    private fun setupPermissions() {
+        val permission = ContextCompat.checkSelfPermission(this,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            Log.i("TAG", "Permission to record denied")
+            //makeRequest()
+        }
+    }
+    
+   // Extension function to show toast message
+    fun Context.toast(message: String) {
+    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
 }
