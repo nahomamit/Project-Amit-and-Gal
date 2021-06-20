@@ -20,6 +20,7 @@ class ChooseExc : AppCompatActivity() {
             intent.putExtra("time", time)
             intent.putExtra("score","0")
             intent.putExtra("type",getIntent().getStringExtra("type"))
+            intent.putExtra("name",getIntent().getStringExtra("name"))
 
             startActivity(intent)
         }

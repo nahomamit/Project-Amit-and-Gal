@@ -110,7 +110,7 @@ class TaskSummary : AppCompatActivity() {
             //makeRequest()
         }
     }
-    
+
    // Extension function to show toast message
     fun Context.toast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
