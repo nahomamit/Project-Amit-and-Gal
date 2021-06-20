@@ -28,27 +28,28 @@ class MainActivity : AppCompatActivity() {
         name.text = "שלום " + name_text
         val button_short = findViewById<Button>(R.id.short_time)
         button_short.setOnClickListener {
-            moveActivity("20")
+            moveActivity("20", "תרגול רץ קצר")
 
         }
         val button_med = findViewById<Button>(R.id.mid_time)
         button_med.setOnClickListener {
-            moveActivity("40")
+            moveActivity("40", "תרגול רץ בינוני")
 
         }
         val button_long = findViewById<Button>(R.id.long_time)
         button_long.setOnClickListener {
-            moveActivity("60")
+            moveActivity("60", "תרגול רץ ארוך")
 
         }
     }
 
-    private fun moveActivity(time: String) {
+    private fun moveActivity(time: String, name :String) {
         val intent = Intent(this, ChooseExc::class.java)
         intent.putExtra("time", time)
         //למה צריך את הסקור באקטיביטי הזה ?
         intent.putExtra("score", "0")
         intent.putExtra("type", "1")
+        intent.putExtra("name", name)
         startActivity(intent)
     }
 

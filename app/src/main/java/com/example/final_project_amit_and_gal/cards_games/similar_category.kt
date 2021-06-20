@@ -53,7 +53,7 @@ class similar_category : AppCompatActivity() {
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
         val type:String = intent.getStringExtra("type").toString()
         if(questions == 1){
-            return MainMenu::class.java
+            return TaskSummary::class.java
         }
         if(type == "0") {
             var chosen = similar_category::class.java;
@@ -82,6 +82,7 @@ class similar_category : AppCompatActivity() {
         intent.putExtra("time",(questions-1).toString())
         intent.putExtra("score",(score+num).toString())
         intent.putExtra("type",getIntent().getStringExtra("type").toString())
+        intent.putExtra("name", getIntent().getStringExtra("name"))
 
         startActivity(intent)
     }

@@ -25,12 +25,17 @@ class WeeklySched : AppCompatActivity() {
         var month1  = 0
         var year1  = 0
       //  dateView = findViewById(R.id.dateView)
-        calen.setOnDateChangeListener(CalendarView.OnDateChangeListener { _,month,day,year ->
-            day1 = year
-            month1 = day
-            year1 = month
+        calen.setOnDateChangeListener(CalendarView.OnDateChangeListener { _,year,month,day ->
+            Log.i("month", month.toString())
+            Log.i("day", day.toString())
+            Log.i("year",year.toString())
+
+            year1 = year
+            day1 = day
+            month1 = month
+            resetTasks()
          //  editEvent(month,day,year)
-            todayTasks(month,day,year)
+            todayTasks(year,month,day)
         })
         var edit_btn = findViewById<Button>(R.id.add_tasks)
         edit_btn.setOnClickListener{
@@ -41,7 +46,33 @@ class WeeklySched : AppCompatActivity() {
             editEvent(year1,month1,day1)
             }
         }
+        var delete_btn = findViewById<Button>(R.id.delete_tasks)
+        delete_btn.setOnClickListener{
+            if(day1 == 0) {
+                Toast.makeText(applicationContext,
+                    "בחר יום", Toast.LENGTH_SHORT).show()
+            } else {
+                deleteEvent(year1,month1,day1)
+            }
+        }
         //todayTasks(calen, day, year)
+    }
+
+    private fun deleteEvent(year: Int, month: Int, day: Int) {
+        var pref = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
+        var edit = pref.edit()
+        edit.remove(day.toString() +month.toString() +year.toString())
+        edit.commit()
+        var btn1 = findViewById<Button>(R.id.task1)
+        var btn2 = findViewById<Button>(R.id.task2)
+        var btn3 = findViewById<Button>(R.id.task3)
+        var btn4 = findViewById<Button>(R.id.task4)
+        btn1.text = ""
+        btn2.text = ""
+        btn3.text = ""
+        btn4.text = ""
+        resetTasks()
+
     }
 
     private fun todayTasks(year: Int, month: Int, day: Int) {
@@ -54,15 +85,19 @@ class WeeklySched : AppCompatActivity() {
   //      btn2.text = tasks.elementAt(1).toString()
     //    btn3.text = tasks.elementAt(2).toString()
       //  btn4.text = tasks.elementAt(3).toString()
+        var btn1 = findViewById<Button>(R.id.task1)
+        var btn2 = findViewById<Button>(R.id.task2)
+        var btn3 = findViewById<Button>(R.id.task3)
+        var btn4 = findViewById<Button>(R.id.task4)
         if (tasks == null) {
             Log.i("task","TASK IS NULL")
-
+            btn1.text = ""
+            btn2.text = ""
+            btn3.text = ""
+            btn4.text = ""
             return
         } else {
-          var btn1 = findViewById<Button>(R.id.task1)
-          var btn2 = findViewById<Button>(R.id.task2)
-          var btn3 = findViewById<Button>(R.id.task3)
-          var btn4 = findViewById<Button>(R.id.task4)
+
             btn1.text = tasks.elementAt(0).toString()
             btn2.text = tasks.elementAt(1).toString()
             btn3.text = tasks.elementAt(2).toString()
@@ -89,7 +124,22 @@ class WeeklySched : AppCompatActivity() {
         //Log.i("today", day_string.toString())
       //  if(pref.getString(""))
     }
-
+    private fun resetTasks() {
+        var confirm_btn = findViewById<Button>(R.id.confirm)
+       var spinner1 = findViewById<Spinner>(R.id.task1s)
+      var spinner2 = findViewById<Spinner>(R.id.task2s)
+        var spinner3 = findViewById<Spinner>(R.id.task3s)
+       var spinner4 =  findViewById<Spinner>(R.id.task4s)
+        spinner1.setSelection(0)
+        spinner2.setSelection(0)
+        spinner3.setSelection(0)
+        spinner4.setSelection(0)
+        spinner1.visibility = View.INVISIBLE
+        spinner2.visibility = View.INVISIBLE
+        spinner3.visibility = View.INVISIBLE
+        spinner4.visibility = View.INVISIBLE
+        confirm_btn.visibility = View.INVISIBLE
+    }
     private fun editEvent(year: Int, month: Int, day: Int) {
         var pref = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
         var edit = pref.edit()
@@ -123,11 +173,7 @@ class WeeklySched : AppCompatActivity() {
                 deleteCorrent(day_string)
                 edit.putStringSet(day_string,full_tasks)
                 edit.commit()
-                spinner1.visibility = View.INVISIBLE
-                spinner2.visibility = View.INVISIBLE
-                spinner3.visibility = View.INVISIBLE
-                spinner4.visibility = View.INVISIBLE
-                confirm_btn.visibility = View.INVISIBLE
+              resetTasks()
             }
         }
             // Log.i("task full" , full_tasks.toString())
@@ -190,8 +236,8 @@ class WeeklySched : AppCompatActivity() {
         val intent = Intent(this,task)
         intent.putExtra("time", time)
         intent.putExtra("score", "0")
-        intent.putExtra("type", "1")
+        intent.putExtra("type", type)
         startActivity(intent)
     }
-    
+
 }

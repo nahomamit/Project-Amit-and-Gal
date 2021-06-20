@@ -54,7 +54,7 @@ class letters_choose : AppCompatActivity() {
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
         val type:String = intent.getStringExtra("type").toString()
         if(questions == 1){
-            return MainMenu::class.java
+            return TaskSummary::class.java
         }
         if(type == "0") {
             var chosen = letters_choose::class.java;
@@ -82,6 +82,7 @@ class letters_choose : AppCompatActivity() {
         intent.putExtra("time",(questions-1).toString())
         intent.putExtra("score",(score+num).toString())
         intent.putExtra("type",getIntent().getStringExtra("type").toString())
+        intent.putExtra("name", getIntent().getStringExtra("name"))
         startActivity(intent)
     }
     fun correctAns(): List<Int> {

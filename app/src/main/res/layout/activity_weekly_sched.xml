@@ -38,11 +38,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/add_tasks"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="הוסף משימות לתאריך" />
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/delete_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@color/colorAccent"
+                android:text="מחק משימות לתאריך" />
+            <Button
+                android:id="@+id/add_tasks"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="הוסף משימות לתאריך"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
+
 
      <include layout="@layout/spinner_tasks"
          android:id="@+id/task1s"
