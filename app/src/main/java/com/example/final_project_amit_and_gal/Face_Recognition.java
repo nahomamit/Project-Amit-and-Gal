@@ -32,7 +32,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-public class Face_Recognition extends AppCompatActivity implements CameraBridgeViewBase.CvCameraViewListener2 {
+public class Face_Recognition extends SharedFunctions implements CameraBridgeViewBase.CvCameraViewListener2 {
 
     private static String TAG = "MainActivity";
     CascadeClassifier face_detector;
