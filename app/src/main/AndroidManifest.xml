@@ -22,7 +22,9 @@
         <activity android:name=".WeeklySched" />
         <activity android:name=".ByCategory" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".Face_Recognition" />
+        <activity android:name=".Face_Recognition"
+            android:configChanges="orientation"
+            android:label="@string/app_name"/>
         <activity android:name=".CheckActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
