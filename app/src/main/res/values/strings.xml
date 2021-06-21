@@ -8,6 +8,7 @@
     <string name="who_is_diff"> מי יוצא הדופן? </string>
     <string name="remain_questions">"שאלות שנותרו: "</string>
     <string-array name="tasks">
+        <item>בחר תרגול</item>
         <item>תרגול רץ קצר</item>
         <item>תרגול רץ בינוני</item>
         <item>תרגול רץ ארוך</item>

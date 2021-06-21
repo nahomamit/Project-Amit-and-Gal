@@ -1,6 +1,7 @@
 package com.example.final_project_amit_and_gal
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.CalendarView
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.final_project_amit_and_gal.cards_games.*
 import java.sql.Types.NULL
 import java.util.*
@@ -78,10 +80,10 @@ class WeeklySched : SharedFunctions() {
     private fun todayTasks(year: Int, month: Int, day: Int) {
         var pref = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
         var tasks = pref.getStringSet(day.toString() +month.toString() +year.toString(),null)
-        Log.i("task1" , tasks.toString())
-        Log.i("task2" , tasks?.elementAt(1).toString())
-        Log.i("task3" , tasks?.elementAt(2).toString())
-        Log.i("task4" , tasks?.elementAt(3).toString())
+        //Log.i("task1" , tasks.toString())
+        //Log.i("task2" , tasks?.elementAt(1).toString())
+        //Log.i("task3" , tasks?.elementAt(2).toString())
+       // Log.i("task4" , tasks?.elementAt(3).toString())
   //      btn2.text = tasks.elementAt(1).toString()
     //    btn3.text = tasks.elementAt(2).toString()
       //  btn4.text = tasks.elementAt(3).toString()
@@ -160,20 +162,43 @@ class WeeklySched : SharedFunctions() {
         confirm_btn.visibility = View.VISIBLE
 
         confirm_btn.setOnClickListener{
+
+            var counter = 4
             var task1 = spinner1.selectedItem.toString()
             var task2 = spinner2.selectedItem.toString()
             var task3 = spinner3.selectedItem.toString()
             var task4 = spinner4.selectedItem.toString()
+            var default_choose = "בחר תרגול"
+            if(task1 == default_choose){
+                task1 = "לא נבחר 1"
+                counter--
+            }
+            if(task2 == default_choose){
+                task2 = "לא נבחר 2"
+                counter--
+            }
+            if(task3 == default_choose){
+                task3 = "לא נבחר 3"
+                counter--
+            }
+            if(task4 == default_choose){
+                task4 = "לא נבחר4 "
+                counter--
+            }
             var full_tasks = mutableSetOf<String>(task1, task2, task3,task4)
             Log.i("tasks size", full_tasks.size.toString())
-            if(full_tasks.size < 4) {
+            if(full_tasks.size < counter) {
                 Toast.makeText(applicationContext,
                     "לא ניתן לבחור את אותו משחק פעמיים", Toast.LENGTH_SHORT).show()
             } else {
-                deleteCorrent(day_string)
-                edit.putStringSet(day_string,full_tasks)
-                edit.commit()
-              resetTasks()
+                Log.i("else", "true")
+
+                        deleteCorrent(day_string)
+                        edit.putStringSet(day_string,full_tasks)
+                        edit.commit()
+                        resetTasks()
+
+
             }
         }
             // Log.i("task full" , full_tasks.toString())
