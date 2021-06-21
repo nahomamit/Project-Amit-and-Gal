@@ -15,7 +15,7 @@ import java.sql.Types.NULL
 import java.util.*
 
 
-class WeeklySched : AppCompatActivity() {
+class WeeklySched : SharedFunctions() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_weekly_sched)
@@ -199,31 +199,31 @@ class WeeklySched : AppCompatActivity() {
     private fun stringToActivity(name:String)  {
         when (name) {
             "תרגול רץ קצר" -> {
-                moveActivity("20",ChooseExc::class.java,"1")
+                moveActivity("20",ChooseExc::class.java,"1", name)
 
             }
             "תרגול רץ בינוני" -> {
-                moveActivity("40",ChooseExc::class.java,"1")
+                moveActivity("40",ChooseExc::class.java,"1",name)
             }
             "תרגול רץ ארוך" -> {
-                moveActivity("60",ChooseExc::class.java,"1")
+                moveActivity("60",ChooseExc::class.java,"1", name)
             }
             "מה בתמונה?" -> {
-                moveActivity("10",whats_in_the_picture::class.java,"0")
+                moveActivity("10",whats_in_the_picture::class.java,"0", name)
             }
             "מצא את ההבדלים" -> {
-                moveActivity("10",find_the_diffrent::class.java,"0")            }
+                moveActivity("10",find_the_diffrent::class.java,"0",name)            }
             "מצא את הקטגוריה השונה" -> {
-                moveActivity("10",find_the_different_category::class.java,"0")
+                moveActivity("10",find_the_different_category::class.java,"0", name)
             }
             "מילים מבלוגנות"->{
-                 moveActivity("10",fix_letter_order::class.java,"0")
+                 moveActivity("10",fix_letter_order::class.java,"0", name)
             }
             "קטגוריה דומה" -> {
-                moveActivity("10",similar_category::class.java,"0")
+                moveActivity("10",similar_category::class.java,"0", name)
             }
             "מילים מבנק אותיות" -> {
-               moveActivity("10",letters_choose::class.java,"0")
+               moveActivity("10",letters_choose::class.java,"0", name)
             }
 
             else -> { // Note the block
@@ -232,11 +232,14 @@ class WeeklySched : AppCompatActivity() {
             }
         }
     }
-    private fun moveActivity(time: String, task: Class<out AppCompatActivity>,type :String ) {
+    private fun moveActivity(time: String, task: Class<out AppCompatActivity>,type :String, name: String ) {
         val intent = Intent(this,task)
         intent.putExtra("time", time)
         intent.putExtra("score", "0")
         intent.putExtra("type", type)
+        intent.putExtra("name", name)
+
+
         startActivity(intent)
     }
 

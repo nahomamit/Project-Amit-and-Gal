@@ -20,7 +20,7 @@ import java.lang.Exception
 import java.util.*
 import kotlin.random.Random
 
-class similar_category : AppCompatActivity() {
+class similar_category : SharedFunctions() {
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
     private var hint_count = 0
@@ -91,22 +91,7 @@ class similar_category : AppCompatActivity() {
         Collections.shuffle(answers_arr)
         return answers_arr
     }
-    fun back_btn(){
 
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
-            .setCancelable(false)
-            .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
-                val intent = Intent(this, MainMenu::class.java)
-                startActivity(intent)
-            }
-            .setNegativeButton("לא") { dialog, id ->
-                // Dismiss the dialog
-                dialog.dismiss()
-            }
-        val alert = builder.create()
-        alert.show()
-    }
 
     private fun getAnsBtnList(): Array<Button> {
         val ans1 = findViewById<Button>(R.id.ans_1)

@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.final_project_amit_and_gal.cards_games.find_the_diffrent
 import com.example.final_project_amit_and_gal.cards_games.whats_in_the_picture
 
-class ChooseExc : AppCompatActivity() {
+class ChooseExc :SharedFunctions() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_exc)

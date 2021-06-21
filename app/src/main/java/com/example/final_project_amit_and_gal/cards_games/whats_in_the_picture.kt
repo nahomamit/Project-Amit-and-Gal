@@ -23,7 +23,7 @@ import java.lang.Exception
 import java.util.Collections.shuffle
 import kotlin.random.Random
 
-class whats_in_the_picture : AppCompatActivity() {
+class whats_in_the_picture : SharedFunctions() {
     @SuppressLint("ResourceAsColor")
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
@@ -98,6 +98,7 @@ class whats_in_the_picture : AppCompatActivity() {
         shuffle(answers_arr)
         return answers_arr
     }
+/*
     fun back_btn(){
 
         val builder = AlertDialog.Builder(this)
@@ -114,8 +115,8 @@ class whats_in_the_picture : AppCompatActivity() {
         val alert = builder.create()
         alert.show()
     }
-
-    private fun getAnsBtnList(): Array<Button> {
+*/
+   private fun getAnsBtnList(): Array<Button> {
         val ans1 = findViewById<Button>(R.id.ans_1)
         val ans2 = findViewById<Button>(R.id.ans_2)
         val ans3 = findViewById<Button>(R.id.ans_3)
@@ -228,4 +229,12 @@ class whats_in_the_picture : AppCompatActivity() {
         }
 
     }
+    /*
+    @Override
+    override fun onBackPressed(){
+        back_btn()
+
+    }
+
+     */
 }

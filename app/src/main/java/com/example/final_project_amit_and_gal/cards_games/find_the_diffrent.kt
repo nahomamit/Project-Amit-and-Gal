@@ -20,7 +20,7 @@ import java.lang.Exception
 import kotlin.random.Random
 
 
-class find_the_diffrent : AppCompatActivity() {
+class find_the_diffrent : SharedFunctions() {
     private lateinit var tabsDao: TabDatabaseDao
     private lateinit var db: TabDataBase
     private var hint_count = 0
@@ -53,7 +53,7 @@ class find_the_diffrent : AppCompatActivity() {
         task.text = getString(R.string.who_is_diff)
 
         val back = findViewById<ImageView>(R.id.return_btn)
-        back.setOnClickListener { backBtnOnClick() }
+        back.setOnClickListener { back_btn() }
 
         setAnswers(questions, score)
         /*
@@ -224,21 +224,7 @@ class find_the_diffrent : AppCompatActivity() {
 
         startActivity(intent)
     }
-    private fun backBtnOnClick() {
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage(getString(R.string.sure_end_excercize))
-            .setCancelable(false)
-            .setPositiveButton(getString(R.string.yes)) { dialogInterface: DialogInterface, i: Int ->
-                val intent = Intent(this, MainMenu::class.java)
-                startActivity(intent)
-            }
-            .setNegativeButton(getString(R.string.no)) { dialog, id ->
-                // Dismiss the dialog
-                dialog.dismiss()
-            }
-        val alert = builder.create()
-        alert.show()
-    }
+
 
     private fun initDB() {
         db = Room.databaseBuilder(

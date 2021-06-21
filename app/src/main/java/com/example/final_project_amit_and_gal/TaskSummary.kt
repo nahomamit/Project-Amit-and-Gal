@@ -26,7 +26,7 @@ import java.time.LocalDateTime
 import java.util.*
 import java.util.jar.Manifest
 
-class TaskSummary : AppCompatActivity() {
+class TaskSummary : SharedFunctions() {
     @SuppressLint("ResourceType")
     private val REQUEST_CODE = 101
     @RequiresApi(Build.VERSION_CODES.O)

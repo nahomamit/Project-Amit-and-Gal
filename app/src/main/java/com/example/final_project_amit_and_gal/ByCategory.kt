@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.final_project_amit_and_gal.cards_games.*
 
-class ByCategory : AppCompatActivity() {
+class ByCategory : SharedFunctions() {
     var play_length = "10"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

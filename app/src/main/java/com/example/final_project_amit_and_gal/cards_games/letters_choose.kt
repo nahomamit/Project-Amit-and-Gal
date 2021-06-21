@@ -19,7 +19,7 @@ import java.io.InputStream
 import java.lang.Exception
 import java.util.*
 
-class letters_choose : AppCompatActivity() {
+class letters_choose : SharedFunctions() {
     private var mistakes = 0
     protected var correct: Int = 0
     protected var hint_count: Int = 0
@@ -90,22 +90,7 @@ class letters_choose : AppCompatActivity() {
         Collections.shuffle(answers_arr)
         return answers_arr
     }
-    fun back_btn(){
 
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
-            .setCancelable(false)
-            .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
-                val intent = Intent(this, MainMenu::class.java)
-                startActivity(intent)
-            }
-            .setNegativeButton("לא") { dialog, id ->
-                // Dismiss the dialog
-                dialog.dismiss()
-            }
-        val alert = builder.create()
-        alert.show()
-    }
 
     private fun getAnsBtnList(): Array<Button> {
         val ans1 = findViewById<Button>(R.id.letter1)

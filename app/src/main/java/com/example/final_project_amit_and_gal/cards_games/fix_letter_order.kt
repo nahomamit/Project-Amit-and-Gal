@@ -22,7 +22,7 @@ import java.io.InputStream
 import java.lang.Exception
 import java.util.*
 
-class fix_letter_order : AppCompatActivity() {
+class fix_letter_order : SharedFunctions() {
     private var mistakes = 0
     private var counter = 0
     private var hint_count = 0
@@ -86,22 +86,7 @@ class fix_letter_order : AppCompatActivity() {
         intent.putExtra("name", getIntent().getStringExtra("name"))
         startActivity(intent)
     }
-    fun back_btn(){
 
-        val builder = AlertDialog.Builder(this)
-        builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
-            .setCancelable(false)
-            .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
-                val intent = Intent(this, MainMenu::class.java)
-                startActivity(intent)
-            }
-            .setNegativeButton("לא") { dialog, id ->
-                // Dismiss the dialog
-                dialog.dismiss()
-            }
-        val alert = builder.create()
-        alert.show()
-    }
 
 
 

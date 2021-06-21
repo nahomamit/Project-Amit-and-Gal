@@ -13,7 +13,7 @@ import java.io.InputStream
 import java.io.InputStreamReader
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : SharedFunctions() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
