@@ -3,10 +3,14 @@ package com.example.final_project_amit_and_gal
 import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
+import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.final_project_amit_and_gal.cards_games.*
+import java.util.*
+import kotlin.concurrent.schedule
 
 open class SharedFunctions: AppCompatActivity() {
   lateinit var tabsDao: TabDatabaseDao
@@ -66,12 +70,19 @@ open class SharedFunctions: AppCompatActivity() {
         val next_exc = nextExcercize(questions)
         val intent = Intent(this, next_exc)
         Log.i("type", getIntent().getStringExtra("type"))
+        if(num == 0) {
+            findViewById<ImageView>(R.id.incorrect_img).visibility = View.VISIBLE
+        } else {
+            findViewById<ImageView>(R.id.correct_img).visibility = View.VISIBLE
+        }
         intent.putExtra("time",(questions-1).toString())
         intent.putExtra("score",(score+num).toString())
         intent.putExtra("type",getIntent().getStringExtra("type").toString())
         intent.putExtra("name", getIntent().getStringExtra("name"))
         Log.i("NAME",  getIntent().getStringExtra("name"))
-        startActivity(intent)
+        Timer("SettingUp", false).schedule(500) {
+            startActivity(intent)
+        }
     }
 
      fun initDB() {

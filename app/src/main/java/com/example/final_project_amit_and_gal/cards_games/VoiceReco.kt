@@ -152,11 +152,13 @@ class VoiceReco : SharedFunctions() {
             if (result?.get(0).toString() == qes_text.text.toString()) {
                 tv_text.text = "Correct !"
                 Log.i("ANS","CORRECT")
+
                 currentAnsOnClick()
 
             }
             else{
                 tv_text.text = "Wrong !"
+
             Log.i("ANS","FASLE")
                   wrongAnsOnClick()
         }

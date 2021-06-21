@@ -39,5 +39,16 @@
             android:textSize="50dp"/>
         <include layout="@layout/four_options"/>
     </LinearLayout>
-
+    <ImageView
+        android:id="@+id/correct_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/correct" />
+    <ImageView
+        android:id="@+id/incorrect_img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/incorrect_ans" />
 </RelativeLayout>

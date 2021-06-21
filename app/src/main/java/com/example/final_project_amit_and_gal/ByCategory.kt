@@ -21,7 +21,7 @@ class ByCategory : SharedFunctions() {
         findViewById<Button>(R.id.game_fix_order).text = getString(R.string.game_fix_letter_order)
         findViewById<Button>(R.id.game_letter_choose).text = getString(R.string.game_letter_choose)
         findViewById<Button>(R.id.game_similar_category).text = getString(R.string.game_similar_category)
-        findViewById<Button>(R.id.game_voice).text = getString(R.string.game_similar_category)
+        findViewById<Button>(R.id.game_voice).text = getString(R.string.game_voice_reco)
         findViewById<Button>(R.id.game_what_in_pic).text = getString(R.string.game_whats_in_the_pic)
         findViewById<Button>(R.id.return_btn).text = getString(R.string.back)
 
@@ -44,7 +44,7 @@ class ByCategory : SharedFunctions() {
             moveActivity(getString(R.string.game_similar_category), similar_category::class.java)
         }
         findViewById<Button>(R.id.game_voice).setOnClickListener{
-            moveActivity(getString(R.string.game_whats_in_the_pic),VoiceReco::class.java)
+            moveActivity(getString(R.string.game_voice_reco),VoiceReco::class.java)
         }
         findViewById<Button>(R.id.game_what_in_pic).setOnClickListener{
             moveActivity(getString(R.string.game_whats_in_the_pic), whats_in_the_picture::class.java)
