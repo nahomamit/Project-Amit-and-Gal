@@ -5,10 +5,12 @@ import android.content.Intent
 import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
 import com.example.final_project_amit_and_gal.cards_games.*
 
 open class SharedFunctions: AppCompatActivity() {
-
+  lateinit var tabsDao: TabDatabaseDao
+    lateinit var db: TabDataBase
     override fun onBackPressed(){
         back_btn()
 
@@ -49,8 +51,8 @@ open class SharedFunctions: AppCompatActivity() {
                 find_the_different_category::class.java,
                 fix_letter_order::class.java,
                 similar_category::class.java,
-                whats_in_the_picture::class.java
-
+                whats_in_the_picture::class.java,
+                VoiceReco::class.java
             )
             exc_arr.remove(this.javaClass)
             var chosen = exc_arr.random()
@@ -71,4 +73,15 @@ open class SharedFunctions: AppCompatActivity() {
         Log.i("NAME",  getIntent().getStringExtra("name"))
         startActivity(intent)
     }
+
+     fun initDB() {
+        db = Room.databaseBuilder(
+            applicationContext,
+            TabDataBase::class.java,
+            "tabs_database"
+        ).allowMainThreadQueries().build()
+        tabsDao = db.tabDao
+    }
+
+
 }

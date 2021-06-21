@@ -25,8 +25,7 @@ import kotlin.random.Random
 
 class whats_in_the_picture : SharedFunctions() {
     @SuppressLint("ResourceAsColor")
-    private lateinit var tabsDao: TabDatabaseDao
-    private lateinit var db: TabDataBase
+
     private var hint_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -79,7 +78,12 @@ class whats_in_the_picture : SharedFunctions() {
         setButtonText(answerBtnArr, tabs,  questions, score)
 
     }
-
+    fun getTabs(): MutableList<Tab>? {
+        val tabs: MutableList<Tab>
+        tabs = tabsDao.getFourTabs()
+        tabs.shuffle()
+        return tabs
+    }
     private fun setButtonText(answerBtnArr: Array<Button>, tabs: MutableList<Tab>,
                               questions: Int, score: Int) {
         var correct = (0..3).random()
@@ -106,12 +110,7 @@ class whats_in_the_picture : SharedFunctions() {
         }
     }
 
-    private fun getTabs(): MutableList<Tab>? {
-        val tabs: MutableList<Tab>
-        tabs = tabsDao.getFourTabs()
-        tabs.shuffle()
-        return tabs
-    }
+
 
     private fun currentAnsOnClick(correct_ans: Button, questions: Int, score: Int ) {
         correct_ans.setBackgroundResource(R.color.Green)
@@ -122,15 +121,6 @@ class whats_in_the_picture : SharedFunctions() {
         wrong_ans.setBackgroundResource(R.color.colorAccent)
         correct_ans.setBackgroundResource(R.color.Green)
         nextActivity(0,questions, score)
-    }
-
-    private fun initDB() {
-        db = Room.databaseBuilder(
-            applicationContext,
-            TabDataBase::class.java,
-            "tabs_database"
-        ).allowMainThreadQueries().build()
-        tabsDao = db.tabDao
     }
 
     private fun hint(correct: Int){

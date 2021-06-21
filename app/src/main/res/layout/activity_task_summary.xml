@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".TaskSummary"
     android:id="@+id/layout_screen"
-    android:background="@drawable/background_app">
+    android:background="@drawable/sky_background">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

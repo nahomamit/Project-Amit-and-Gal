@@ -24,8 +24,7 @@ class letters_choose : SharedFunctions() {
     protected var correct: Int = 0
     protected var hint_count: Int = 0
 
-    private lateinit var tabsDao: TabDatabaseDao
-    private lateinit var db: TabDataBase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_letters_choose)
@@ -179,14 +178,6 @@ class letters_choose : SharedFunctions() {
         return tab
     }
 
-    private fun initDB() {
-        db = Room.databaseBuilder(
-            applicationContext,
-            TabDataBase::class.java,
-            "tabs_database"
-        ).allowMainThreadQueries().build()
-        tabsDao = db.tabDao
-    }
     private fun letterABC(num: Int): List<Char> {
         var letter = listOf('א','ט','ק','צ','ר','ש','ת','פ','ע','ס','נ','מ','ל','כ','י','ח','ז','ו','ה','ד','ג','ב')
         letter.shuffled()

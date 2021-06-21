@@ -21,8 +21,6 @@ import java.util.*
 import kotlin.random.Random
 
 class similar_category : SharedFunctions() {
-    private lateinit var tabsDao: TabDatabaseDao
-    private lateinit var db: TabDataBase
     private var hint_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -154,14 +152,6 @@ class similar_category : SharedFunctions() {
         nextActivity(0,questions, score)
     }
 
-    private fun initDB() {
-        db = Room.databaseBuilder(
-            applicationContext,
-            TabDataBase::class.java,
-            "tabs_database"
-        ).allowMainThreadQueries().build()
-        tabsDao = db.tabDao
-    }
     private fun hint(correct: Int){
         val hint1 =  findViewById<ImageView>(R.id.hint)
         hint1.setOnClickListener{

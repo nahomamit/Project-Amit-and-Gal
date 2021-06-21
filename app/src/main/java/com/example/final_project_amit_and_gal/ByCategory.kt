@@ -44,7 +44,7 @@ class ByCategory : SharedFunctions() {
             moveActivity("קטגוריה דומה", similar_category::class.java)
         }
         findViewById<Button>(R.id.game_voice).setOnClickListener{
-            moveActivity("זיהוי קול",whats_in_the_picture::class.java)
+            moveActivity("זיהוי קול",VoiceReco::class.java)
         }
         findViewById<Button>(R.id.game_what_in_pic).setOnClickListener{
             moveActivity("מה בתמונה", whats_in_the_picture::class.java)

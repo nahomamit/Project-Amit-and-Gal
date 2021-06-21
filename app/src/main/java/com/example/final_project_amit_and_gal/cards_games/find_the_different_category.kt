@@ -19,8 +19,6 @@ import java.io.InputStream
 import java.lang.Exception
 import kotlin.random.Random
 
-private lateinit var tabsDao: TabDatabaseDao
-private lateinit var db: TabDataBase
 
 class find_the_different_category : SharedFunctions() {
     private var hint_count = 0
@@ -167,14 +165,7 @@ class find_the_different_category : SharedFunctions() {
         correct_ans.setBackgroundResource(R.color.Green)
         nextActivity(0,questions, score)
     }
-    private fun initDB() {
-        db = Room.databaseBuilder(
-            applicationContext,
-            TabDataBase::class.java,
-            "tabs_database"
-        ).allowMainThreadQueries().build()
-        tabsDao = db.tabDao
-    }
+
     private fun hint(correct: Int){
         val hint1 =  findViewById<ImageView>(R.id.hint)
         hint1.setOnClickListener{

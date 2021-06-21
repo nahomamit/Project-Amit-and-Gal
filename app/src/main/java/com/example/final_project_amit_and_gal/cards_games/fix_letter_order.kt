@@ -26,8 +26,6 @@ class fix_letter_order : SharedFunctions() {
     private var mistakes = 0
     private var counter = 0
     private var hint_count = 0
-    private lateinit var tabsDao: TabDatabaseDao
-    private lateinit var db: TabDataBase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fix_letter_order)
@@ -165,14 +163,6 @@ class fix_letter_order : SharedFunctions() {
         return tab
     }
 
-    private fun initDB() {
-        db = Room.databaseBuilder(
-            applicationContext,
-            TabDataBase::class.java,
-            "tabs_database"
-        ).allowMainThreadQueries().build()
-        tabsDao = db.tabDao
-    }
     private fun hint(id_list:List<Int>, bank_id_list:List<Int>){
 
         val hint1 =  findViewById<ImageView>(R.id.hint)
