@@ -118,10 +118,9 @@ public class Face_Recognition extends AppCompatActivity implements CameraBridgeV
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
         mRGBA= inputFrame.rgba();
-
         mGREY = inputFrame.gray();
-        Core.flip(mRGBA.t(), mRGBA, -1);
-        Core.flip(mGREY.t(), mGREY, -1);
+        //Core.flip(mRGBA.t(), mRGBA, -1);
+        //Core.flip(mGREY.t(), mGREY, -1);
         Log.i("MYMAT", String.valueOf(mRGBA.dims()));
 
         MatOfRect faceDetections = new MatOfRect();
