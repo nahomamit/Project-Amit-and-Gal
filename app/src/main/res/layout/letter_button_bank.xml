@@ -4,7 +4,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:gravity="center"
-        android:fontFamily="@font/varelaroundregular"
+        android:fontFamily="@font/my_font"
         android:textStyle="bold"
         android:textSize="30dp"
         android:background="@drawable/custom_bottom"

@@ -16,38 +16,38 @@ class ByCategory : SharedFunctions() {
     }
 
     fun buttonText() {
-        findViewById<Button>(R.id.game_find_dif).text = "יוצא דופן"
-        findViewById<Button>(R.id.game_find_dif_by_cat).text = "מה יוצא דופן (קטוגריה)"
-        findViewById<Button>(R.id.game_fix_order).text = "אותיות מבולגנות"
-        findViewById<Button>(R.id.game_letter_choose).text = "זהה מילה מבנק המילים"
-        findViewById<Button>(R.id.game_similar_category).text = "מה מאותה קטוגריה"
-        findViewById<Button>(R.id.game_voice).text = "זיהוי דיבור"
-        findViewById<Button>(R.id.game_what_in_pic).text = "מה בתמונה"
-        findViewById<Button>(R.id.return_btn).text = "חזור"
+        findViewById<Button>(R.id.game_find_dif).text = getString(R.string.game_find_dif)
+        findViewById<Button>(R.id.game_find_dif_by_cat).text = getString(R.string.game_find_dif_by_cat)
+        findViewById<Button>(R.id.game_fix_order).text = getString(R.string.game_fix_letter_order)
+        findViewById<Button>(R.id.game_letter_choose).text = getString(R.string.game_letter_choose)
+        findViewById<Button>(R.id.game_similar_category).text = getString(R.string.game_similar_category)
+        findViewById<Button>(R.id.game_voice).text = getString(R.string.game_similar_category)
+        findViewById<Button>(R.id.game_what_in_pic).text = getString(R.string.game_whats_in_the_pic)
+        findViewById<Button>(R.id.return_btn).text = getString(R.string.back)
 
     }
     fun buttonOptions() {
 
         findViewById<Button>(R.id.game_find_dif).setOnClickListener{
-            moveActivity("מצא את ההבדל", find_the_diffrent::class.java)
+            moveActivity(getString(R.string.game_find_dif), find_the_diffrent::class.java)
         }
         findViewById<Button>(R.id.game_find_dif_by_cat).setOnClickListener{
-            moveActivity("מצא את ההבדל (קטגוריה)", find_the_different_category::class.java)
+            moveActivity(getString(R.string.game_find_dif_by_cat), find_the_different_category::class.java)
         }
         findViewById<Button>(R.id.game_fix_order).setOnClickListener{
-            moveActivity("מילה מבולגנת",fix_letter_order::class.java)
+            moveActivity(getString(R.string.game_fix_letter_order),fix_letter_order::class.java)
         }
         findViewById<Button>(R.id.game_letter_choose).setOnClickListener{
-            moveActivity("בחירת אותיות מבנק",letters_choose::class.java)
+            moveActivity(getString(R.string.game_letter_choose),letters_choose::class.java)
         }
         findViewById<Button>(R.id.game_similar_category).setOnClickListener{
-            moveActivity("קטגוריה דומה", similar_category::class.java)
+            moveActivity(getString(R.string.game_similar_category), similar_category::class.java)
         }
         findViewById<Button>(R.id.game_voice).setOnClickListener{
-            moveActivity("זיהוי קול",VoiceReco::class.java)
+            moveActivity(getString(R.string.game_whats_in_the_pic),VoiceReco::class.java)
         }
         findViewById<Button>(R.id.game_what_in_pic).setOnClickListener{
-            moveActivity("מה בתמונה", whats_in_the_picture::class.java)
+            moveActivity(getString(R.string.game_whats_in_the_pic), whats_in_the_picture::class.java)
         }
         findViewById<Button>(R.id.return_btn).setOnClickListener{
             val intent = Intent(this, MainMenu::class.java)

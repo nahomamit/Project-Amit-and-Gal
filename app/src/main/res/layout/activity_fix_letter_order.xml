@@ -23,7 +23,7 @@
 
             android:text=""
             android:textColor="#F4EFEF"
-            android:fontFamily="@font/varelaroundregular"
+            android:fontFamily="@font/tmp"
             android:textSize="50dp" />
 
         <TextView
@@ -34,7 +34,7 @@
             android:layout_marginLeft="@android:dimen/app_icon_size"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="@android:dimen/notification_large_icon_height"
-            android:fontFamily="@font/varelaroundregular"
+            android:fontFamily="@font/tmp"
             android:text="מה בתמונה?          בחר אותיות"
             android:textColor="#F4EFEF"
             android:textSize="50dp" />
@@ -48,7 +48,7 @@
 
             android:text=""
             android:textColor="#F4EFEF"
-            android:fontFamily="@font/varelaroundregular"
+            android:fontFamily="@font/tmp"
             android:textSize="20dp" />
 
 

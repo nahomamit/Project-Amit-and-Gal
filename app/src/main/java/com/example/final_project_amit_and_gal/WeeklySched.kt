@@ -80,19 +80,12 @@ class WeeklySched : SharedFunctions() {
     private fun todayTasks(year: Int, month: Int, day: Int) {
         var pref = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
         var tasks = pref.getStringSet(day.toString() +month.toString() +year.toString(),null)
-        //Log.i("task1" , tasks.toString())
-        //Log.i("task2" , tasks?.elementAt(1).toString())
-        //Log.i("task3" , tasks?.elementAt(2).toString())
-       // Log.i("task4" , tasks?.elementAt(3).toString())
-  //      btn2.text = tasks.elementAt(1).toString()
-    //    btn3.text = tasks.elementAt(2).toString()
-      //  btn4.text = tasks.elementAt(3).toString()
+
         var btn1 = findViewById<Button>(R.id.task1)
         var btn2 = findViewById<Button>(R.id.task2)
         var btn3 = findViewById<Button>(R.id.task3)
         var btn4 = findViewById<Button>(R.id.task4)
         if (tasks == null) {
-            Log.i("task","TASK IS NULL")
             btn1.text = ""
             btn2.text = ""
             btn3.text = ""
@@ -105,19 +98,19 @@ class WeeklySched : SharedFunctions() {
             btn3.text = tasks.elementAt(2).toString()
             btn4.text = tasks.elementAt(3).toString()
             btn1.setOnClickListener{
-                Log.i("btn1", "clicked")
+
                 stringToActivity(btn1.text.toString())
             }
             btn2.setOnClickListener{
-                Log.i("btn2", "clicked")
+
                 stringToActivity(btn2.text.toString())
             }
             btn3.setOnClickListener{
-                Log.i("btn3", "clicked")
+
                 stringToActivity(btn3.text.toString())
             }
             btn4.setOnClickListener{
-                Log.i("btn4", "clicked")
+
                 stringToActivity(btn4.text.toString())
             }
 
@@ -168,21 +161,21 @@ class WeeklySched : SharedFunctions() {
             var task2 = spinner2.selectedItem.toString()
             var task3 = spinner3.selectedItem.toString()
             var task4 = spinner4.selectedItem.toString()
-            var default_choose = "בחר תרגול"
+            var default_choose = getString(R.string.choose_exc)
             if(task1 == default_choose){
-                task1 = "לא נבחר 1"
+                task1 = getString(R.string.not_init1)
                 counter--
             }
             if(task2 == default_choose){
-                task2 = "לא נבחר 2"
+                task2 = getString(R.string.not_init2)
                 counter--
             }
             if(task3 == default_choose){
-                task3 = "לא נבחר 3"
+                task3 = getString(R.string.not_init3)
                 counter--
             }
             if(task4 == default_choose){
-                task4 = "לא נבחר4 "
+                task4 = getString(R.string.not_init4)
                 counter--
             }
             var full_tasks = mutableSetOf<String>(task1, task2, task3,task4)
@@ -223,31 +216,31 @@ class WeeklySched : SharedFunctions() {
 
     private fun stringToActivity(name:String)  {
         when (name) {
-            "תרגול רץ קצר" -> {
+            getString(R.string.game_short) -> {
                 moveActivity("20",ChooseExc::class.java,"1", name)
 
             }
-            "תרגול רץ בינוני" -> {
+            getString(R.string.game_med) -> {
                 moveActivity("40",ChooseExc::class.java,"1",name)
             }
-            "תרגול רץ ארוך" -> {
+            getString(R.string.game_long) -> {
                 moveActivity("60",ChooseExc::class.java,"1", name)
             }
-            "מה בתמונה?" -> {
+            getString(R.string.game_whats_in_the_pic) -> {
                 moveActivity("10",whats_in_the_picture::class.java,"0", name)
             }
-            "מצא את ההבדלים" -> {
+            getString(R.string.game_find_dif) -> {
                 moveActivity("10",find_the_diffrent::class.java,"0",name)            }
-            "מצא את הקטגוריה השונה" -> {
+            getString(R.string.game_find_dif_by_cat) -> {
                 moveActivity("10",find_the_different_category::class.java,"0", name)
             }
-            "מילים מבלוגנות"->{
+            getString(R.string.game_fix_letter_order)->{
                  moveActivity("10",fix_letter_order::class.java,"0", name)
             }
-            "קטגוריה דומה" -> {
+            getString(R.string.game_similar_category) -> {
                 moveActivity("10",similar_category::class.java,"0", name)
             }
-            "מילים מבנק אותיות" -> {
+            getString(R.string.game_letter_choose) -> {
                moveActivity("10",letters_choose::class.java,"0", name)
             }
 

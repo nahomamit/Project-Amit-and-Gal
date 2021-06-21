@@ -5,4 +5,5 @@
     android:layout_height="match_parent"
     android:layout_weight="1"
     android:layout_margin="5dp"
-    android:background="@drawable/custom_bottom"/>
+    android:background="@drawable/custom_bottom"
+    android:fontFamily="@font/my_font"/>

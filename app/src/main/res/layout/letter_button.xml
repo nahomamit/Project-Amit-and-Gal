@@ -4,9 +4,10 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:gravity="center"
-        android:fontFamily="@font/varelaroundregular"
+        android:fontFamily="@font/my_font"
         android:textStyle="bold"
         android:textSize="10dp"
         android:background="@drawable/custom_bottom"
+
         android:layout_gravity="center">
     </Button>

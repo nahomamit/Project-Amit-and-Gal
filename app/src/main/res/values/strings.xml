@@ -5,8 +5,28 @@
     <string name="sure_end_excercize">האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי</string>
     <string name="yes">"כן"</string>
     <string name="no">"לא"</string>
-    <string name="who_is_diff"> מי יוצא הדופן? </string>
-    <string name="remain_questions">"שאלות שנותרו: "</string>
+    <string name="game_find_dif_by_cat">"מה יוצא מן הכלל? לפי קטגוריה"</string>
+    <string name="game_find_dif">"מה יוצא מן הכלל?"</string>
+    <string name="game_fix_letter_order">"אותיות מבולגנות"</string>
+    <string name="game_letter_choose">"מילה מתוך בנק אותיות"</string>
+    <string name="game_similar_category">"מה מאותה קטגוריה?"</string>
+    <string name="game_voice_reco">"מה בתמונה? לפי דיבור"</string>
+    <string name="game_whats_in_the_pic">"מה בתמונה?"</string>
+    <string name="game_short">"תרגול רץ קצר"</string>
+    <string name="game_med">  "תרגול רץ בינוני"</string>
+    <string name="game_long">"תרגול רץ ארוך"</string>
+    <string name="who_is_diff"> "מי יוצא הדופן?" </string>
+    <string name="choose_exc"> "בחר תרגול" </string>
+    <string name="not_init1"> לא נבחר 1 </string>
+    <string name="not_init2"> לא נבחר 2 </string>
+    <string name="not_init3"> לא נבחר 3 </string>
+    <string name="not_init4"> לא נבחר 4 </string>
+    <string name="remain_questions">שאלות שנותרו</string>
+
+
+
+
+    <string name="back">"חזור לתפריט הראשי"</string>
     <string-array name="tasks">
         <item>בחר תרגול</item>
         <item>תרגול רץ קצר</item>

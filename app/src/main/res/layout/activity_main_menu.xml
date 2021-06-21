@@ -17,7 +17,7 @@
         android:layout_marginTop="30dp"
         android:text="שלום עמית"
         android:textColor="#F4EFEF"
-        android:fontFamily="@font/varelaroundregular"
+        android:fontFamily="@font/tmp"
         android:textSize="50dp" />
 
     <LinearLayout
@@ -32,7 +32,7 @@
             android:layout_gravity="center"
             android:text="תרגול רץ"
             android:id="@+id/random_play"
-            android:fontFamily="@font/varelaroundregular"
+            android:fontFamily="@font/tmp"
             android:layout_marginTop="@android:dimen/app_icon_size"
             android:textStyle="bold"
             android:textSize="30dp"
@@ -47,7 +47,7 @@
             android:textStyle="bold"
             android:textSize="30dp"
             android:layout_gravity="center"
-            android:fontFamily="@font/varelaroundregular"
+            android:fontFamily="@font/tmp"
 
             android:layout_marginRight="@android:dimen/app_icon_size"
             android:layout_marginTop="@android:dimen/app_icon_size"
@@ -58,7 +58,7 @@
             android:layout_width="250dp"
             android:layout_height="60dp"
             android:text="משימות שבועיות"
-            android:fontFamily="@font/varelaroundregular"
+            android:fontFamily="@font/tmp"
             android:textStyle="bold"
             android:textSize="30dp"
             android:id="@+id/weekly_practice"
