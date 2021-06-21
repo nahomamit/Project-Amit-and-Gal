@@ -187,44 +187,6 @@ class find_the_diffrent : SharedFunctions() {
         nextActivity(0,questions, score)
     }
 
-    private fun nextExcercize(questions:Int): Class<out AppCompatActivity> {
-        val type:String = intent.getStringExtra("type").toString()
-        if(questions == 1){
-            return TaskSummary::class.java
-        }
-        if(type == "0") {
-            var chosen = find_the_diffrent::class.java;
-            return chosen
-        }
-        if((questions-1)%5 != 0){
-            var chosen = find_the_diffrent::class.java;
-            return chosen
-        } else {
-            val exc_arr = listOf(
-                find_the_diffrent::class.java, whats_in_the_picture::class.java,
-                letters_choose::class.java,
-                find_the_different_category::class.java,
-                fix_letter_order::class.java,
-                similar_category::class.java
-            )
-            var chosen = exc_arr.random()
-
-            return chosen
-        }
-    }
-
-    fun nextActivity(num :Int,questions:Int, score:Int){
-        val next_exc = nextExcercize(questions)
-        val intent = Intent(this, next_exc)
-        intent.putExtra("time",(questions-1).toString())
-        intent.putExtra("score",(score+num).toString())
-        intent.putExtra("type",getIntent().getStringExtra("type").toString())
-        intent.putExtra("name", getIntent().getStringExtra("name"))
-
-
-        startActivity(intent)
-    }
-
 
     private fun initDB() {
         db = Room.databaseBuilder(

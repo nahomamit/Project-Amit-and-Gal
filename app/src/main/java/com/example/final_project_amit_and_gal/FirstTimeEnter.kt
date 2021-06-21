@@ -30,7 +30,7 @@ class FirstTimeEnter : AppCompatActivity() {
                 Ed.commit()
                 Toast.makeText(applicationContext,
                     "Username: $username, Password: $birth", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)
             }
         }
