@@ -9,14 +9,20 @@ data class Tab(
     @PrimaryKey
     @ColumnInfo(name = "name")
     var name: String,
-    @ColumnInfo(name = "gender")
-    var gender:String,
-    @ColumnInfo(name = "url")
-    var url:String,
-    @ColumnInfo(name = "category")
-    var category:String,
     @ColumnInfo(name = "difficulty")
     var difficulty:Int,
-    @ColumnInfo(name = "description")
-    var description:String
+    @ColumnInfo(name = "gender")
+    var gender:String,
+    @ColumnInfo(name = "manySingle")
+    var manySingle:String,
+    @ColumnInfo(name = "classification")
+    var classification:String,
+    @ColumnInfo(name = "subcategory")
+    var subcategory:String,
+    @ColumnInfo(name = "category")
+    var category:String,
+    @ColumnInfo(name = "englishName")
+    var englishName:String,
+    @ColumnInfo(name = "url")
+    var url:String
 )
