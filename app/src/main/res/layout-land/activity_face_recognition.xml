@@ -17,11 +17,24 @@
             android:textSize="20dp"
             android:gravity="center"
             />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/sky_background"
+        android:layout_weight="1"
+        android:gravity="center"
+        />
+    <org.opencv.android.JavaCameraView
+        android:id="@+id/my_camera_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
 
-        <org.opencv.android.JavaCameraView
-            android:id="@+id/my_camera_view"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent" />
+</LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>
