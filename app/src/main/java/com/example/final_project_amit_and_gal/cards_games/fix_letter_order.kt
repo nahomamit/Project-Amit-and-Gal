@@ -1,13 +1,8 @@
 package com.example.final_project_amit_and_gal.cards_games
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
-import android.content.Intent
 import android.graphics.Color
 import android.graphics.LightingColorFilter
-import android.graphics.drawable.Drawable
-import android.opengl.Visibility
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -15,10 +10,8 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.room.Room
 import com.example.final_project_amit_and_gal.*
-import java.io.InputStream
 import java.lang.Exception
 import java.util.*
 
@@ -57,7 +50,7 @@ class fix_letter_order : SharedFunctions() {
     @SuppressLint("ResourceType")
     private fun setAnswers(questions: Int, score: Int) {
         var temp: Tab = getTabs()
-        findViewById<TextView>(R.id.category).text=temp.category
+        findViewById<TextView>(R.id.category).text=temp.subcategory
         var letters :List<Char> = temp.name.toList()
         val linear_layout = findViewById(R.id.full_word) as LinearLayout
         Log.i("array",letters.toString())
@@ -156,7 +149,7 @@ class fix_letter_order : SharedFunctions() {
     private fun getTabs(): Tab {
 
 
-        val tab = tabsDao.getOneTab()
+        val tab = tabsDao.getOneTabWithCate()
         var correct = 0
         //Log.i("Shuffle", "correct is: " +correct)
 

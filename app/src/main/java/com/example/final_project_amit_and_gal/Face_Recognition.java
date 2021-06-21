@@ -3,10 +3,12 @@ package com.example.final_project_amit_and_gal;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.SurfaceView;
+import android.widget.Toast;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -117,11 +119,11 @@ public class Face_Recognition extends AppCompatActivity implements CameraBridgeV
 
     @Override
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
-        mRGBA= inputFrame.rgba();
 
+        mRGBA= inputFrame.rgba();
         mGREY = inputFrame.gray();
-        Core.flip(mRGBA.t(), mRGBA, -1);
-        Core.flip(mGREY.t(), mGREY, -1);
+        //Core.flip(mRGBA.t(), mRGBA, -1);
+        //Core.flip(mGREY.t(), mGREY, -1);
         Log.i("MYMAT", String.valueOf(mRGBA.dims()));
 
         MatOfRect faceDetections = new MatOfRect();
@@ -158,17 +160,30 @@ public class Face_Recognition extends AppCompatActivity implements CameraBridgeV
     protected void onResume() {
         super.onResume();
 
-            if(OpenCVLoader.initDebug()) {
-                Log.i(TAG,"good");
-                try {
-                    baseLoaderCallback.onManagerConnected(BaseLoaderCallback.SUCCESS);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            } else {
-                Log.i(TAG, "not good");
-                OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this, baseLoaderCallback);
+        if(OpenCVLoader.initDebug()) {
+            Log.i(TAG,"good");
+            try {
+                baseLoaderCallback.onManagerConnected(BaseLoaderCallback.SUCCESS);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+        } else {
+            Log.i(TAG, "not good");
+            OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this, baseLoaderCallback);
         }
+    }
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Checks the orientation of the screen
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+            setContentView(R.layout.activity_face_recognition);
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
+            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+            setContentView(R.layout.activity_first_time_enter);
+        }
+    }
+
+
 }

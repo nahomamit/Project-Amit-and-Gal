@@ -4,22 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Face_Recognition">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TextView
+    tools:context=".Face_Recognition"
+    android:screenOrientation="landscape">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="gallalallal"
-        android:textSize="20dp"
-        android:gravity="center"
-        />
-    <org.opencv.android.JavaCameraView
-        android:id="@+id/my_camera_view"
-        android:layout_height="fill_parent"
-        android:layout_width="fill_parent"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="rotate the phone"
+            android:textSize="20dp"
+            android:gravity="center"
+            />
+
+        <org.opencv.android.JavaCameraView
+            android:id="@+id/my_camera_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:visibility="invisible"/>
+    </LinearLayout>
 
 </RelativeLayout>

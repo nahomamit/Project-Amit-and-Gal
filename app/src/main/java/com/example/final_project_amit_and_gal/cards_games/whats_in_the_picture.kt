@@ -72,7 +72,7 @@ class whats_in_the_picture : SharedFunctions() {
             tabs = getTabs()
         } while(tabs == null)
 
-
+        Log.i("AMIT-LOG", tabs.toString())
 
 
         setButtonText(answerBtnArr, tabs,  questions, score)
