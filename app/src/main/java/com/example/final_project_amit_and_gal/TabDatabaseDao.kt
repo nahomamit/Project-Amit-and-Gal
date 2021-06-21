@@ -24,22 +24,22 @@ interface TabDatabaseDao {
     @Query("SELECT * FROM tabs_table ORDER BY name DESC")
     fun getAllTabs(): Array<Tab>
 
-    @Query("SELECT category FROM tabs_table GROUP BY category")
+    @Query("SELECT subcategory FROM tabs_table GROUP BY subcategory")
     fun getCategories(): Array<String>
 
     @Query("SELECT difficulty FROM tabs_table GROUP BY difficulty")
     fun getDifficulty(): Array<Int>
 
-    @Query("SELECT * FROM tabs_table WHERE category = :cate and difficulty = :diff")
+    @Query("SELECT * FROM tabs_table WHERE subcategory = :cate and difficulty = :diff")
     fun getTabs(cate: String, diff:Int): List<Tab>
 
-    @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 3")
+    @Query("SELECT * FROM tabs_table WHERE subcategory = :cate and url != '' ORDER BY RANDOM() LIMIT 3")
     fun get3TabsByCategory(cate: String): MutableList<Tab>
 
-    @Query("SELECT * FROM tabs_table WHERE category != :cate and url != '' ORDER BY RANDOM() LIMIT 3")
+    @Query("SELECT * FROM tabs_table WHERE subcategory != :cate and url != '' ORDER BY RANDOM() LIMIT 3")
     fun get3TabsByNotCategory(cate: String): MutableList<Tab>
 
-    @Query("SELECT * FROM tabs_table WHERE category = :cate and url != '' ORDER BY RANDOM() LIMIT 1")
+    @Query("SELECT * FROM tabs_table WHERE subcategory = :cate and url != '' ORDER BY RANDOM() LIMIT 1")
     fun getTabByCategory(cate: String): Tab
 
     @Query("SELECT * FROM tabs_table WHERE url != '' ORDER BY RANDOM()")

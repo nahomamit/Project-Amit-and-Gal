@@ -116,8 +116,8 @@ class similar_category : SharedFunctions() {
         val tabs: MutableList<Tab>
         var correct = 0
         var in_picture = tabsDao.getOneTab()
-        var correct_ans = tabsDao.getTabByCategory(in_picture.category)
-        tabs = tabsDao.get3TabsByNotCategory(correct_ans.category)
+        var correct_ans = tabsDao.getTabByCategory(in_picture.subcategory)
+        tabs = tabsDao.get3TabsByNotCategory(correct_ans.subcategory)
         tabs.add(correct_ans)
         tabs.shuffle()
         val ims: InputStream = assets.open("images/" + in_picture.url)
