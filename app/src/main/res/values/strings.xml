@@ -21,9 +21,9 @@
     <string name="not_init2"> לא נבחר 2 </string>
     <string name="not_init3"> לא נבחר 3 </string>
     <string name="not_init4"> לא נבחר 4 </string>
-    <string name="remain_questions">שאלות שנותרו</string>
-
-
+    <string name="remain_questions">שאלות שנותרו: </string>
+    <string name="word_type">המילה הינה</string>
+    <string name="start_with">המילה מתחילה</string>
 
 
     <string name="back">"חזור לתפריט הראשי"</string>

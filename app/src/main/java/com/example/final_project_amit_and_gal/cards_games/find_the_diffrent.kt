@@ -38,12 +38,13 @@ class find_the_diffrent : SharedFunctions() {
         val questions:Int = time.toInt()
         if (intent.getStringExtra("score") != null){
             score = intent.getStringExtra("score").toInt()
+
         } else {
             throw Exception("extra score is null !")
         }
         val score_text = findViewById<TextView>(R.id.score)
         score_text.text = score.toString()
-
+        score_text.visibility = View.INVISIBLE
         val time_left = findViewById<TextView>(R.id.remaining_questions)
         time_left.text = getString(R.string.remain_questions) + time
 

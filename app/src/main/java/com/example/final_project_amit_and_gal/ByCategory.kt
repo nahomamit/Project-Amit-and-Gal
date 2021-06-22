@@ -1,9 +1,13 @@
 package com.example.final_project_amit_and_gal
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.example.final_project_amit_and_gal.cards_games.*
 
 class ByCategory : SharedFunctions() {
@@ -23,7 +27,7 @@ class ByCategory : SharedFunctions() {
         findViewById<Button>(R.id.game_similar_category).text = getString(R.string.game_similar_category)
         findViewById<Button>(R.id.game_voice).text = getString(R.string.game_voice_reco)
         findViewById<Button>(R.id.game_what_in_pic).text = getString(R.string.game_whats_in_the_pic)
-        findViewById<Button>(R.id.return_btn).text = getString(R.string.back)
+        findViewById<Button>(R.id.return_btn).text = "תרגול פנים"
 
     }
     fun buttonOptions() {
@@ -50,8 +54,22 @@ class ByCategory : SharedFunctions() {
             moveActivity(getString(R.string.game_whats_in_the_pic), whats_in_the_picture::class.java)
         }
         findViewById<Button>(R.id.return_btn).setOnClickListener{
-            val intent = Intent(this, MainMenu::class.java)
-            startActivity(intent)
+            var permission = ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.CAMERA)
+
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                    arrayOf(android.Manifest.permission.CAMERA),
+                    101)
+            }
+
+            permission = ContextCompat.checkSelfPermission(this,
+                android.Manifest.permission.CAMERA)
+            if (permission != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(this, "getString(R.string.no_permission)", Toast.LENGTH_SHORT).show()
+            } else {
+                moveActivity("תרגול פנים", Face_Recognition::class.java)
+            }
         }
 
     }

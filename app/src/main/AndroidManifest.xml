@@ -12,19 +12,21 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo__finish"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".cards_games.VoiceReco"></activity>
+        <activity android:name=".FaceRecoMenu"></activity>
+        <activity android:name=".cards_games.VoiceReco" />
         <activity android:name=".TaskSummary" />
         <activity android:name=".WeeklySched" />
         <activity android:name=".ByCategory" />
         <activity android:name=".MainMenu" />
-        <activity android:name=".Face_Recognition"
+        <activity
+            android:name=".Face_Recognition"
             android:configChanges="orientation"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name" />
         <activity android:name=".CheckActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -33,19 +33,12 @@ class TaskSummary : SharedFunctions() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_summary)
-       var progressBar = findViewById<ProgressBar>(R.id.progress1) as ProgressBar
+
       // Log.i("progress", progressBar.toString())
         val name:String = intent.getStringExtra("name")
         val score:String = intent.getStringExtra("score").toString()
         var maxScore = nameToNumber(name)
-        progressBar.progress = score.toInt()
-        progressBar.max = maxScore.toInt()
-        var total_grade = progressBar.progress/progressBar.max*100
-        when(total_grade) {
-            in 80..100 -> progressBar.setBackgroundColor(Color.GREEN)
-            in 50..79 -> progressBar.setBackgroundColor(Color.YELLOW)
-        }
-        var progress = score + "/" + maxScore
+        var progress = score + " תשובות נכונות מתוך "  + maxScore
         findViewById<TextView>(R.id.score).text = progress
         findViewById<TextView>(R.id.task_name).text = name
         var saveBtn = findViewById<Button>(R.id.save_button)

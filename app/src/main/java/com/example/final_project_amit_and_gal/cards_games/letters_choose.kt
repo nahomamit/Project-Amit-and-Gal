@@ -34,11 +34,12 @@ class letters_choose : SharedFunctions() {
         val time:String = intent.getStringExtra("time").toString()
         val questions:Int = time.toInt()
         val time_left = findViewById<TextView>(R.id.remaining_questions)
-        time_left.text = "שאלות שנותרו:" + time
+        time_left.text = "שאלות שנותרו: " + time
         //correct ans until now
         val score:Int = intent.getStringExtra("score").toInt()
         val score_text = findViewById<TextView>(R.id.score)
         score_text.text = score.toString()
+        score_text.visibility = View.INVISIBLE
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
         text.text = "מה בתמונה?" +"\n"+

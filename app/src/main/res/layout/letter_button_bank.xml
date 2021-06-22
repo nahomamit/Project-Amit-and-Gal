@@ -5,6 +5,7 @@
         android:layout_height="50dp"
         android:gravity="center"
         android:fontFamily="@font/my_font"
+    android:textColor="#040304"
         android:textStyle="bold"
         android:textSize="30dp"
         android:background="@drawable/custom_bottom"

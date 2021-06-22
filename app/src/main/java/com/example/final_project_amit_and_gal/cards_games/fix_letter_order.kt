@@ -28,10 +28,11 @@ class fix_letter_order : SharedFunctions() {
         val time:String = intent.getStringExtra("time").toString()
         val questions:Int = time.toInt()
         val time_left = findViewById<TextView>(R.id.remaining_questions)
-        time_left.text = "שאלות שנותרו:" + time
+        time_left.text = "שאלות שנותרו: " + time
         //correct ans until now
         val score:Int = intent.getStringExtra("score").toInt()
         val score_text = findViewById<TextView>(R.id.score)
+        score_text.visibility = View.INVISIBLE
         score_text.text = score.toString()
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
@@ -64,7 +65,7 @@ class fix_letter_order : SharedFunctions() {
             )
             button.text = letter.toString()
             button.setBackgroundColor(Color.WHITE)
-            button.setTextColor(Color.RED)
+            button.setTextColor(Color.BLACK)
             button.visibility = View.INVISIBLE
 
             button.id = View.generateViewId()

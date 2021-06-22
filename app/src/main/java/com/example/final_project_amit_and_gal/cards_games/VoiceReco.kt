@@ -38,11 +38,12 @@ class VoiceReco : SharedFunctions() {
         val time:String = intent.getStringExtra("time").toString()
        questions = time.toInt()
         val time_left = findViewById<TextView>(R.id.remaining_questions)
-       time_left.text = "שאלות שנותרו:" + time
+       time_left.text = " שאלות שנותרו:" + time
         //correct ans until now
        score = intent.getStringExtra("score").toInt()
         val score_text = findViewById<TextView>(R.id.score)
         score_text.text = score.toString()
+        score_text.visibility = View.INVISIBLE
         //question text
       //  val text = findViewById<TextView>(R.id.task_for_costumer)
        // text.text = "מה בתמונה?"
@@ -87,6 +88,7 @@ class VoiceReco : SharedFunctions() {
         val d = Drawable.createFromStream(ims, null)
         findViewById<ImageView>(R.id.picture).setImageDrawable(d)
         qes_text.text = tabs!!.name
+        hint()
     }
 
     private fun currentAnsOnClick() {
@@ -102,47 +104,6 @@ class VoiceReco : SharedFunctions() {
 
 
 
-/*
-    private fun hint(correct: Int){
-        val hint1 =  findViewById<ImageView>(R.id.hint)
-        hint1.setOnClickListener{
-            if(hint_count == 1) {
-                return@setOnClickListener
-            }
-
-            hint1.setColorFilter(LightingColorFilter(Color.WHITE, Color.GRAY))
-            val ans1 = findViewById<Button>(R.id.ans_1)
-            val ans2 = findViewById<Button>(R.id.ans_2)
-            val ans3 = findViewById<Button>(R.id.ans_3)
-            val ans4 = findViewById<Button>(R.id.ans_4)
-            loop@ while(true) {
-                var x = Random.nextInt(0,3)
-
-                when (x) {
-                    correct -> continue@loop
-                    0 -> {
-                        ans1.visibility = View.INVISIBLE
-                        break@loop
-                    }
-                    1 -> {
-                        ans2.visibility = View.INVISIBLE
-                        break@loop
-                    }
-                    2 -> {ans3.visibility = View.INVISIBLE
-                        break@loop
-                    }
-                    3 -> {
-                        ans4.visibility = View.INVISIBLE
-                        break@loop
-                    }
-                }
-            }
-        }
-
-    }
-
-
- */
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == RQ_SPEECH_REC && resultCode == Activity.RESULT_OK) {
@@ -178,8 +139,23 @@ class VoiceReco : SharedFunctions() {
         }
     }
 
+    private fun hint() {
+        val hint1 = findViewById<ImageView>(R.id.hint)
+        hint1.setOnClickListener {
+            if (hint_count == 1) {
+                return@setOnClickListener
+            }
+
+            hint1.setColorFilter(LightingColorFilter(Color.WHITE, Color.GRAY))
+            var hint = findViewById<TextView>(R.id.hint_clicked)
+            hint.visibility = View.VISIBLE
+            var hint_text = getString(R.string.start_with) + " '" + qes_text.text[0] + "'\n" +
+                    getString(R.string.word_type) + " " + tabs!!.subcategory
+            hint.text = hint_text
 
 
+        }
+    }
 
 
 

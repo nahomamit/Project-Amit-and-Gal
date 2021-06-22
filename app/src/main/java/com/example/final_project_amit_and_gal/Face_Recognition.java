@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.SurfaceView;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -31,6 +34,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 
 public class Face_Recognition extends SharedFunctions implements CameraBridgeViewBase.CvCameraViewListener2 {
 
@@ -85,7 +89,15 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         javaCameraView.setCvCameraViewListener(this);
         javaCameraView.setCameraIndex(2);
         //javaCameraView.setMaxFrameSize(500,500);
-
+        VideoView videoView = findViewById(R.id.video_view);
+        String videoPath = "android.resource://com.example.final_project_amit_and_gal/" + R.raw.video;
+        Log.i("TAG", videoPath);
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        videoView.start();
         /*
         if(!OpenCVLoader.initDebug()) {
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this, baseCallback);
@@ -179,6 +191,8 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_face_recognition);
+
+
         } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
             Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
             setContentView(R.layout.activity_first_time_enter);

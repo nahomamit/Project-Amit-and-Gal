@@ -5,18 +5,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Face_Recognition"
-    android:screenOrientation="landscape">
+    android:screenOrientation="landscape"
+    android:layout_gravity="center"
+    >
+    <LinearLayout
+        android:background="@drawable/sky_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="סובב את המכשיר"
+        android:textSize="40dp"
+
+        />
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/rotate"
+        android:gravity="center"
+        android:layout_centerInParent="true"/>
+
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="rotate the phone"
-            android:textSize="20dp"
-            android:gravity="center"
-            />
+
 
         <org.opencv.android.JavaCameraView
             android:id="@+id/my_camera_view"
@@ -24,5 +43,9 @@
             android:layout_height="fill_parent"
             android:visibility="invisible"/>
     </LinearLayout>
-
+    <VideoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/video_view"
+        android:visibility="invisible"/>
 </RelativeLayout>

@@ -38,7 +38,18 @@
         android:text="מה בתמונה? (דיבור)"
         android:textColor="#F4EFEF"
         android:textSize="50dp" />
-
+    <TextView
+        android:id="@+id/hint_clicked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginLeft="@android:dimen/app_icon_size"
+        android:layout_marginRight="@android:dimen/app_icon_size"
+android:visibility="invisible"
+        android:text="חיה שמתחילה באות א"
+        android:textColor="#F4EFEF"
+        android:fontFamily="@font/tmp"
+        android:textSize="25dp" />
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"

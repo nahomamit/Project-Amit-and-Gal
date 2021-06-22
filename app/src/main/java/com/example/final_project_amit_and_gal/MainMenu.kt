@@ -24,6 +24,7 @@ class MainMenu : AppCompatActivity() {
         button_short.setOnClickListener {
 
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("type", "1")
             startActivity(intent)
         }
         val button_med = findViewById<Button>(R.id.by_category)
