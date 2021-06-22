@@ -98,6 +98,7 @@ class whats_in_the_picture : SharedFunctions() {
                 if (ind != correct) {
                     btn.setOnClickListener{wrongAnsOnClick(btn, correct_ans, questions, score)}
                 } else {
+                    Log.i("IMG", "images/"+tabs.get(ind).url)
                     val ims: InputStream = assets.open("images/" + tabs.get(ind).url)
                     val d = Drawable.createFromStream(ims, null)
                     findViewById<ImageView>(R.id.picture).setImageDrawable(d)
