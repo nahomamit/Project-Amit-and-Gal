@@ -20,25 +20,41 @@
         android:orientation="vertical"
         android:background="@drawable/sky_background"
         android:layout_weight="1">
-<RelativeLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-<FrameLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123"
+            android:textSize="30dp" />
+
+
+
+
+    <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp">
-
-    <VideoView
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:id="@+id/play_frame">
+            <Button
+                android:id="@+id/play_btn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/play_icon" />
+        </FrameLayout>
+        <VideoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/video_view"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:text="חזור על הפעולות שבסרטון לפי הקצב"/>
-</FrameLayout>
-</RelativeLayout>
+
+    </FrameLayout>
+
+
+
+
     </LinearLayout>
     <org.opencv.android.JavaCameraView
         android:id="@+id/my_camera_view"

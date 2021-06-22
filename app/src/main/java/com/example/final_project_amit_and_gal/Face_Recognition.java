@@ -9,6 +9,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.SurfaceView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.MediaController;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -89,7 +92,7 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         javaCameraView.setCvCameraViewListener(this);
         javaCameraView.setCameraIndex(2);
         //javaCameraView.setMaxFrameSize(500,500);
-        VideoView videoView = findViewById(R.id.video_view);
+        final VideoView videoView = findViewById(R.id.video_view);
         String videoPath = "android.resource://com.example.final_project_amit_and_gal/" + R.raw.video;
         Log.i("TAG", videoPath);
         Uri uri = Uri.parse(videoPath);
@@ -97,7 +100,18 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         MediaController mediaController = new MediaController(this);
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
-        videoView.start();
+        final FrameLayout fl = findViewById(R.id.play_frame);
+        final Button play = (Button)findViewById(R.id.play_btn);
+        play.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                play.setVisibility(View.INVISIBLE);
+                fl.setVisibility(View.INVISIBLE);
+                videoView.start();
+            }
+        });
         /*
         if(!OpenCVLoader.initDebug()) {
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this, baseCallback);
