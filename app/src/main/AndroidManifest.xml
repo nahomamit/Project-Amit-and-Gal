@@ -17,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreeb"
+        <activity android:name=".FaceCheckTransfer"></activity>
+        <activity
+            android:name=".SplashScreeb"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,9 +37,7 @@
             android:name=".Face_Recognition"
             android:configChanges="orientation"
             android:label="@string/app_name" />
-        <activity android:name=".CheckActivity">
-
-        </activity>
+        <activity android:name=".CheckActivity"></activity>
         <activity android:name=".FirstTimeEnter" />
         <activity android:name=".cards_games.similar_category" />
         <activity android:name=".cards_games.fix_letter_order" />

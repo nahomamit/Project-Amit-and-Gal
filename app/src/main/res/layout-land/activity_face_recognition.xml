@@ -24,7 +24,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="123"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            android:id="@+id/task_n"/>
 
 
 
@@ -33,18 +34,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="15dp">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:id="@+id/play_frame">
-            <Button
-                android:id="@+id/play_btn"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/play_icon" />
-        </FrameLayout>
+
         <VideoView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

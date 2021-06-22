@@ -25,6 +25,15 @@
     <string name="word_type">המילה הינה</string>
     <string name="start_with">המילה מתחילה</string>
 
+    <string name="face_1"> "הרם גבה" </string>
+    <string name="face_2"> "פתח פה" </string>
+    <string name="face_3"> "תלקק את המרפק" </string>
+    <string name="face_4"> "חיטוט באף" </string>
+    <string name="face_5"> "לשון" </string>
+    <string name="face_6"> "חיוך" </string>
+    <string name="face_7"> "שיניים" </string>
+    <string name="face_8"> "נגמר לי" </string>
+
 
     <string name="back">"חזור לתפריט הראשי"</string>
     <string-array name="tasks">
