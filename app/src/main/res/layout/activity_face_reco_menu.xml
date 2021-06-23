@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FaceRecoMenu"
     android:background="@drawable/sky_background">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_margin="30dp">
+
 
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="221dp"
-            android:layout_margin="5dp"
-            android:layout_weight="2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:alpha="0.75"
             android:id="@+id/start_tasks"
             android:background="@drawable/category_custom_bottom"
             android:fontFamily="@font/my_font"
             android:text="לחץ להתחלת תירגול"
-            android:textSize="30dp" />
+            android:textSize="30dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintDimensionRatio="3:1"/>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:textSize="20dp"
-            android:text="סמן את התרגולים שתרצה לבצע"/>
+            android:text="סמן את התרגולים שתרצה לבצע"
+            app:layout_constraintTop_toBottomOf="@id/start_tasks"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/choose_some"
+            />
 
         <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/choose_some"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="1:1"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,7 +119,7 @@
             </LinearLayout>
         </ScrollView>
 
-    </LinearLayout>
 
 
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

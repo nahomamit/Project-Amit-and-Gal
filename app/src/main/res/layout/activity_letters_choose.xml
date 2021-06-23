@@ -1,80 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_background"
     tools:context=".cards_games.letters_choose">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|top"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
-        <include layout="@layout/toolbar" />
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="@android:dimen/app_icon_size"
+        app:layout_constraintGuide_percent="0.25" />
 
-            android:text=""
-            android:textColor="#F4EFEF"
-            android:fontFamily="@font/tmp"
-            android:textSize="50dp" />
-        <TextView
-            android:id="@+id/task_for_costumer"
-            android:layout_width="392dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="@android:dimen/notification_large_icon_height"
-            android:fontFamily="@font/tmp"
-            android:text="מה בתמונה?          בחר אותיות"
-            android:textColor="#F4EFEF"
-            android:textSize="50dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="right"
+        android:autoSizeMaxTextSize="70dp"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/tmp"
+        android:text=""
+        android:textColor="#F4EFEF"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/task_for_costumer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="50dp"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeTextType="uniform"
+        android:fontFamily="@font/tmp"
+        android:gravity="right"
+        android:text="@string/game_letter_choose"
+        android:textColor="#F4EFEF"
+        app:layout_constraintBottom_toTopOf="@+id/picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_weight="2" />
 
 
 
 
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:id="@+id/picture"
-            android:src="@color/colorPrimaryDark"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@android:dimen/app_icon_size"/>
-        <LinearLayout android:id="@+id/full_word"
-            android:orientation="horizontal"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_weight="1"/>
 
-        <include
-            layout="@layout/activity_letters_bank"
-            android:paddingBottom="20dp" />
+    <ImageView
+        android:id="@+id/picture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/play_icon"
+        app:layout_constraintBottom_toTopOf="@id/full_word"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/guide1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@id/guide2"
+        app:layout_constraintTop_toBottomOf="@id/task_for_costumer"
+        app:layout_constraintVertical_weight="4" />
 
 
-        <!--<include
-            layout="@layout/four_options"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom" />-->
-    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/full_word"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/letter_bank1"
+        app:layout_constraintDimensionRatio="4:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/picture"
+        app:layout_constraintVertical_weight="2" />
+
+    <include
+        android:id="@+id/letter_bank1"
+        layout="@layout/activity_letters_bank"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="4:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/full_word"
+        app:layout_constraintVertical_weight="2" />
+
+
+    <!--<include
+        layout="@layout/four_options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />-->
     <ImageView
         android:id="@+id/correct_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/correct" />
+
     <ImageView
         android:id="@+id/incorrect_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/incorrect_ans" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

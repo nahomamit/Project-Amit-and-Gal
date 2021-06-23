@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,47 +7,79 @@
     android:background="@drawable/sky_background"
     tools:context=".cards_games.find_the_different_category">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-        <include layout="@layout/toolbar"/>
 
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="@android:dimen/app_icon_size"
-            android:text=""
-            android:textColor="#F4EFEF"
-            android:fontFamily="@font/tmp"
-            android:textSize="50dp" />
-        <TextView
-            android:id="@+id/task_for_costumer"
-            android:layout_width="392dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="@android:dimen/notification_large_icon_height"
-            android:fontFamily="@font/tmp"
-            android:textColor="#F4EFEF"
-            android:text="מה יוצא דופן?"
-            android:textSize="50dp"/>
-        <include layout="@layout/four_options"/>
-    </LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+
+        android:fontFamily="@font/tmp"
+        android:text=""
+        android:textColor="#F4EFEF"
+        android:textSize="50dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/task_for_costumer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/tmp"
+        android:gravity="center"
+        android:text="@string/game_find_dif_by_cat"
+        android:textColor="#F4EFEF"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/include7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2" />
+
+    <include
+        android:id="@+id/include7"
+        layout="@layout/four_options"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        app:layout_constraintDimensionRatio="3:2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_for_costumer" />
+
     <ImageView
         android:id="@+id/correct_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/correct" />
+
     <ImageView
         android:id="@+id/incorrect_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/incorrect_ans" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

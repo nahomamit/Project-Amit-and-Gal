@@ -1,55 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_background"
     tools:context=".cards_games.fix_letter_order">
-    <LinearLayout
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center|top"
-        android:orientation="vertical"
-        >
-        <include layout="@layout/toolbar" />
-        <TextView
-            android:id="@+id/score"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="@android:dimen/app_icon_size"
+        android:layout_height="wrap_content" />
 
-            android:text=""
-            android:textColor="#F4EFEF"
-            android:fontFamily="@font/tmp"
-            android:textSize="50dp" />
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_gravity="right"
+        android:fontFamily="@font/tmp"
+        android:text=""
+        android:textColor="#F4EFEF"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeMaxTextSize="70dp"
+        tools:ignore="MissingConstraints" />
 
-        <TextView
-            android:id="@+id/task_for_costumer"
-            android:layout_width="392dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="@android:dimen/notification_large_icon_height"
-            android:fontFamily="@font/tmp"
-            android:text="מה בתמונה?          בחר אותיות"
-            android:textColor="#F4EFEF"
-            android:textSize="50dp" />
-        <TextView
+    <TextView
+        android:id="@+id/task_for_costumer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/tmp"
+        android:gravity="right"
+        android:text="@string/game_fix_letter_order"
+        android:textColor="#F4EFEF"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeMaxTextSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_weight="2"/>
+
+    <TextView
             android:id="@+id/category"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:layout_marginRight="@android:dimen/app_icon_size"
-
-            android:text=""
-            android:textColor="#F4EFEF"
-            android:fontFamily="@font/tmp"
-            android:textSize="20dp" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/tmp"
+        android:gravity="right"
+        android:text="@string/game_fix_letter_order"
+        android:textColor="#F4EFEF"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeMaxTextSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/full_word"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_for_costumer"
+        app:layout_constraintVertical_weight="1" />
 
 
 
@@ -57,14 +67,25 @@
 
         <LinearLayout android:id="@+id/full_word"
             android:orientation="horizontal"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_weight="1"/>
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+            app:layout_constraintVertical_weight="2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="4:1"
+            app:layout_constraintTop_toBottomOf="@id/category"
+            app:layout_constraintBottom_toTopOf="@id/mixed_word"/>
         <LinearLayout android:id="@+id/mixed_word"
             android:orientation="horizontal"
-            android:layout_height="match_parent"
-            android:layout_width="match_parent"
-            android:layout_weight="1"/>
+            android:layout_height="0dp"
+            android:layout_width="0dp"
+   app:layout_constraintVertical_weight="2"
+            app:layout_constraintTop_toBottomOf="@id/full_word"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="4:1"
+            app:layout_constraintBottom_toBottomOf="parent"
+        />
 
 
 
@@ -73,7 +94,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom" />-->
-    </LinearLayout>
     <ImageView
         android:id="@+id/correct_img"
         android:layout_width="match_parent"
@@ -86,4 +106,4 @@
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/incorrect_ans" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

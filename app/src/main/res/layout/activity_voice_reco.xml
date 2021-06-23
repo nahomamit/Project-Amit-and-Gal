@@ -1,102 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".cards_games.VoiceReco"
-    android:background="@drawable/sky_background">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <include layout="@layout/toolbar"/>
+    android:background="@drawable/sky_background"
+    tools:context=".cards_games.VoiceReco">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6" />
+    <include
+        android:id="@+id/include2"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/score"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:layout_marginLeft="@android:dimen/app_icon_size"
-        android:layout_marginRight="@android:dimen/app_icon_size"
-
+        android:fontFamily="@font/tmp"
         android:text=""
         android:textColor="#F4EFEF"
-        android:fontFamily="@font/tmp"
-        android:textSize="50dp" />
-
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12sp"
+        android:autoSizeMaxTextSize="100sp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/task_for_costumer"
-        android:layout_width="392dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginLeft="@android:dimen/app_icon_size"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="@android:dimen/notification_large_icon_height"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fontFamily="@font/tmp"
-        android:text="מה בתמונה? (דיבור)"
+        android:gravity="right"
+        android:text="@string/game_voice_reco"
         android:textColor="#F4EFEF"
-        android:textSize="50dp" />
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeMaxTextSize="70dp"
+        app:layout_constraintBottom_toTopOf="@+id/hint_clicked"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_weight="5"/>
     <TextView
         android:id="@+id/hint_clicked"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginLeft="@android:dimen/app_icon_size"
-        android:layout_marginRight="@android:dimen/app_icon_size"
-android:visibility="invisible"
-        android:text="חיה שמתחילה באות א"
-        android:textColor="#F4EFEF"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fontFamily="@font/tmp"
-        android:textSize="25dp" />
+        android:gravity="right"
+      android:visibility="invisible"
+        android:textColor="#F4EFEF"
+        android:autoSizeTextType="uniform"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeMaxTextSize="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/picture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/task_for_costumer"
+        app:layout_constraintVertical_weight="3"/>
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
         android:id="@+id/picture"
-        android:src="@color/colorPrimaryDark"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@android:dimen/app_icon_size"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/play_icon"
+        app:layout_constraintBottom_toTopOf="@+id/btn_button"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/correct_img"
+        app:layout_constraintTop_toBottomOf="@+id/task_for_costumer"
+        app:layout_constraintVertical_weight="10"/>
 
     <Button
         android:id="@+id/btn_button"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:scaleType="centerCrop"
+        app:layout_constraintVertical_weight="5"
         android:text="לחץ לדיבור"
-        android:layout_gravity="center"
         android:textColor="@android:color/white"
-        android:backgroundTint="@android:color/holo_red_light"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="3:2"
+        app:layout_constraintEnd_toStartOf="@id/guide1"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guide2"
+        app:layout_constraintTop_toBottomOf="@+id/picture" />
 
     <TextView
-        android:layout_gravity="center"
         android:id="@+id/tv_text"
-        android:layout_margin="50dp"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textColor="@android:color/black"/>
-    <TextView
+        android:layout_centerInParent="true"
         android:layout_gravity="center"
+        android:layout_margin="50dp"
+        android:text=""
+        android:textColor="@android:color/black"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
         android:id="@+id/qes_text"
-android:visibility="invisible"
-        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:text=""
-        android:textColor="@android:color/black"/>
-</LinearLayout>
+        android:textColor="@android:color/black"
+        android:visibility="invisible"
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:id="@+id/correct_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/correct" />
+
     <ImageView
         android:id="@+id/incorrect_img"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:visibility="invisible"
         app:srcCompat="@drawable/incorrect_ans" />
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

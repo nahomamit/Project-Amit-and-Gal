@@ -1,80 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_background"
     tools:context=".ByCategory">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center"
-        android:layout_margin="30dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
 
-            android:gravity="center"
-            android:layout_weight="1">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right_mid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.55" />
 
-            <include
-                android:id="@+id/game_similar_category"
-                layout="@layout/button_by_category" />
-            <include
-                android:id="@+id/game_what_in_pic"
-                layout="@layout/button_by_category" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1">
+    <include
+        android:id="@+id/game_similar_category"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/game_what_in_pic"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/left_mid"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/left"
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-            <include
-                android:id="@+id/game_letter_choose"
-                layout="@layout/button_by_category" />
-            <include
-                android:id="@+id/game_fix_order"
-                layout="@layout/button_by_category" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1">
-
-
-            <include
-                android:id="@+id/game_find_dif"
-                layout="@layout/button_by_category" />
-            <include
-                android:id="@+id/game_find_dif_by_cat"
-                layout="@layout/button_by_category" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_weight="1">
+    <include
+        android:id="@+id/game_what_in_pic"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/game_letter_choose"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/left_mid"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/left"
+        app:layout_constraintTop_toBottomOf="@+id/game_similar_category" />
 
 
-            <include
-                android:id="@+id/game_voice"
-                layout="@layout/button_by_category" />
-            <include
-                android:id="@+id/return_btn"
-                layout="@layout/button_by_category" />
-        </LinearLayout>
-    </LinearLayout>
+    <include
+        android:id="@+id/game_letter_choose"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/game_fix_order"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/left_mid"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/left"
+        app:layout_constraintTop_toBottomOf="@+id/game_what_in_pic" />
+
+    <include
+        android:id="@+id/game_fix_order"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/left_mid"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/left"
+        app:layout_constraintTop_toBottomOf="@+id/game_letter_choose" />
+
+    <include
+        android:id="@+id/game_find_dif"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/game_find_dif_by_cat"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/right_mid"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/game_find_dif_by_cat"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/game_voice"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/right_mid"
+        app:layout_constraintTop_toBottomOf="@+id/game_find_dif" />
+
+    <include
+        android:id="@+id/game_voice"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/return_btn"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/right_mid"
+        app:layout_constraintTop_toBottomOf="@+id/game_find_dif_by_cat" />
+
+    <include
+        android:id="@+id/return_btn"
+        layout="@layout/button_by_category"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@+id/right"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/right_mid"
+        app:layout_constraintTop_toBottomOf="@+id/game_voice" />
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

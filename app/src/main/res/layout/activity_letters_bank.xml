@@ -1,39 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_weight="1">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-           <include layout="@layout/letter_button_bank" android:id="@+id/letter1"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter2"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter3"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter4"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter5"/>
+  >
+
+           <include layout="@layout/letter_button_bank" android:id="@+id/letter1"
+               android:layout_width="0dp"
+               android:layout_height="0dp"
+
+               app:layout_constraintDimensionRatio="1:1"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintEnd_toStartOf="@id/letter2"
+               app:layout_constraintTop_toTopOf="parent"
+               app:layout_constraintBottom_toTopOf="@id/letter6"
+               />
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter2"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintStart_toEndOf="@id/letter1"
+                app:layout_constraintEnd_toStartOf="@id/letter3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/letter7"/>
+
+    <include
+        android:id="@+id/letter3"
+        layout="@layout/letter_button_bank"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+app:layout_constraintBottom_toTopOf="@id/letter8"
+        app:layout_constraintEnd_toStartOf="@id/letter4"
+        app:layout_constraintStart_toEndOf="@id/letter2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/letter4"
+        layout="@layout/letter_button_bank"
+        android:layout_width="0dp"
+
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+app:layout_constraintBottom_toTopOf="@id/letter9"
+        app:layout_constraintEnd_toStartOf="@id/letter5"
+        app:layout_constraintStart_toEndOf="@id/letter3"
+        app:layout_constraintTop_toTopOf="parent" />
+            <include layout="@layout/letter_button_bank"
+                android:id="@+id/letter5"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintStart_toEndOf="@id/letter4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/letter10"/>
 
 
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter6"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter7"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter8"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter9"/>
-            <include layout="@layout/letter_button_bank" android:id="@+id/letter10"/>
+            <include layout="@layout/letter_button_bank"
+                android:id="@+id/letter6"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/letter7"
+                app:layout_constraintTop_toBottomOf="@id/letter1"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            <include layout="@layout/letter_button_bank"
+                android:id="@+id/letter7"
+                app:layout_constraintDimensionRatio="1:1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintStart_toEndOf="@id/letter6"
+                app:layout_constraintEnd_toStartOf="@id/letter8"
+                app:layout_constraintTop_toBottomOf="@id/letter2"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+            <include layout="@layout/letter_button_bank"
+                android:id="@+id/letter8"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintStart_toEndOf="@id/letter7"
+                app:layout_constraintEnd_toStartOf="@id/letter9"
+                app:layout_constraintTop_toBottomOf="@id/letter3"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+    />
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter9"
+                app:layout_constraintDimensionRatio="1:1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintStart_toEndOf="@id/letter8"
+                app:layout_constraintEnd_toStartOf="@id/letter10"
+                app:layout_constraintTop_toBottomOf="@id/letter4"
+                app:layout_constraintBottom_toBottomOf="parent"
+    />
+            <include layout="@layout/letter_button_bank" android:id="@+id/letter10"
+                app:layout_constraintDimensionRatio="1:1"
+
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+
+                app:layout_constraintStart_toEndOf="@id/letter9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/letter5"/>/>
 
 
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
