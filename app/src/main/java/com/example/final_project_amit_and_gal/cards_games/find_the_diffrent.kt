@@ -55,20 +55,8 @@ class find_the_diffrent : SharedFunctions() {
         back.setOnClickListener { back_btn() }
 
         setAnswers(questions, score)
-        /*
-        val correct_ans = findViewById<Button>(R.id.ans_1)
-        correct_ans.setOnClickListener {currentAnsOnClick(correct_ans, questions, score)}
 
-        val wrong_ans = findViewById<Button>(R.id.ans_2)
-        wrong_ans.setOnClickListener{wrongAnsOnClick(wrong_ans, correct_ans, questions, score)}
 
-        val wrong_ans2 = findViewById<Button>(R.id.ans_3)
-        wrong_ans2.setOnClickListener{wrongAnsOnClick(wrong_ans2, correct_ans, questions, score)}
-
-        val wrong_ans3 = findViewById<Button>(R.id.ans_4)
-        wrong_ans3.setOnClickListener{wrongAnsOnClick(wrong_ans3, correct_ans, questions, score)}
-
-         */
     }
 
     private fun getAnsBtnList(): Array<ImageView> {

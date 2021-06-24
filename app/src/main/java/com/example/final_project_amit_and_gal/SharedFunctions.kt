@@ -3,6 +3,7 @@ package com.example.final_project_amit_and_gal
 import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
+import android.view.Display
 import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
@@ -92,6 +93,13 @@ open class SharedFunctions: AppCompatActivity() {
             "tabs_database"
         ).allowMainThreadQueries().build()
         tabsDao = db.tabDao
+    }
+
+    fun getMargin(): List<Int> {
+        val display: Display = windowManager.defaultDisplay
+        var w: Int = display.getWidth()
+        var h: Int = display.getHeight()
+        return listOf<Int>(w, h)
     }
 
 
