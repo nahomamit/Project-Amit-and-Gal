@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="תאריך לידה (DD/MM/YY)"
+                android:text="גיל"
                 android:textSize="30dp"
                 android:textColor="@color/white"
                 android:layout_marginBottom="20dp"/>
@@ -76,7 +76,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:id="@+id/birthday_edit"/>
+                    android:id="@+id/birthday_edit"
+                    android:inputType = "numberDecimal"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -116,7 +117,7 @@
 
             <Button
                 android:id="@+id/login"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/custom_bottom"

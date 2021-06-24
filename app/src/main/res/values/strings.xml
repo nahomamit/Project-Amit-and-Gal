@@ -5,11 +5,11 @@
     <string name="sure_end_excercize">האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי</string>
     <string name="yes">"כן"</string>
     <string name="no">"לא"</string>
-    <string name="game_find_dif_by_cat">"מה יוצא מן הכלל? לפי קטגוריה"</string>
-    <string name="game_find_dif">"מה יוצא מן הכלל?"</string>
-    <string name="game_fix_letter_order">"אותיות מבולגנות"</string>
-    <string name="game_letter_choose">"מילה מתוך בנק אותיות"</string>
-    <string name="game_similar_category">"מה מאותה קטגוריה?"</string>
+    <string name="game_find_dif_by_cat">"מצא את הקטגוריה השונה"</string>
+    <string name="game_find_dif">"מצא את ההבדלים"</string>
+    <string name="game_fix_letter_order">"מילים מבלוגנות"</string>
+    <string name="game_letter_choose">"מילים מבנק אותיות"</string>
+    <string name="game_similar_category">"קטגוריה דומה"</string>
     <string name="game_voice_reco">"מה בתמונה? לפי דיבור"</string>
     <string name="game_whats_in_the_pic">"מה בתמונה?"</string>
     <string name="game_short">"תרגול רץ קצר"</string>

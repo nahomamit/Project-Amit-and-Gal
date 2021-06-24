@@ -215,6 +215,7 @@ class WeeklySched : SharedFunctions() {
     }
 
     private fun stringToActivity(name:String)  {
+        Log.i("SWITCH", name)
         when (name) {
             getString(R.string.game_short) -> {
                 moveActivity("20",ChooseExc::class.java,"1", name)
