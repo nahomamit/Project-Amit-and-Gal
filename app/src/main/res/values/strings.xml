@@ -29,6 +29,8 @@
     <string name="remain_questions">שאלות שנותרו: </string>
     <string name="word_type">המילה הינה</string>
     <string name="start_with">המילה מתחילה</string>
+    <string name="only_today">ניתן להתחיל משימה מהתאריך של היום בלבד</string>
+    <string name="must_choose">חובה לבחור לפחות פעילות אחת</string>
 
     <string name="face_1"> "הרם גבה" </string>
     <string name="face_2"> "פתח פה" </string>

@@ -91,7 +91,8 @@ class TaskSummary : SharedFunctions() {
             title,
             "Image of $title"
         )
-
+        Toast.makeText(applicationContext,
+            "נשמר" + savedImageURL.toString(), Toast.LENGTH_SHORT).show()
         // Parse the gallery image url to uri
         return Uri.parse(savedImageURL)
     }

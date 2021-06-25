@@ -36,7 +36,12 @@ class WeeklySched : SharedFunctions() {
             day1 = day
             month1 = month
             resetTasks()
-            todayTasks(year,month,day)
+
+
+
+                todayTasks(year,month,day)
+
+
         })
         var edit_btn = findViewById<Button>(R.id.add_tasks)
         edit_btn.setOnClickListener{
@@ -84,6 +89,7 @@ class WeeklySched : SharedFunctions() {
         var btn2 = findViewById<Button>(R.id.task2)
         var btn3 = findViewById<Button>(R.id.task3)
         var btn4 = findViewById<Button>(R.id.task4)
+
         if (tasks == null) {
             btn1.text = ""
             btn2.text = ""
@@ -100,20 +106,32 @@ class WeeklySched : SharedFunctions() {
                 }
             }
             btn1.setOnClickListener{
-
-                stringToActivity(btn1.text.toString())
+               // if(today == 1) {
+                    stringToActivity(btn1.text.toString())
+                //} else {
+                  //  onlyFromToday()
+                //}
             }
             btn2.setOnClickListener{
-
+                //if (today ==1){
                 stringToActivity(btn2.text.toString())
+               // } else {
+                 //   onlyFromToday()
+               // }
             }
             btn3.setOnClickListener{
-
+            //    if (today ==1){
                 stringToActivity(btn3.text.toString())
+           // } else {
+            //    onlyFromToday()
+            //}
             }
             btn4.setOnClickListener{
-
+             //   if (today ==1){
                 stringToActivity(btn4.text.toString())
+            //} else {
+          //  onlyFromToday()
+       // }
             }
 
 
@@ -177,15 +195,22 @@ class WeeklySched : SharedFunctions() {
                 counter--
             }
             var full_tasks = mutableSetOf<String>(task1, task2, task3,task4)
-            Log.i("tasks size", full_tasks.size.toString())
-            if(full_tasks.size < counter) {
+            Log.i("tasks size", full_tasks.toString())
+            if (counter == 0){
                 Toast.makeText(applicationContext,
-                    getString(R.string.selecting_activity_err), Toast.LENGTH_SHORT).show()
+                    getString(R.string.must_choose), Toast.LENGTH_SHORT).show()
             } else {
-                deleteCorrent(day_string)
-                edit.putStringSet(day_string,full_tasks)
-                edit.commit()
-                resetTasks()
+                if (full_tasks.size < 4) {
+                    Toast.makeText(
+                        applicationContext,
+                        getString(R.string.selecting_activity_err), Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    deleteCorrent(day_string)
+                    edit.putStringSet(day_string, full_tasks)
+                    edit.commit()
+                    resetTasks()
+                }
             }
         }
     }
@@ -205,7 +230,10 @@ class WeeklySched : SharedFunctions() {
         edit.commit()
 
     }
-
+    private fun onlyFromToday() {
+        Toast.makeText(applicationContext,
+            getString(R.string.only_today), Toast.LENGTH_SHORT).show()
+    }
     private fun stringToActivity(name:String)  {
         Log.i("SWITCH", name)
         when (name) {
