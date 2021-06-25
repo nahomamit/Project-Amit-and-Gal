@@ -1,20 +1,12 @@
 package com.example.final_project_amit_and_gal;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.media.FaceDetector;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.SurfaceView;
-import android.view.View;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,29 +16,21 @@ import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
-import org.opencv.core.Core;
-import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
 import org.opencv.core.Rect;
 import org.opencv.core.Scalar;
-import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.objdetect.Objdetect;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.util.ArrayList;
 
 public class Face_Recognition extends SharedFunctions implements CameraBridgeViewBase.CvCameraViewListener2 {
 
-    private static String TAG = "MainActivity";
     CascadeClassifier face_detector;
     JavaCameraView javaCameraView;
     Mat mRGBA,mGREY;
@@ -98,14 +82,12 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         final ArrayList<String> name_ids = intent.getStringArrayListExtra("name");
 
         String name_id = name_ids.get(0);
-       // String name = intent.getStringExtra("name");
         TextView tv = findViewById(R.id.task_n);
         tv.setText(name_id);
 
         javaCameraView=(JavaCameraView)findViewById(R.id.my_camera_view);
         javaCameraView.setCvCameraViewListener(this);
         javaCameraView.setCameraIndex(2);
-        //javaCameraView.setMaxFrameSize(500,500);
         final VideoView videoView = findViewById(R.id.video_view);
         String videoPath = nameToUTL("");
 
@@ -164,9 +146,6 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
 
         mRGBA= inputFrame.rgba();
         mGREY = inputFrame.gray();
-        //Core.flip(mRGBA.t(), mRGBA, -1);
-        //Core.flip(mGREY.t(), mGREY, -1);
-       // Log.i("MYMAT", String.valueOf(mRGBA.dims()));
 
         MatOfRect faceDetections = new MatOfRect();
         face_detector.detectMultiScale(mGREY,faceDetections);
@@ -203,14 +182,12 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         super.onResume();
 
         if(OpenCVLoader.initDebug()) {
-            Log.i(TAG,"good");
             try {
                 baseLoaderCallback.onManagerConnected(BaseLoaderCallback.SUCCESS);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            Log.i(TAG, "not good");
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this, baseLoaderCallback);
         }
     }
