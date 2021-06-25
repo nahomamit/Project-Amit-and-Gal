@@ -36,6 +36,7 @@ open class SharedFunctions: AppCompatActivity() {
         val alert = builder.create()
         alert.show()
     }
+
     fun nextExcercize(questions: Int): Class<out AppCompatActivity> {
         val type:String = intent.getStringExtra("type").toString()
         if(questions == 1){
@@ -67,6 +68,7 @@ open class SharedFunctions: AppCompatActivity() {
 
 
     }
+
     fun nextActivity(num :Int,questions:Int, score:Int){
         val next_exc = nextExcercize(questions)
         val intent = Intent(this, next_exc)
@@ -86,7 +88,7 @@ open class SharedFunctions: AppCompatActivity() {
         }
     }
 
-     fun initDB() {
+    fun initDB() {
         db = Room.databaseBuilder(
             applicationContext,
             TabDataBase::class.java,
@@ -95,11 +97,22 @@ open class SharedFunctions: AppCompatActivity() {
         tabsDao = db.tabDao
     }
 
-    fun getMargin(): List<Int> {
-        val display: Display = windowManager.defaultDisplay
-        var w: Int = display.getWidth()
-        var h: Int = display.getHeight()
-        return listOf<Int>(w, h)
+    fun randomActivity(): Class<out AppCompatActivity> {
+        val number = (1..7).random()
+
+        var activity: Class<out AppCompatActivity>? = null
+
+        // Here, we are checking to see what the output of the random was
+        activity = when (number) {
+            1 -> find_the_different_category::class.java
+            2 -> find_the_diffrent::class.java
+            3 -> fix_letter_order::class.java
+            4 -> letters_choose::class.java
+            5 -> similar_category::class.java
+            6 -> VoiceReco::class.java
+            else -> whats_in_the_picture::class.java
+        }
+        return activity
     }
 
 

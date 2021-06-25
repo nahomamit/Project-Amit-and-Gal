@@ -26,7 +26,7 @@ class WeeklySched : SharedFunctions() {
         var day1 = 0
         var month1  = 0
         var year1  = 0
-      //  dateView = findViewById(R.id.dateView)
+
         calen.setOnDateChangeListener(CalendarView.OnDateChangeListener { _,year,month,day ->
             Log.i("month", month.toString())
             Log.i("day", day.toString())
@@ -36,14 +36,13 @@ class WeeklySched : SharedFunctions() {
             day1 = day
             month1 = month
             resetTasks()
-         //  editEvent(month,day,year)
             todayTasks(year,month,day)
         })
         var edit_btn = findViewById<Button>(R.id.add_tasks)
         edit_btn.setOnClickListener{
             if(day1 == 0) {
                 Toast.makeText(applicationContext,
-                    "בחר יום", Toast.LENGTH_SHORT).show()
+                    getString(R.string.select_day), Toast.LENGTH_SHORT).show()
             } else {
             editEvent(year1,month1,day1)
             }
@@ -52,7 +51,7 @@ class WeeklySched : SharedFunctions() {
         delete_btn.setOnClickListener{
             if(day1 == 0) {
                 Toast.makeText(applicationContext,
-                    "בחר יום", Toast.LENGTH_SHORT).show()
+                    getString(R.string.select_day), Toast.LENGTH_SHORT).show()
             } else {
                 deleteEvent(year1,month1,day1)
             }
@@ -119,8 +118,7 @@ class WeeklySched : SharedFunctions() {
 
 
         }
-        //Log.i("today", day_string.toString())
-      //  if(pref.getString(""))
+
     }
     private fun resetTasks() {
         var confirm_btn = findViewById<Button>(R.id.confirm)
@@ -142,9 +140,6 @@ class WeeklySched : SharedFunctions() {
         var pref = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
         var edit = pref.edit()
 
-       // Log.i("day", day.toString())
-        //Log.i("month", month.toString())
-       // Log.i("year", year.toString())
         var day_string = day.toString() +month.toString() +year.toString()
         var spinner1 = findViewById<Spinner>(R.id.task1s)
         var spinner2 = findViewById<Spinner>(R.id.task2s)
@@ -185,20 +180,14 @@ class WeeklySched : SharedFunctions() {
             Log.i("tasks size", full_tasks.size.toString())
             if(full_tasks.size < counter) {
                 Toast.makeText(applicationContext,
-                    "לא ניתן לבחור את אותו משחק פעמיים", Toast.LENGTH_SHORT).show()
+                    getString(R.string.selecting_activity_err), Toast.LENGTH_SHORT).show()
             } else {
-                Log.i("else", "true")
-
-                        deleteCorrent(day_string)
-                        edit.putStringSet(day_string,full_tasks)
-                        edit.commit()
-                        resetTasks()
-
-
+                deleteCorrent(day_string)
+                edit.putStringSet(day_string,full_tasks)
+                edit.commit()
+                resetTasks()
             }
         }
-            // Log.i("task full" , full_tasks.toString())
-
     }
 
     private fun deleteCorrent(dayString: String) {
@@ -221,14 +210,14 @@ class WeeklySched : SharedFunctions() {
         Log.i("SWITCH", name)
         when (name) {
             getString(R.string.game_short) -> {
-                moveActivity("20",ChooseExc::class.java,"1", name)
+                moveActivity("20",randomActivity(),"1", name)
 
             }
             getString(R.string.game_med) -> {
-                moveActivity("40",ChooseExc::class.java,"1",name)
+                moveActivity("40",randomActivity(),"1",name)
             }
             getString(R.string.game_long) -> {
-                moveActivity("60",ChooseExc::class.java,"1", name)
+                moveActivity("60",randomActivity(),"1", name)
             }
             getString(R.string.game_whats_in_the_pic) -> {
                 moveActivity("10",whats_in_the_picture::class.java,"0", name)
@@ -250,7 +239,7 @@ class WeeklySched : SharedFunctions() {
 
             else -> { // Note the block
                 Toast.makeText(applicationContext,
-                    "לא הגדרת משחק", Toast.LENGTH_SHORT).show()
+                    getString(R.string.choose_activity_err), Toast.LENGTH_SHORT).show()
             }
         }
     }

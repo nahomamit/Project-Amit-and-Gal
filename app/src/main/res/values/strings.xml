@@ -15,6 +15,11 @@
     <string name="game_short">"תרגול רץ קצר"</string>
     <string name="game_med">  "תרגול רץ בינוני"</string>
     <string name="game_long">"תרגול רץ ארוך"</string>
+    <string name="game_face_recognition">"תרגול פנים"</string>
+    <string name="correct_answers"> תשובות נכונות מתוך </string>
+    <string name="select_day">בחר יום</string>
+    <string name="selecting_activity_err">לא ניתן לבחור את אותו משחק פעמיים</string>
+    <string name="choose_activity_err">לא הגדרת משחק</string>
     <string name="who_is_diff"> "מי יוצא הדופן?" </string>
     <string name="choose_exc"> "בחר תרגול" </string>
     <string name="not_init1"> לא נבחר 1 </string>
