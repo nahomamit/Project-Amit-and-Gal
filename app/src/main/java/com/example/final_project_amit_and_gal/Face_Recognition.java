@@ -98,18 +98,29 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         mediaController.setAnchorView(videoView);
                 videoView.start();
 
+                final Button next =(Button) findViewById(R.id.next_exc);
+                if(name_ids.size() == 1){
+                    next.setText("סיים תרגול");
+                } else {
+                    next.setText("עבור לתרגול הבא");
+                }
+                next.setOnClickListener(new View.OnClickListener(){
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent2 = new Intent(getApplicationContext(), FaceCheckTransfer.class);
+                        intent2.putStringArrayListExtra("name", name_ids);
+                        startActivity(intent2);
+                    }
 
+        });
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 public void run() {
                     // TODO: Your application init goes here.
-                    Intent intent2 = new Intent(getApplicationContext(), FaceCheckTransfer.class);
-                    intent2.putStringArrayListExtra("name", name_ids);
-                    startActivity(intent2);
+                    next.setEnabled(true);
 
                 }
             }, 15000);
-
 
 
     }

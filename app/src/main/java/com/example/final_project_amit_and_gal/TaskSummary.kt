@@ -17,6 +17,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_task_summary.*
@@ -34,30 +35,32 @@ class TaskSummary : SharedFunctions() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_summary)
 
+      // Log.i("progress", progressBar.toString())
         val name:String = intent.getStringExtra("name")
         val score:String = intent.getStringExtra("score").toString()
         var maxScore = nameToNumber(name)
-        var progress = score + getString(R.string.correct_answers)  + maxScore
+        var progress = score + " תשובות נכונות מתוך "  + maxScore
         findViewById<TextView>(R.id.score).text = progress
         findViewById<TextView>(R.id.task_name).text = name
-
+        var saveBtn = findViewById<Button>(R.id.save_button)
         var backBtn = findViewById<Button>(R.id.return_button)
+        saveBtn.setOnClickListener{
+            saveBtn.visibility = View.INVISIBLE
+            backBtn.visibility = View.INVISIBLE
+            val layout: ConstraintLayout= findViewById(R.id.layout_screen)
+            //setupPermissions()
+            //ActivityCompat.requestPermissions(this,
+              //  arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_CODE);
+            storeImage(getScreenShot(layout))
+            saveBtn.visibility = View.VISIBLE
+            backBtn.visibility = View.VISIBLE
+          // it.setBackgroundResource(Color.GREEN)
+        }
+
         backBtn.setOnClickListener{
             var intent = Intent(this, MainMenu::class.java)
             startActivity(intent)
         }
-
-        var saveBtn = findViewById<Button>(R.id.save_button)
-        saveBtn.setOnClickListener{
-            saveBtn.visibility = View.INVISIBLE
-            backBtn.visibility = View.INVISIBLE
-            val relativeLayout: RelativeLayout= findViewById(R.id.layout_screen)
-            storeImage(getScreenShot(relativeLayout))
-            saveBtn.visibility = View.VISIBLE
-            backBtn.visibility = View.VISIBLE
-        }
-
-
     }
     fun nameToNumber(name: String): String {
         when(name) {

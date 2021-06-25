@@ -4,56 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Face_Recognition"
+    android:background="@drawable/sky_background"
     android:screenOrientation="landscape"
-    android:background="@drawable/sky_background">
+    tools:context=".Face_Recognition">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/center_guide"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="123"
-            android:textSize="30dp"
-            android:id="@+id/task_n"/>
-
-
-
-<androidx.constraintlayout.widget.Guideline
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:id="@+id/center_guide"
-    app:layout_constraintGuide_percent="0.5"/>
-    <FrameLayout
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="parent"
+    <TextView
+        android:id="@+id/task_n"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="40dp"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeTextType="uniform"
+        android:text="ggggggggg"
+        android:gravity="center"
+        android:fontFamily="@font/tmp"
         app:layout_constraintEnd_toStartOf="@id/center_guide"
-        app:layout_constraintTop_toBottomOf="@id/task_n"
+        app:layout_constraintStart_toEndOf="@id/next_exc"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/frame_vid"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintVertical_weight="1"/>
+
+    <Button
+        android:id="@+id/next_exc"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/custom_bottom"
+        android:enabled="false"
+        app:layout_constraintBottom_toTopOf="@id/frame_vid"
+        app:layout_constraintEnd_toStartOf="@id/task_n"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_weight="1"/>
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/center_guide"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <FrameLayout
+        android:id="@+id/frame_vid"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="15dp"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="parent"
-    android:layout_margin="15dp">
+        app:layout_constraintEnd_toStartOf="@id/center_guide"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/task_n"
+        app:layout_constraintVertical_weight="10">
 
         <VideoView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/video_view"/>
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </FrameLayout>
-
-
-
 
 
     <org.opencv.android.JavaCameraView
         android:id="@+id/my_camera_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/center_guide"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="@id/center_guide"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -37,59 +37,120 @@ class FaceRecoMenu : AppCompatActivity() {
 
     fun buttonOptions() {
         findViewById<Button>(R.id.game_find_dif).setOnClickListener{ b ->
-           b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_1))
+            if(list_tasks.contains(getString(R.string.face_1))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_1))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+                list_tasks.add(getString(R.string.face_1))
+            }
+
            // moveActivity(getString(R.string.face_1), Face_Recognition::class.java)
         }
         findViewById<Button>(R.id.game_find_dif_by_cat).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_2))
+            if(list_tasks.contains(getString(R.string.face_2))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_2))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_2))
+            }
+
            // moveActivity(getString(R.string.face_2), Face_Recognition::class.java)
         }
         findViewById<Button>(R.id.game_fix_order).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_3))
+            if(list_tasks.contains(getString(R.string.face_3))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_3))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_3))
+            }
             //moveActivity(getString(R.string.face_3), Face_Recognition::class.java)
         }
         findViewById<Button>(R.id.game_letter_choose).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_4))
-            //moveActivity(getString(R.string.face_4), Face_Recognition::class.java)
+            if(list_tasks.contains(getString(R.string.face_4))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_4))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_4))
+            }
         }
         findViewById<Button>(R.id.game_similar_category).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_5))
-            //moveActivity(getString(R.string.face_5), Face_Recognition::class.java)
+            if(list_tasks.contains(getString(R.string.face_5))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_5))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_5))
+            }
         }
         findViewById<Button>(R.id.game_voice).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_6))
-            //moveActivity(getString(R.string.face_6), Face_Recognition::class.java)
+            if(list_tasks.contains(getString(R.string.face_6))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_6))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_6))
+            }
         }
         findViewById<Button>(R.id.game_what_in_pic).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_7))
-            //moveActivity(getString(R.string.face_7), Face_Recognition::class.java)
+            if(list_tasks.contains(getString(R.string.face_7))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+                list_tasks.remove(getString(R.string.face_7))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_7))
+            }
         }
         findViewById<Button>(R.id.return_btn).setOnClickListener{
                 b ->
-            b.setBackgroundColor(RED)
-            b.isClickable = false
-            list_tasks.add(getString(R.string.face_8))
-            //moveActivity(getString(R.string.face_8), Face_Recognition::class.java)
+            if(list_tasks.contains(getString(R.string.face_8))){
+                b.setBackground(getDrawable(R.drawable.category_custom_bottom))
+
+
+
+                list_tasks.remove(getString(R.string.face_8))
+            } else {
+                b.setBackground(getDrawable(R.drawable.delete_bottom))
+
+
+                list_tasks.add(getString(R.string.face_8))
+            }
         }
         findViewById<Button>(R.id.start_tasks).setOnClickListener{
             moveActivity(list_tasks, Face_Recognition::class.java)

@@ -91,11 +91,14 @@ class WeeklySched : SharedFunctions() {
             btn4.text = ""
             return
         } else {
-
-            btn1.text = tasks.elementAt(0).toString()
-            btn2.text = tasks.elementAt(1).toString()
-            btn3.text = tasks.elementAt(2).toString()
-            btn4.text = tasks.elementAt(3).toString()
+            for(i in 0..tasks.size) {
+                when(i) {
+                   0-> btn1.text = tasks.elementAt(0).toString()
+                   1-> btn2.text = tasks.elementAt (1).toString()
+                   2-> btn3.text = tasks.elementAt (2).toString()
+                   3-> btn4.text = tasks.elementAt (3).toString()
+                }
+            }
             btn1.setOnClickListener{
 
                 stringToActivity(btn1.text.toString())

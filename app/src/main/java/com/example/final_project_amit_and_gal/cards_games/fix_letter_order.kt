@@ -64,8 +64,7 @@ class fix_letter_order : SharedFunctions() {
                 1F
             )
             button.text = letter.toString()
-            button.setBackgroundColor(Color.WHITE)
-            button.setTextColor(Color.BLACK)
+            button.setBackgroundResource(R.drawable.category_custom_bottom)
             button.visibility = View.INVISIBLE
 
             button.id = View.generateViewId()
@@ -84,7 +83,8 @@ class fix_letter_order : SharedFunctions() {
             )
             button.text = letter.toString()
             button.setBackgroundResource(R.drawable.custom_bottom)
-            button.setTextColor(Color.WHITE)
+
+            button.setTextColor(Color.BLUE)
             button.visibility = View.VISIBLE
 
             button.id = View.generateViewId()
