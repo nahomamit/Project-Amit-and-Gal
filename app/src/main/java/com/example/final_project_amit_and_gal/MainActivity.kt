@@ -47,23 +47,4 @@ class MainActivity : SharedFunctions() {
         startActivity(intent)
     }
 
-    private fun randomActivity(): Class<*>? {
-        val number = (1..7).random()
-
-        var activity: Class<*>? = null
-
-        // Here, we are checking to see what the output of the random was
-        activity = when (number) {
-            1 -> find_the_different_category::class.java
-            2 -> find_the_diffrent::class.java
-            3 -> fix_letter_order::class.java
-            4 -> letters_choose::class.java
-            5 -> similar_category::class.java
-            6 -> VoiceReco::class.java
-            else -> whats_in_the_picture::class.java
-        }
-        return activity
-    }
-
-
 }

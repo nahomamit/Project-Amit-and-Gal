@@ -45,7 +45,6 @@
         <activity android:name=".cards_games.letters_choose" />
         <activity android:name=".cards_games.find_the_diffrent" />
         <activity android:name=".cards_games.whats_in_the_picture" />
-        <activity android:name=".ChooseExc" />
         <activity android:name=".MainActivity" />
 
         <meta-data
