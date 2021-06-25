@@ -34,8 +34,8 @@ class FaceRecoMenu : AppCompatActivity() {
         findViewById<Button>(R.id.return_btn).text = getString(R.string.face_8)
 
     }
-    fun buttonOptions() {
 
+    fun buttonOptions() {
         findViewById<Button>(R.id.game_find_dif).setOnClickListener{ b ->
            b.setBackgroundColor(RED)
             b.isClickable = false
@@ -102,4 +102,4 @@ class FaceRecoMenu : AppCompatActivity() {
         intent.putStringArrayListExtra("name", name)
         startActivity(intent)
     }
-    }
+}

@@ -27,7 +27,7 @@ class ByCategory : SharedFunctions() {
         findViewById<Button>(R.id.game_similar_category).text = getString(R.string.game_similar_category)
         findViewById<Button>(R.id.game_voice).text = getString(R.string.game_voice_reco)
         findViewById<Button>(R.id.game_what_in_pic).text = getString(R.string.game_whats_in_the_pic)
-        findViewById<Button>(R.id.return_btn).text = "תרגול פנים"
+        findViewById<Button>(R.id.return_btn).text = getString(R.string.game_face_recognition)
 
     }
     fun buttonOptions() {
@@ -68,7 +68,7 @@ class ByCategory : SharedFunctions() {
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "getString(R.string.no_permission)", Toast.LENGTH_SHORT).show()
             } else {
-                moveActivity("תרגול פנים", FaceRecoMenu::class.java)
+                moveActivity(getString(R.string.game_face_recognition), FaceRecoMenu::class.java)
             }
         }
 

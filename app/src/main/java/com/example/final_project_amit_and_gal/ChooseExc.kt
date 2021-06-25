@@ -5,10 +5,8 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.example.final_project_amit_and_gal.cards_games.find_the_diffrent
 import com.example.final_project_amit_and_gal.cards_games.whats_in_the_picture
 
 class ChooseExc :SharedFunctions() {
@@ -45,8 +43,6 @@ class ChooseExc :SharedFunctions() {
                 Toast.makeText(this, "getString(R.string.no_permission)", Toast.LENGTH_SHORT).show()
             } else {
                 val intent = Intent(this, Face_Recognition::class.java)
-                /*intent.putExtra("time", time)
-                intent.putExtra("score","0")*/
                 startActivity(intent)
             }
 

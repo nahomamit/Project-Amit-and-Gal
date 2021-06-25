@@ -2,10 +2,8 @@ package com.example.final_project_amit_and_gal
 
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.util.Log
 import androidx.room.Room
 import com.google.gson.Gson
@@ -19,15 +17,22 @@ class CheckActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_check)
-        db = Room.databaseBuilder(
-            applicationContext,
-            TabDataBase::class.java,
-            "tabs_database"
-        ).allowMainThreadQueries().build()
-        tabsDao = db.tabDao
+        try {
+            db = Room.databaseBuilder(
+                applicationContext,
+                TabDataBase::class.java,
+                "tabs_database"
+            ).allowMainThreadQueries().build()
+            tabsDao = db.tabDao
+            if (tabsDao.getAllTabs().size < 250) {
+                tabsDao.clear()
+                throw Exception("Database empty")
+            }
+        } catch (e: Exception) {
+            Log.i("DATABASE", "database created again !")
+            createDB()
+        }
 
-        tabsDao.clear()
-        createDB()
         var pref = getSharedPreferences("Login", Context.MODE_PRIVATE);
         var weekly = getSharedPreferences("Weekly", Context.MODE_PRIVATE)
         if (pref.getString("Name",null) == null) {
@@ -76,4 +81,4 @@ class CheckActivity : AppCompatActivity() {
         }
         return null
     }
-    }
+}

@@ -21,15 +21,13 @@ class FirstTimeEnter : AppCompatActivity() {
         if (submit != null && etBirth != null && etUsername != null) {
             submit.setOnClickListener {
                 val username = etUsername.text.toString()
-                val birth = etBirth.text.toString()
+                val age = etBirth.text.toString()
                 val sp = getSharedPreferences("Login", MODE_PRIVATE)
                 val Ed = sp.edit()
                 Ed.putString("Name", username)
-                Ed.putString("Date", birth)
+                Ed.putString("Age", age)
                 Ed.putBoolean("activity_executed", true)
                 Ed.commit()
-                Toast.makeText(applicationContext,
-                    "Username: $username, Password: $birth", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainMenu::class.java)
                 startActivity(intent)
             }
