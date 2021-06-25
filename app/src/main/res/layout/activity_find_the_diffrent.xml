@@ -41,30 +41,34 @@
 
     <TextView
         android:id="@+id/task_for_costumer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoSizeMaxTextSize="70dp"
+        android:autoSizeMinTextSize="12dp"
+        android:autoSizeTextType="uniform"
         android:fontFamily="@font/tmp"
-        android:gravity="center"
+        android:gravity="right"
         android:text="@string/game_find_dif"
         android:textColor="#F4EFEF"
-        android:autoSizeTextType="uniform"
-        android:autoSizeMinTextSize="12dp"
-        android:autoSizeMaxTextSize="70dp"
-        app:layout_constraintBottom_toTopOf="@+id/picture"
+        app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        app:layout_constraintTop_toBottomOf="@+id/include2"
+        app:layout_constraintVertical_weight="2"/>
 
-    <include layout="@layout/four_photos"
-        app:layout_constraintTop_toBottomOf="@id/task_for_costumer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guide1"
-        app:layout_constraintEnd_toStartOf="@id/guide2"
-        android:layout_height="0dp"
+    <include
+        android:id="@+id/include"
+        layout="@layout/four_photos"
         android:layout_width="0dp"
-
-        app:layout_constraintDimensionRatio="1:1"/>
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toStartOf="@id/guide2"
+app:layout_constraintVertical_weight="6"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guide1"
+        app:layout_constraintTop_toBottomOf="@+id/task_for_costumer" />
 
     <ImageView
         android:id="@+id/correct_img"
@@ -83,11 +87,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
-        app:srcCompat="@drawable/incorrect_ans"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/incorrect_ans" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 

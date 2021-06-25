@@ -17,6 +17,7 @@ import android.view.View
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_task_summary.*
@@ -46,11 +47,11 @@ class TaskSummary : SharedFunctions() {
         saveBtn.setOnClickListener{
             saveBtn.visibility = View.INVISIBLE
             backBtn.visibility = View.INVISIBLE
-            val relativeLayout: RelativeLayout= findViewById(R.id.layout_screen)
+            val layout: ConstraintLayout= findViewById(R.id.layout_screen)
             //setupPermissions()
             //ActivityCompat.requestPermissions(this,
               //  arrayOf(android.Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_CODE);
-            storeImage(getScreenShot(relativeLayout))
+            storeImage(getScreenShot(layout))
             saveBtn.visibility = View.VISIBLE
             backBtn.visibility = View.VISIBLE
           // it.setBackgroundResource(Color.GREEN)
