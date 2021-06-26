@@ -51,7 +51,7 @@
         layout="@layout/button_by_category"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_letter_choose"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/left_mid"
         app:layout_constraintHorizontal_bias="0.5"
@@ -66,10 +66,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/game_fix_order"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/left_mid"
+        app:layout_constraintEnd_toStartOf="@+id/right"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/left"
-        app:layout_constraintTop_toBottomOf="@+id/game_what_in_pic" />
+        app:layout_constraintStart_toStartOf="@+id/right_mid"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <include
         android:id="@+id/game_fix_order"
@@ -78,57 +78,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/left_mid"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/left"
+        app:layout_constraintStart_toStartOf="@+id/right_mid"
         app:layout_constraintTop_toBottomOf="@+id/game_letter_choose" />
 
-    <include
-        android:id="@+id/game_find_dif"
-        layout="@layout/button_by_category"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_find_dif_by_cat"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/right_mid"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/game_find_dif_by_cat"
-        layout="@layout/button_by_category"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_voice"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/right_mid"
-        app:layout_constraintTop_toBottomOf="@+id/game_find_dif" />
-
-    <include
-        android:id="@+id/game_voice"
-        layout="@layout/button_by_category"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/return_btn"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/right_mid"
-        app:layout_constraintTop_toBottomOf="@+id/game_find_dif_by_cat" />
-
-    <include
-        android:id="@+id/return_btn"
-        layout="@layout/button_by_category"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/right_mid"
-        app:layout_constraintTop_toBottomOf="@+id/game_voice" />
 </androidx.constraintlayout.widget.ConstraintLayout>

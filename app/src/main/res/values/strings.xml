@@ -44,14 +44,11 @@
     <string name="only_today">ניתן להתחיל משימה מהתאריך של היום בלבד</string>
     <string name="must_choose">חובה לבחור לפחות פעילות אחת</string>
 
-    <string name="face_type1"></string>
-    <string name="face_type2"></string>
-    <string name="face_type3"></string>
-    <string name="face_type4"></string>
-    <string name="face_type5"></string>
-    <string name="face_type6"></string>
-    <string name="face_type7"></string>
-    <string name="face_type8"></string>
+    <string name="face_type1">עיניים</string>
+    <string name="face_type2">לסת</string>
+    <string name="face_type3">לשון</string>
+    <string name="face_type4">שפתיים</string>
+
     <string name="face_1"> "הרם גבה" </string>
     <string name="face_2"> "פתח פה" </string>
     <string name="face_3"> "תלקק את המרפק" </string>

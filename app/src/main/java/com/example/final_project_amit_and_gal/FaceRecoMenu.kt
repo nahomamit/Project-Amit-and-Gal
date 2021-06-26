@@ -34,7 +34,18 @@ class FaceRecoMenu : AppCompatActivity() {
         findViewById<Button>(R.id.return_btn).text = getString(R.string.face_8)
 
     }
+    fun buttonEyes(type:String){
 
+    }
+    fun buttonJaw(type:String){
+
+    }
+    fun buttonTongue(type:String){
+
+    }
+    fun buttonLips(type:String){
+
+    }
     fun buttonOptions() {
         findViewById<Button>(R.id.game_find_dif).setOnClickListener{ b ->
             if(list_tasks.contains(getString(R.string.face_1))){
