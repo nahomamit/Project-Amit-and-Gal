@@ -44,12 +44,38 @@
     <string name="only_today">ניתן להתחיל משימה מהתאריך של היום בלבד</string>
     <string name="must_choose">חובה לבחור לפחות פעילות אחת</string>
 
-    <string name="face_type1">עיניים</string>
-    <string name="face_type2">לסת</string>
-    <string name="face_type3">לשון</string>
-    <string name="face_type4">שפתיים</string>
+    <string name="face_eyes">עיניים</string>
+    <string name="face_jaw">לסת</string>
+    <string name="face_tongue">לשון</string>
+    <string name="face_lips">שפתיים</string>
 
-    <string name="face_1"> "הרם גבה" </string>
+    <string name="lips_1"> "הרם גבה" </string>
+    <string name="lips_2"> "הרם גבה" </string>
+    <string name="lips_3"> "הרם גבה" </string>
+    <string name="lips_4"> "הרם גבה" </string>
+    <string name="lips_5"> "הרם גבה" </string>
+    <string name="lips_6"> "הרם גבה" </string>
+    <string name="lips_7"> "הרם גבה" </string>
+    <string name="lips_8"> "הרם גבה" </string>
+
+    <string name="jaw_1">"לסת"</string>
+    <string name="jaw_2">"לסת"</string>
+    <string name="jaw_3">"לסת"</string>
+    <string name="jaw_4">"לסת"</string>
+    <string name="jaw_5">"לסת"</string>
+    <string name="jaw_6">"לסת"</string>
+    <string name="jaw_7">"לסת"</string>
+    <string name="jaw_8">"לסת"</string>
+
+    <string name="tongue_1">לשון</string>
+    <string name="tongue_2">לשון</string>
+    <string name="tongue_3">לשון</string>
+    <string name="tongue_4">לשון</string>
+    <string name="tongue_5">לשון</string>
+    <string name="tongue_6">לשון</string>
+    <string name="tongue_7">לשון</string>
+    <string name="tongue_8">לשון</string>
+
     <string name="face_2"> "פתח פה" </string>
     <string name="face_3"> "תלקק את המרפק" </string>
     <string name="face_4"> "חיטוט באף" </string>
@@ -57,6 +83,15 @@
     <string name="face_6"> "חיוך" </string>
     <string name="face_7"> "שיניים" </string>
     <string name="face_8"> "נגמר לי" </string>
+
+    <string name="eyes_1">עיניים</string>
+    <string name="eyes_2">עיניים</string>
+    <string name="eyes_3">עיניים</string>
+    <string name="eyes_4">עיניים</string>
+    <string name="eyes_5">עיניים</string>
+    <string name="eyes_6">עיניים</string>
+    <string name="eyes_7">עיניים</string>
+    <string name="eyes_8">עיניים</string>
 
 
     <string name="back">"חזור לתפריט הראשי"</string>

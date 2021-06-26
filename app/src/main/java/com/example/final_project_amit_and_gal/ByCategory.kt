@@ -68,7 +68,7 @@ class ByCategory : SharedFunctions() {
             if (permission != PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(this, "getString(R.string.no_permission)", Toast.LENGTH_SHORT).show()
             } else {
-                moveActivity(getString(R.string.game_face_recognition), FaceRecoMenu::class.java)
+                moveActivity(getString(R.string.game_face_recognition), FaceTypeMenu::class.java)
             }
         }
 
