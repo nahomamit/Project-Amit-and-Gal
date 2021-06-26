@@ -22,10 +22,12 @@ class FaceRecoMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_face_reco_menu)
-        buttonText()
-        buttonOptions()
         var type = intent.getStringExtra("type")
         buildArr(type)
+        buttonText()
+        buttonOptions()
+
+
     }
     fun  buildArr(type:String){
         when(type){

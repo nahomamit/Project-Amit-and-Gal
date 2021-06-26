@@ -18,25 +18,25 @@ class FaceTypeMenu : AppCompatActivity() {
         buttonOptions()
     }
     fun buttonText() {
-        findViewById<Button>(R.id.game_find_dif).text = getString(R.string.face_eyes)
-        findViewById<Button>(R.id.game_find_dif_by_cat).text = getString(R.string.face_jaw)
-        findViewById<Button>(R.id.game_fix_order).text = getString(R.string.face_lips)
-        findViewById<Button>(R.id.game_letter_choose).text = getString(R.string.face_tongue)
+        findViewById<Button>(R.id.type_eyes).text = getString(R.string.face_eyes)
+        findViewById<Button>(R.id.type_jaw).text = getString(R.string.face_jaw)
+        findViewById<Button>(R.id.type_lips).text = getString(R.string.face_lips)
+        findViewById<Button>(R.id.type_tongue).text = getString(R.string.face_tongue)
 
 
     }
     fun buttonOptions() {
 
-        findViewById<Button>(R.id.game_find_dif).setOnClickListener{
+        findViewById<Button>(R.id.type_eyes).setOnClickListener{
             moveActivity(getString(R.string.face_eyes), FaceRecoMenu::class.java)
         }
-        findViewById<Button>(R.id.game_find_dif_by_cat).setOnClickListener{
+        findViewById<Button>(R.id.type_jaw).setOnClickListener{
             moveActivity(getString(R.string.face_jaw), FaceRecoMenu::class.java)
         }
-        findViewById<Button>(R.id.game_fix_order).setOnClickListener{
+        findViewById<Button>(R.id.type_lips).setOnClickListener{
             moveActivity(getString(R.string.face_lips), FaceRecoMenu::class.java)
         }
-        findViewById<Button>(R.id.game_letter_choose).setOnClickListener{
+        findViewById<Button>(R.id.type_tongue).setOnClickListener{
             moveActivity(getString(R.string.face_tongue), FaceRecoMenu::class.java)
         }
 

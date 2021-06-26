@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/sky_background"
     tools:context=".FaceTypeMenu">
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/left"
         android:layout_width="wrap_content"
@@ -35,11 +36,11 @@
         app:layout_constraintGuide_percent="0.95" />
 
     <include
-        android:id="@+id/game_similar_category"
+        android:id="@+id/type_eyes"
         layout="@layout/button_by_category"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_what_in_pic"
+        app:layout_constraintBottom_toTopOf="@+id/type_jaw"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/left_mid"
         app:layout_constraintHorizontal_bias="0.5"
@@ -47,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/game_what_in_pic"
+        android:id="@+id/type_jaw"
         layout="@layout/button_by_category"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -56,15 +57,15 @@
         app:layout_constraintEnd_toStartOf="@+id/left_mid"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/left"
-        app:layout_constraintTop_toBottomOf="@+id/game_similar_category" />
+        app:layout_constraintTop_toBottomOf="@+id/type_eyes" />
 
 
     <include
-        android:id="@+id/game_letter_choose"
+        android:id="@+id/type_tongue"
         layout="@layout/button_by_category"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/game_fix_order"
+        app:layout_constraintBottom_toTopOf="@+id/type_lips"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toStartOf="@+id/right"
         app:layout_constraintHorizontal_bias="0.5"
@@ -72,7 +73,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <include
-        android:id="@+id/game_fix_order"
+        android:id="@+id/type_lips"
         layout="@layout/button_by_category"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -81,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/right_mid"
-        app:layout_constraintTop_toBottomOf="@+id/game_letter_choose" />
+        app:layout_constraintTop_toBottomOf="@+id/type_tongue" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
