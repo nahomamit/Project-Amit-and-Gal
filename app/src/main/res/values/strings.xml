@@ -15,7 +15,19 @@
     <string name="game_short">"תרגול רץ קצר"</string>
     <string name="game_med">  "תרגול רץ בינוני"</string>
     <string name="game_long">"תרגול רץ ארוך"</string>
+    <string name="game_face_reco">זיהוי פנים</string>
     <string name="game_face_recognition">"תרגול פנים"</string>
+
+    <string name="game_find_dif_by_cat_task">"nmt"</string>
+    <string name="game_find_dif_task">"מצא את ההבדלים"</string>
+    <string name="game_fix_letter_order_task">"מילים מבלוגנות"</string>
+    <string name="game_letter_choose_task">"מילים מבנק אותיות"</string>
+    <string name="game_similar_category_task">"קטגוריה דומה"</string>
+    <string name="game_voice_reco_task">"מה בתמונה? לפי דיבור"</string>
+    <string name="game_whats_in_the_pic_task">"מה בתמונה?"</string>
+    <string name="game_face_reco_task">זיהוי פנים</string>
+
+
     <string name="correct_answers"> תשובות נכונות מתוך </string>
     <string name="select_day">בחר יום</string>
     <string name="selecting_activity_err">לא ניתן לבחור את אותו משחק פעמיים</string>
@@ -32,6 +44,14 @@
     <string name="only_today">ניתן להתחיל משימה מהתאריך של היום בלבד</string>
     <string name="must_choose">חובה לבחור לפחות פעילות אחת</string>
 
+    <string name="face_type1"></string>
+    <string name="face_type2"></string>
+    <string name="face_type3"></string>
+    <string name="face_type4"></string>
+    <string name="face_type5"></string>
+    <string name="face_type6"></string>
+    <string name="face_type7"></string>
+    <string name="face_type8"></string>
     <string name="face_1"> "הרם גבה" </string>
     <string name="face_2"> "פתח פה" </string>
     <string name="face_3"> "תלקק את המרפק" </string>
@@ -45,9 +65,7 @@
     <string name="back">"חזור לתפריט הראשי"</string>
     <string-array name="tasks">
         <item>בחר תרגול</item>
-        <item>תרגול רץ קצר</item>
-        <item>תרגול רץ בינוני</item>
-        <item>תרגול רץ ארוך</item>
+        <item>זיהוי פנים</item>
         <item>מה בתמונה?</item>
         <item>מצא את ההבדלים</item>
         <item>מצא את הקטגוריה השונה</item>

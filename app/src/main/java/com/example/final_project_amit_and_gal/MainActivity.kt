@@ -22,17 +22,17 @@ class MainActivity : SharedFunctions() {
         name.text = "שלום " + name_text
         val button_short = findViewById<Button>(R.id.short_time)
         button_short.setOnClickListener {
-            moveActivity("20", "תרגול רץ קצר")
+            moveActivity("20",getString(R.string.game_short))
 
         }
         val button_med = findViewById<Button>(R.id.mid_time)
         button_med.setOnClickListener {
-            moveActivity("40", "תרגול רץ בינוני")
+            moveActivity("40", getString(R.string.game_med))
 
         }
         val button_long = findViewById<Button>(R.id.long_time)
         button_long.setOnClickListener {
-            moveActivity("60", "תרגול רץ ארוך")
+            moveActivity("60", getString(R.string.game_long))
 
         }
     }

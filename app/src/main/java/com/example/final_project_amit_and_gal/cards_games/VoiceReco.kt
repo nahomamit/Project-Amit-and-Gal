@@ -5,7 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.LightingColorFilter
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
@@ -15,19 +14,16 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.room.Room
 import com.example.final_project_amit_and_gal.*
 import kotlinx.android.synthetic.main.activity_voice_reco.*
 import java.io.InputStream
-import java.lang.Exception
-import kotlin.random.Random
 
 class VoiceReco : SharedFunctions() {
 
     private val RQ_SPEECH_REC = 102
     private var questions: Int = 0
     var score: Int = 0
-
+    private var mistake_count = 0
     var tabs: Tab? = null
     private var hint_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,8 +41,8 @@ class VoiceReco : SharedFunctions() {
         score_text.text = score.toString()
         score_text.visibility = View.INVISIBLE
         //question text
-      //  val text = findViewById<TextView>(R.id.task_for_costumer)
-       // text.text = "מה בתמונה?"
+        val text = findViewById<TextView>(R.id.task_for_costumer)
+       text.text = getString(R.string.game_voice_reco_task)
 
         val back = findViewById<ImageView>(R.id.return_btn)
        back.setOnClickListener {
@@ -96,7 +92,11 @@ class VoiceReco : SharedFunctions() {
     }
 
     private fun wrongAnsOnClick() {
-
+        if(mistake_count == 0) {
+            hintClicked(findViewById(R.id.hint))
+            mistake_count++
+            return
+        }
         nextActivity(0,questions, score)
     }
 
@@ -146,17 +146,20 @@ class VoiceReco : SharedFunctions() {
                 return@setOnClickListener
             }
 
-            hint1.setColorFilter(LightingColorFilter(Color.WHITE, Color.GRAY))
-            var hint = findViewById<TextView>(R.id.hint_clicked)
-            hint.visibility = View.VISIBLE
-            var hint_text = getString(R.string.start_with) + " '" + qes_text.text[0] + "'\n" +
-                    getString(R.string.word_type) + " " + tabs!!.subcategory
-            hint.text = hint_text
-
+          hintClicked(hint1)
 
         }
     }
 
+    private fun hintClicked(hint1: ImageView) {
+        hint1.setColorFilter(LightingColorFilter(Color.WHITE, Color.GRAY))
+        var hint = findViewById<TextView>(R.id.hint_clicked)
+        hint.visibility = View.VISIBLE
+        var hint_text = getString(R.string.start_with) + " '" + qes_text.text[0] + "'\n" +
+                getString(R.string.word_type) + " " + tabs!!.subcategory
+        hint.text = hint_text
+
+    }
 
 
 }

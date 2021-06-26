@@ -237,18 +237,12 @@ class WeeklySched : SharedFunctions() {
     private fun stringToActivity(name:String)  {
         Log.i("SWITCH", name)
         when (name) {
-            getString(R.string.game_short) -> {
-                moveActivity("20",randomActivity(),"1", name)
 
-            }
-            getString(R.string.game_med) -> {
-                moveActivity("40",randomActivity(),"1",name)
-            }
-            getString(R.string.game_long) -> {
-                moveActivity("60",randomActivity(),"1", name)
-            }
             getString(R.string.game_whats_in_the_pic) -> {
                 moveActivity("10",whats_in_the_picture::class.java,"0", name)
+            }
+            getString(R.string.game_face_reco) -> {
+                moveActivity("10",FaceRecoMenu::class.java,"0", name)
             }
             getString(R.string.game_find_dif) -> {
                 moveActivity("10",find_the_diffrent::class.java,"0",name)            }

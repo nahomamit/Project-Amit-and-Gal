@@ -25,7 +25,7 @@ import kotlin.random.Random
 
 class whats_in_the_picture : SharedFunctions() {
     @SuppressLint("ResourceAsColor")
-
+    private var mistake_count = 0
     private var hint_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class whats_in_the_picture : SharedFunctions() {
         score_text.visibility = View.INVISIBLE
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
-        text.text = "מה בתמונה?"
+        text.text = getString(R.string.game_whats_in_the_pic_task)
 
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener {
@@ -120,6 +120,11 @@ class whats_in_the_picture : SharedFunctions() {
     }
 
     private fun wrongAnsOnClick(wrong_ans: Button, correct_ans: Button, questions: Int, score: Int) {
+        if (mistake_count == 0){
+            mistake_count++
+            wrong_ans.visibility = View.INVISIBLE
+            return
+        }
         wrong_ans.setBackgroundResource(R.color.colorAccent)
         correct_ans.setBackgroundResource(R.color.Green)
         nextActivity(0,questions, score)

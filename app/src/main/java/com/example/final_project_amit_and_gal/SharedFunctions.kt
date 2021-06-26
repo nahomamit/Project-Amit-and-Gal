@@ -47,7 +47,7 @@ open class SharedFunctions: AppCompatActivity() {
             return chosen
         }
 
-        if((questions-1)%5 != 0){
+        if((questions-1)%10 != 0){
             var chosen = this.javaClass;
             return chosen
         } else {
@@ -83,7 +83,7 @@ open class SharedFunctions: AppCompatActivity() {
         intent.putExtra("type",getIntent().getStringExtra("type").toString())
         intent.putExtra("name", getIntent().getStringExtra("name"))
         Log.i("NAME",  getIntent().getStringExtra("name"))
-        Timer("SettingUp", false).schedule(500) {
+        Timer("SettingUp", false).schedule(1000) {
             startActivity(intent)
         }
     }

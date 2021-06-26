@@ -22,6 +22,7 @@ import kotlin.random.Random
 
 class find_the_different_category : SharedFunctions() {
     private var hint_count = 0
+    private var mistake_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_find_the_different_category)
@@ -49,7 +50,7 @@ class find_the_different_category : SharedFunctions() {
         time_left.text = getString(R.string.remain_questions) + time
 
         val task = findViewById<TextView>(R.id.task_for_costumer)
-        task.text = "מה יוצא מן הכלל?"
+        task.text = getString(R.string.game_find_dif_by_cat_task)
 
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener { back_btn() }
@@ -163,6 +164,11 @@ class find_the_different_category : SharedFunctions() {
     }
 
     private fun wrongAnsOnClick(wrong_ans: Button, correct_ans: Button, questions: Int, score: Int) {
+        if (mistake_count == 0){
+            wrong_ans.visibility = View.INVISIBLE
+            mistake_count++
+            return
+        }
         wrong_ans.setBackgroundResource(R.color.colorAccent)
         correct_ans.setBackgroundResource(R.color.Green)
         nextActivity(0,questions, score)

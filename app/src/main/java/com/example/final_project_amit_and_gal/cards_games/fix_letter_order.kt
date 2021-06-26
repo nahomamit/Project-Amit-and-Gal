@@ -36,7 +36,7 @@ class fix_letter_order : SharedFunctions() {
         score_text.text = score.toString()
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
-        text.text = "סדר את האותיות שהתבלגנו"
+        text.text = getString(R.string.game_fix_letter_order_task)
 
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener {

@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.Color.RED
+import android.graphics.Color.WHITE
 import android.graphics.LightingColorFilter
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
@@ -42,8 +45,7 @@ class letters_choose : SharedFunctions() {
         score_text.visibility = View.INVISIBLE
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
-        text.text = "מה בתמונה?" +"\n"+
-                " בחר אותיות מהבנק"
+        text.text = getString(R.string.game_letter_choose_task)
 
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener {
@@ -90,10 +92,13 @@ class letters_choose : SharedFunctions() {
             button.layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT,
                 1F
             )
+            var param = button.layoutParams as ViewGroup.MarginLayoutParams
+            param.setMargins(2,2,2,2)
             button.text = letter.toString()
             button.setBackgroundColor(Color.WHITE)
-            button.setTextColor(Color.RED)
-            button.visibility = View.INVISIBLE
+            button.setTextColor(Color.WHITE)
+
+
 
             button.id = View.generateViewId()
             linear_layout.addView(button)
@@ -138,18 +143,18 @@ class letters_choose : SharedFunctions() {
 
         for(letter in 0..id_list.size-1) {
             if(findViewById<Button>(id_list[letter]).text == chosen.text
-                && findViewById<Button>(id_list[letter]).visibility == View.INVISIBLE
+                && findViewById<Button>(id_list[letter]).currentTextColor == WHITE
             ){
                 Log.i("clicked","true")
                 correct++
-                findViewById<Button>(id_list[letter]).visibility = View.VISIBLE
-                chosen.visibility = View.INVISIBLE
+                findViewById<Button>(id_list[letter]).setTextColor(RED)
+               chosen.visibility = View.INVISIBLE
                 break
 
             }
         }
         for(letter1 in 0..id_list.size-1) {
-            if( findViewById<Button>(id_list[letter1]).visibility == View.INVISIBLE){
+            if( findViewById<Button>(id_list[letter1]).currentTextColor == WHITE){
                 return
             }
         }
@@ -200,8 +205,8 @@ class letters_choose : SharedFunctions() {
             for(btn in 0..(id_list.size-1)) {
 
 
-                if(findViewById<Button>(id_list[btn]).visibility == View.INVISIBLE) {
-                    findViewById<Button>(id_list[btn]).visibility = View.VISIBLE
+                if(findViewById<Button>(id_list[btn]).currentTextColor == WHITE) {
+                    findViewById<Button>(id_list[btn]).setTextColor(RED)
                     for(i in 0..(answerBtnArr.size-1)) {
                         if(answerBtnArr[i].text ==  findViewById<Button>(id_list[btn]).text) {
                             answerBtnArr[i].visibility = View.INVISIBLE

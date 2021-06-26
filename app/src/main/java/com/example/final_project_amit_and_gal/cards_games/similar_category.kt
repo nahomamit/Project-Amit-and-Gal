@@ -22,6 +22,7 @@ import kotlin.random.Random
 
 class similar_category : SharedFunctions() {
     private var hint_count = 0
+    private var mistake_count = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_similar_category)
@@ -38,8 +39,7 @@ class similar_category : SharedFunctions() {
         score_text.visibility = View.INVISIBLE
         //question text
         val text = findViewById<TextView>(R.id.task_for_costumer)
-        text.text = "מה מהבאים מאותו " +
-                "קטגוריה של התמונה"
+        text.text = getString(R.string.game_similar_category_task)
 
         val back = findViewById<ImageView>(R.id.return_btn)
         back.setOnClickListener {
@@ -148,6 +148,11 @@ class similar_category : SharedFunctions() {
     }
 
     private fun wrongAnsOnClick(wrong_ans: Button, correct_ans: Button, questions: Int, score: Int) {
+        if (mistake_count == 0){
+            wrong_ans.visibility = View.INVISIBLE
+            mistake_count++
+            return
+        }
         wrong_ans.setBackgroundResource(R.color.colorAccent)
         correct_ans.setBackgroundResource(R.color.Green)
         nextActivity(0,questions, score)
