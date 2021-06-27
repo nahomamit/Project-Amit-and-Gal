@@ -30,7 +30,7 @@
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_gravity="center"
-            android:text="תרגול רץ"
+            android:text="@string/running_train"
             android:id="@+id/random_play"
             android:fontFamily="@font/tmp"
             android:layout_marginTop="@android:dimen/app_icon_size"

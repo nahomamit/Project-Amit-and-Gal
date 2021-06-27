@@ -49,32 +49,38 @@
     <string name="face_tongue">לשון</string>
     <string name="face_lips">שפתיים</string>
 
+    <string name="eyes_1"> "עיניים1" </string>
+    <string name="eyes_2"> "עיניים2" </string>
+    <string name="eyes_3"> "עיניים3" </string>
+
     <string name="lips_1"> "שפתיים1" </string>
     <string name="lips_2"> "שפתיים2" </string>
     <string name="lips_3"> "שפתיים3" </string>
-    <string name="lips_4"> "שפתיים4" </string>
-    <string name="lips_5"> "שפתיים5" </string>
-    <string name="lips_6"> "שפתיים6" </string>
-    <string name="lips_7"> "שפתיים7" </string>
-    <string name="lips_8"> "שפתיים8" </string>
+    <string name="lips_5"> "שפתיים4" </string>
+    <string name="lips_6"> "שפתיים5" </string>
+    <string name="lips_7"> "שפתיים6" </string>
+    <string name="lips_8"> "שפתיים7" </string>
+    <string name="lips_9"> "שפתיים8" </string>
+    <string name="lips_10"> "שפתיים5" </string>
+    <string name="lips_13"> "שפתיים6" </string>
+    <string name="lips_14"> "שפתיים7" </string>
+    <string name="lips_16"> "שפתיים8" </string>
 
     <string name="jaw_1">"לסת1"</string>
-    <string name="jaw_2">"לסת2"</string>
-    <string name="jaw_3">"לסת3"</string>
-    <string name="jaw_4">"לסת4"</string>
-    <string name="jaw_5">"לסת5"</string>
-    <string name="jaw_6">"לסת6"</string>
-    <string name="jaw_7">"לסת7"</string>
-    <string name="jaw_8">"לסת8"</string>
 
     <string name="tongue_1">לשון1</string>
     <string name="tongue_2">לשון2</string>
     <string name="tongue_3">לשון3</string>
     <string name="tongue_4">לשון4</string>
-    <string name="tongue_5">לשון5</string>
-    <string name="tongue_6">לשון6</string>
-    <string name="tongue_7">לשון7</string>
-    <string name="tongue_8">לשון8</string>
+    <string name="tongue_6">לשון5</string>
+    <string name="tongue_7">לשון6</string>
+    <string name="tongue_8">לשון7</string>
+    <string name="tongue_9">לשון8</string>
+    <string name="tongue_10">לשון4</string>
+    <string name="tongue_11">לשון5</string>
+    <string name="tongue_12">לשון6</string>
+    <string name="tongue_16">לשון7</string>
+    <string name="tongue_24">לשון8</string>
 
     <string name="face_2"> "פתח פה" </string>
     <string name="face_3"> "תלקק את המרפק" </string>
@@ -83,16 +89,9 @@
     <string name="face_6"> "חיוך" </string>
     <string name="face_7"> "שיניים" </string>
     <string name="face_8"> "נגמר לי" </string>
-
-    <string name="eyes_1">עיניים1</string>
-    <string name="eyes_2">עיניים2</string>
-    <string name="eyes_3">עיניים3</string>
-    <string name="eyes_4">עיניים4</string>
-    <string name="eyes_5">עיניים5</string>
-    <string name="eyes_6">עיניים6</string>
-    <string name="eyes_7">עיניים7</string>
-    <string name="eyes_8">עיניים8</string>
-
+    <string name="running_train"> "תרגול רץ" </string>
+    <string name="trainning_by_game"> "תרגול לפי משחק" </string>
+    <string name="weekly_sched"> "משימות שבועיות" </string>
 
     <string name="back">"חזור לתפריט הראשי"</string>
     <string-array name="tasks">
