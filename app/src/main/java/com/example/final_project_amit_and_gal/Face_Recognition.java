@@ -30,6 +30,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Face_Recognition extends SharedFunctions implements CameraBridgeViewBase.CvCameraViewListener2 {
 
@@ -80,21 +82,24 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_face_recognition);
 
+        Map<String, String[]> nameUrlTaskMap = getMap();
         Intent intent = getIntent();
         final ArrayList<String> name_ids = intent.getStringArrayListExtra("name");
 
         String name_id = name_ids.get(0);
         TextView tv = findViewById(R.id.task_n);
-        tv.setText(name_id);
+        tv.setText(nameUrlTaskMap.get(name_id)[1]);
 
         javaCameraView=(JavaCameraView)findViewById(R.id.my_camera_view);
         javaCameraView.setCvCameraViewListener(this);
         javaCameraView.setCameraIndex(2);
         final VideoView videoView = findViewById(R.id.video_view);
-        String videoPath = nameToUTL(name_id);
-
+        //String videoPath = nameToUTL(name_id);
+        String videoPath = nameUrlTaskMap.get(name_id)[0];
+        Log.i("URL", videoPath);
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
+
         MediaController mediaController = new MediaController(this);
         videoView.setMediaController(mediaController);
         mediaController.setAnchorView(videoView);
@@ -127,44 +132,6 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
 
     }
 
-   public String nameToUTL(String name) {
-       Log.i("name",name);
-        switch (name) {
-            case "שפתיים1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips1;
-            case "שפתיים2" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips2;
-            case "שפתיים3" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips3;
-            case "שפתיים4" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips5;
-            case "שפתיים5" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips6;
-            case "שפתיים6" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips7;
-            case "שפתיים7" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips8;
-            case "שפתיים8" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips9;
-            case "שפתיים9" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips10;
-            case "שפתיים10" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips13;
-            case "שפתיים11" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips14;
-            case "שפתיים12" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips16;
-            case "לשון1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue1;
-            case "לשון2" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue2;
-            case "לשון3" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue3;
-            case "לשון4" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue4;
-            case "לשון5" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue6;
-            case "לשון6" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue7;
-            case "לשון7" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue8;
-            case "לשון8" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue9;
-            case "לשון9" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue10;
-            case "לשון10" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue11;
-            case "לשון11" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue12;
-            case "לשון12" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue16;
-            case "לשון13" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue24;
-
-            case "לסת1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.jaws1;
-            case "עיניים1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.eyes1;
-            case "עיניים2" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.eyes2;
-            case "עיניים3" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.eyes3;
-
-       }
-       Log.i("fail","failed");
-       return "";
-   }
     @Override
     public void onCameraViewStarted(int width, int height) {
         mRGBA= new Mat();
@@ -243,5 +210,41 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         }
     }
 
+    private Map<String, String[]> getMap() {
+        Map<String, String[]> myMap = new HashMap<String, String[]>();
+        myMap.put(getString(R.string.lips_1), new String[]{"android.resource://" + getPackageName() + "/" + "/" + R.raw.lips1, getString(R.string.lips_1_task)});
+        myMap.put(getString(R.string.lips_2), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips2, getString(R.string.lips_2_task)});
+        myMap.put(getString(R.string.lips_3), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips3, getString(R.string.lips_3_task)});
+        myMap.put(getString(R.string.lips_5), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips5, getString(R.string.lips_5_task)});
+        myMap.put(getString(R.string.lips_6), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips6, getString(R.string.lips_6_task)});
+        myMap.put(getString(R.string.lips_7), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips7, getString(R.string.lips_7_task)});
+        myMap.put(getString(R.string.lips_8), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips8, getString(R.string.lips_8_task)});
+        myMap.put(getString(R.string.lips_9), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips9, getString(R.string.lips_9_task)});
+        myMap.put(getString(R.string.lips_10), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips10, getString(R.string.lips_10_task)});
+        myMap.put(getString(R.string.lips_13), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips13, getString(R.string.lips_13_task)});
+        myMap.put(getString(R.string.lips_14), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips14, getString(R.string.lips_14_task)});
+        myMap.put(getString(R.string.lips_16), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.lips16, getString(R.string.lips_16_task)});
 
+        myMap.put(getString(R.string.jaw_1), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.jaws1, getString(R.string.jaw_1_task)});
+
+        myMap.put(getString(R.string.eyes_1), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.eyes1, getString(R.string.eyes_1_task)});
+        myMap.put(getString(R.string.eyes_2), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.eyes2, getString(R.string.eyes_2_task)});
+        myMap.put(getString(R.string.eyes_3), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.eyes3, getString(R.string.eyes_3_task)});
+
+        myMap.put(getString(R.string.tongue_1), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue1, getString(R.string.tongue_1_task)});
+        myMap.put(getString(R.string.tongue_2), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue2, getString(R.string.tongue_2_task)});
+        myMap.put(getString(R.string.tongue_3), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue3, getString(R.string.tongue_3_task)});
+        myMap.put(getString(R.string.tongue_4), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue4, getString(R.string.tongue_4_task)});
+        myMap.put(getString(R.string.tongue_6), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue6, getString(R.string.tongue_6_task)});
+        myMap.put(getString(R.string.tongue_7), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue7, getString(R.string.tongue_7_task)});
+        myMap.put(getString(R.string.tongue_8), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue8, getString(R.string.tongue_8_task)});
+        myMap.put(getString(R.string.tongue_9), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue9, getString(R.string.tongue_9_task)});
+        myMap.put(getString(R.string.tongue_10), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue10, getString(R.string.tongue_10_task)});
+        myMap.put(getString(R.string.tongue_11), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue11, getString(R.string.tongue_11_task)});
+        myMap.put(getString(R.string.tongue_12), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue12, getString(R.string.tongue_12_task)});
+        myMap.put(getString(R.string.tongue_16), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue16, getString(R.string.tongue_16_task)});
+        myMap.put(getString(R.string.tongue_24), new String[]{"android.resource://" + getPackageName() + "/" + R.raw.tongue24, getString(R.string.tongue_24_task)});
+
+        return myMap;
+    }
 }
