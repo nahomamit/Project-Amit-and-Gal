@@ -5,39 +5,39 @@
     <string name="sure_end_excercize">האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי</string>
     <string name="yes">"כן"</string>
     <string name="no">"לא"</string>
-    <string name="game_find_dif_by_cat">"מצא את הקטגוריה השונה"</string>
-    <string name="game_find_dif">"מצא את ההבדלים"</string>
-    <string name="game_fix_letter_order">"מילים מבלוגנות"</string>
-    <string name="game_letter_choose">"מילים מבנק אותיות"</string>
-    <string name="game_similar_category">"בחר במילה השייכת לאותה קטגוריה כמו זו שבתמונה"</string>
-    <string name="game_voice_reco">"מה בתמונה? לפי דיבור"</string>
-    <string name="game_whats_in_the_pic">בחר במילה המתארת את התמונה</string>
-    <string name="game_short">"תרגול רץ קצר"</string>
-    <string name="game_med">  "תרגול רץ בינוני"</string>
-    <string name="game_long">"תרגול רץ ארוך"</string>
-    <string name="game_face_reco">זיהוי פנים</string>
-    <string name="game_face_recognition">"תרגול פנים"</string>
+    <string name="game_find_dif_by_cat">"איזו מילה יוצאת דופן"</string>
+    <string name="game_find_dif">"איזו תמונה יוצאת הדופן"</string>
+    <string name="game_fix_letter_order">"מילים מבולבלות"</string>
+    <string name="game_letter_choose">"כתיבת מילה לתמונה מבנק אותיות"</string>
+    <string name="game_similar_category">"מילה השייכת לאותה קטגוריה כמו זו שבתמונה"</string>
+    <string name="game_voice_reco">"אמירת המילה המתארת את התמונה"</string>
+    <string name="game_whats_in_the_pic">בחירת המילה המתארת את התמונה</string>
+    <string name="game_short">"תרגול קצר"</string>
+    <string name="game_med">  "תרגול בינוני"</string>
+    <string name="game_long">"תרגול ארוך"</string>
+    <string name="game_face_reco">תרגול אורומוטורי - שרירי הפנים</string>
+    <string name="game_face_recognition">תרגול אורומוטורי - שרירי הפנים</string>
 
-    <string name="game_find_dif_by_cat_task">מה יוצא הדופן</string>
-    <string name="game_find_dif_task">"מצא את ההבדלים"</string>
-    <string name="game_fix_letter_order_task">"מילים מבלוגנות"</string>
-    <string name="game_letter_choose_task">"מילים מבנק אותיות"</string>
+    <string name="game_find_dif_by_cat_task">בחר איזו מילה יוצאת דופן</string>
+    <string name="game_find_dif_task">"בחר איזו בתמונה יוצאת הדופן"</string>
+    <string name="game_fix_letter_order_task">"סדר את האותיות להרכבת המילה על-פי הקטגוריה"</string>
+    <string name="game_letter_choose_task">"בחר באותיות המרכיבות את המילה"</string>
     <string name="game_similar_category_task">"בחר במילה השייכת לאותה קטגוריה כמו זו שבתמונה"</string>
-    <string name="game_voice_reco_task">"מה בתמונה? לפי דיבור"</string>
+    <string name="game_voice_reco_task">"אמור את המילה המתארת את התמונה"</string>
     <string name="game_whats_in_the_pic_task">בחר במילה המתארת את התמונה</string>
-    <string name="game_face_reco_task">זיהוי פנים</string>
+    <string name="game_face_reco_task"> תרגול אורומוטורי - שרירי הפנים</string>
 
 
     <string name="correct_answers"> תשובות נכונות מתוך </string>
     <string name="select_day">בחר יום</string>
     <string name="selecting_activity_err">לא ניתן לבחור את אותו משחק פעמיים</string>
     <string name="choose_activity_err">לא הגדרת משחק</string>
-    <string name="who_is_diff"> "מי יוצא הדופן?" </string>
+    <string name="who_is_diff"> "בחר איזו מילה יוצאת הדופן" </string>
     <string name="choose_exc"> "בחר תרגול" </string>
-    <string name="not_init1"> לא נבחר 1 </string>
-    <string name="not_init2"> לא נבחר 2 </string>
-    <string name="not_init3"> לא נבחר 3 </string>
-    <string name="not_init4"> לא נבחר 4 </string>
+    <string name="not_init1"> לא נבחר </string>
+    <string name="not_init2"> לא נבחר </string>
+    <string name="not_init3"> לא נבחר </string>
+    <string name="not_init4"> לא נבחר </string>
     <string name="remain_questions">שאלות שנותרו: </string>
     <string name="word_type">המילה הינה</string>
     <string name="start_with">המילה מתחילה</string>
@@ -96,12 +96,12 @@
     <string name="back">"חזור לתפריט הראשי"</string>
     <string-array name="tasks">
         <item>בחר תרגול</item>
-        <item>זיהוי פנים</item>
-        <item>בחר במילה המתארת את התמונה</item>
-        <item>מצא את ההבדלים</item>
-        <item>מצא את הקטגוריה השונה</item>
-        <item>מילים מבלוגנות</item>
-        <item>"בחר במילה השייכת לאותה קטגוריה כמו זו שבתמונה"</item>
-        <item>מילים מבנק אותיות</item>
+        <item>תרגול אורומוטורי - שרירי הפנים</item>
+        <item>בחירת המילה המתארת את התמונה</item>
+        <item>איזו תמונה יוצאת הדופן</item>
+        <item>איזו מילה יוצאת דופן</item>
+        <item>מילים מבולבלות</item>
+        <item>"מילה השייכת לאותה קטגוריה כמו זו שבתמונה"</item>
+        <item>כתיבת מילה לתמונה מבנק אותיות</item>
     </string-array>
 </resources>

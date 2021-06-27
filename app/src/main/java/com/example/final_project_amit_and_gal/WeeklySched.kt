@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.final_project_amit_and_gal.cards_games.*
 import java.sql.Types.NULL
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class WeeklySched : SharedFunctions() {
@@ -97,12 +98,25 @@ class WeeklySched : SharedFunctions() {
             btn4.text = ""
             return
         } else {
-            for(i in 0..tasks.size) {
+            Log.i("todayTasks", tasks.size.toString())
+            for(i in 1..tasks.size) {
+                Log.i("todayTasks_i", i.toString())
                 when(i) {
-                   0-> btn1.text = tasks.elementAt(0).toString()
-                   1-> btn2.text = tasks.elementAt (1).toString()
-                   2-> btn3.text = tasks.elementAt (2).toString()
-                   3-> btn4.text = tasks.elementAt (3).toString()
+                   1-> btn1.text = tasks.elementAt(0).toString()
+                   2-> btn2.text = tasks.elementAt (1).toString()
+                   3-> btn3.text = tasks.elementAt (2).toString()
+                   4-> btn4.text = tasks.elementAt (3).toString()
+                }
+            }
+            if(tasks.size < 4) {
+                for (i in tasks.size..4) {
+                    Log.i("todayTasks_i", i.toString())
+                    when (i) {
+                        1 -> btn1.text = getString(R.string.not_init1)
+                        2 -> btn2.text = getString(R.string.not_init1)
+                        3 -> btn3.text = getString(R.string.not_init1)
+                        4 -> btn4.text = getString(R.string.not_init1)
+                    }
                 }
             }
             btn1.setOnClickListener{
@@ -194,13 +208,17 @@ class WeeklySched : SharedFunctions() {
                 task4 = getString(R.string.not_init4)
                 counter--
             }
+            var checkList = arrayListOf<String>(task1, task2, task3,task4)
             var full_tasks = mutableSetOf<String>(task1, task2, task3,task4)
-            Log.i("tasks size", full_tasks.toString())
+            Log.i("full_tasks size", checkList.toString())
+            Log.i("checkList size", full_tasks.toString())
+            Log.i("CHECK", (full_tasks.size + count_unchoose(checkList)).toString())
+
             if (counter == 0){
                 Toast.makeText(applicationContext,
                     getString(R.string.must_choose), Toast.LENGTH_SHORT).show()
             } else {
-                if (full_tasks.size < 4) {
+                if (full_tasks.size + count_unchoose(checkList) < 4) {
                     Toast.makeText(
                         applicationContext,
                         getString(R.string.selecting_activity_err), Toast.LENGTH_SHORT
@@ -213,6 +231,21 @@ class WeeklySched : SharedFunctions() {
                 }
             }
         }
+    }
+
+    private fun count_unchoose(checkList: ArrayList<String>): Int {
+        var count = 0
+        for (item in checkList) {
+            if (item == getString(R.string.not_init1)) {
+                count++
+            }
+        }
+        if (count == 0){
+            Log.i("COUNT_FUN", "0")
+            return 0
+        }
+        Log.i("COUNT_FUN", (count-1).toString())
+        return count-1
     }
 
     private fun deleteCorrent(dayString: String) {
@@ -242,7 +275,7 @@ class WeeklySched : SharedFunctions() {
                 moveActivity("10",whats_in_the_picture::class.java,"0", name)
             }
             getString(R.string.game_face_reco) -> {
-                moveActivity("10",FaceRecoMenu::class.java,"0", name)
+                moveActivity("10",FaceTypeMenu::class.java,"0", name)
             }
             getString(R.string.game_find_dif) -> {
                 moveActivity("10",find_the_diffrent::class.java,"0",name)            }
