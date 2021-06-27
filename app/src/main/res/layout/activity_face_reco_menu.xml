@@ -57,10 +57,12 @@
 
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_voice"
                         layout="@layout/button_by_category" />
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/return_btn"
                         layout="@layout/button_by_category" />
                 </LinearLayout>
@@ -74,10 +76,12 @@
 
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_find_dif"
                         layout="@layout/button_by_category" />
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_find_dif_by_cat"
                         layout="@layout/button_by_category" />
                 </LinearLayout>
@@ -91,10 +95,12 @@
 
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_letter_choose"
                         layout="@layout/button_by_category" />
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_fix_order"
                         layout="@layout/button_by_category" />
                 </LinearLayout>
@@ -108,11 +114,70 @@
 
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_similar_category"
                         layout="@layout/button_by_category" />
 
                     <include
+                        android:visibility="invisible"
                         android:id="@+id/game_what_in_pic"
+                        layout="@layout/button_by_category" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <include
+                        android:id="@+id/task_9"
+                        android:visibility="invisible"
+                        layout="@layout/button_by_category" />
+
+                    <include
+                        android:id="@+id/task_10"
+                        android:visibility="invisible"
+                        layout="@layout/button_by_category" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <include
+                        android:id="@+id/task_11"
+                        android:visibility="invisible"
+                        layout="@layout/button_by_category" />
+
+                    <include
+                        android:id="@+id/task_12"
+                        android:visibility="invisible"
+                        layout="@layout/button_by_category" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+
+                    <include
+                        android:id="@+id/task_13"
+                        android:visibility="invisible"
+                        layout="@layout/button_by_category" />
+
+                    <include
+                        android:id="@+id/task_14"
+                        android:visibility="invisible"
                         layout="@layout/button_by_category" />
 
                 </LinearLayout>

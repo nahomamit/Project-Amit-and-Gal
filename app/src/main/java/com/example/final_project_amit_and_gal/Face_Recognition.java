@@ -91,7 +91,7 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
         javaCameraView.setCvCameraViewListener(this);
         javaCameraView.setCameraIndex(2);
         final VideoView videoView = findViewById(R.id.video_view);
-        String videoPath = nameToUTL("");
+        String videoPath = nameToUTL(name_id);
 
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
@@ -128,7 +128,42 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
     }
 
    public String nameToUTL(String name) {
-        return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.video;
+       Log.i("name",name);
+        switch (name) {
+            case "שפתיים1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips1;
+            case "שפתיים2" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips2;
+            case "שפתיים3" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips3;
+            case "שפתיים4" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips5;
+            case "שפתיים5" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips6;
+            case "שפתיים6" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips7;
+            case "שפתיים7" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips8;
+            case "שפתיים8" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips9;
+            case "שפתיים9" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips10;
+            case "שפתיים10" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips13;
+            case "שפתיים11" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips14;
+            case "שפתיים12" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.lips16;
+            case "לשון1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue1;
+            case "לשון2" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue2;
+            case "לשון3" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue3;
+            case "לשון4" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue4;
+            case "לשון5" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue6;
+            case "לשון6" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue7;
+            case "לשון7" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue8;
+            case "לשון8" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue9;
+            case "לשון9" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue10;
+            case "לשון10" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue11;
+            case "לשון11" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue12;
+            case "לשון12" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue16;
+            case "לשון13" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.tongue24;
+
+            case "לסת1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.jaws1;
+            case "עיניים1" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.eyes1;
+            case "עיניים2" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.eyes2;
+            case "עיניים3" :  return  "android.resource://com.example.final_project_amit_and_gal/" + R.raw.eyes3;
+
+       }
+       Log.i("fail","failed");
+       return "";
    }
     @Override
     public void onCameraViewStarted(int width, int height) {

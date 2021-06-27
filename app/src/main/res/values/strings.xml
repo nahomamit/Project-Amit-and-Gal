@@ -61,10 +61,10 @@
     <string name="lips_7"> "שפתיים6" </string>
     <string name="lips_8"> "שפתיים7" </string>
     <string name="lips_9"> "שפתיים8" </string>
-    <string name="lips_10"> "שפתיים5" </string>
-    <string name="lips_13"> "שפתיים6" </string>
-    <string name="lips_14"> "שפתיים7" </string>
-    <string name="lips_16"> "שפתיים8" </string>
+    <string name="lips_10"> "שפתיים9" </string>
+    <string name="lips_13"> "שפתיים10" </string>
+    <string name="lips_14"> "שפתיים11" </string>
+    <string name="lips_16"> "שפתיים12" </string>
 
     <string name="jaw_1">"לסת1"</string>
 
@@ -76,11 +76,11 @@
     <string name="tongue_7">לשון6</string>
     <string name="tongue_8">לשון7</string>
     <string name="tongue_9">לשון8</string>
-    <string name="tongue_10">לשון4</string>
-    <string name="tongue_11">לשון5</string>
-    <string name="tongue_12">לשון6</string>
-    <string name="tongue_16">לשון7</string>
-    <string name="tongue_24">לשון8</string>
+    <string name="tongue_10">לשון9</string>
+    <string name="tongue_11">לשון10</string>
+    <string name="tongue_12">לשון11</string>
+    <string name="tongue_16">לשון12</string>
+    <string name="tongue_24">לשון13</string>
 
     <string name="face_2"> "פתח פה" </string>
     <string name="face_3"> "תלקק את המרפק" </string>
