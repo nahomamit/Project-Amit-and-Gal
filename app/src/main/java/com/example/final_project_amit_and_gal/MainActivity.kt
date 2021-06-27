@@ -14,12 +14,7 @@ class MainActivity : SharedFunctions() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        var name = findViewById<TextView>(R.id.hello_name)
-        val sp1 = getSharedPreferences("Login", MODE_PRIVATE)
 
-        val name_text = sp1.getString("Name", null)
-
-        name.text = "שלום " + name_text
         val button_short = findViewById<Button>(R.id.short_time)
         button_short.setOnClickListener {
             moveActivity("20",getString(R.string.game_short))
