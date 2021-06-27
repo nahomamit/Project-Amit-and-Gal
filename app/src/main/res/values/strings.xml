@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
-    <string name="app_name">Final-project-Amit-and-Gal</string>
+    <string name="app_name">קלינאי THEC-שורת</string>
     <string name="sure_end_excercize">האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי</string>
     <string name="yes">"כן"</string>
     <string name="no">"לא"</string>
@@ -9,22 +9,22 @@
     <string name="game_find_dif">"מצא את ההבדלים"</string>
     <string name="game_fix_letter_order">"מילים מבלוגנות"</string>
     <string name="game_letter_choose">"מילים מבנק אותיות"</string>
-    <string name="game_similar_category">"קטגוריה דומה"</string>
+    <string name="game_similar_category">"בחר במילה השייכת לאותה קטגוריה כמו זו שבתמונה"</string>
     <string name="game_voice_reco">"מה בתמונה? לפי דיבור"</string>
-    <string name="game_whats_in_the_pic">"מה בתמונה?"</string>
+    <string name="game_whats_in_the_pic">בחר במילה המתארת את התמונה</string>
     <string name="game_short">"תרגול רץ קצר"</string>
     <string name="game_med">  "תרגול רץ בינוני"</string>
     <string name="game_long">"תרגול רץ ארוך"</string>
     <string name="game_face_reco">זיהוי פנים</string>
     <string name="game_face_recognition">"תרגול פנים"</string>
 
-    <string name="game_find_dif_by_cat_task">"nmt"</string>
+    <string name="game_find_dif_by_cat_task">מה יוצא הדופן</string>
     <string name="game_find_dif_task">"מצא את ההבדלים"</string>
     <string name="game_fix_letter_order_task">"מילים מבלוגנות"</string>
     <string name="game_letter_choose_task">"מילים מבנק אותיות"</string>
-    <string name="game_similar_category_task">"קטגוריה דומה"</string>
+    <string name="game_similar_category_task">"בחר במילה השייכת לאותה קטגוריה כמו זו שבתמונה"</string>
     <string name="game_voice_reco_task">"מה בתמונה? לפי דיבור"</string>
-    <string name="game_whats_in_the_pic_task">"מה בתמונה?"</string>
+    <string name="game_whats_in_the_pic_task">בחר במילה המתארת את התמונה</string>
     <string name="game_face_reco_task">זיהוי פנים</string>
 
 
@@ -97,11 +97,11 @@
     <string-array name="tasks">
         <item>בחר תרגול</item>
         <item>זיהוי פנים</item>
-        <item>מה בתמונה?</item>
+        <item>בחר במילה המתארת את התמונה</item>
         <item>מצא את ההבדלים</item>
         <item>מצא את הקטגוריה השונה</item>
         <item>מילים מבלוגנות</item>
-        <item>קטגוריה דומה</item>
+        <item>"בחר במילה השייכת לאותה קטגוריה כמו זו שבתמונה"</item>
         <item>מילים מבנק אותיות</item>
     </string-array>
 </resources>
