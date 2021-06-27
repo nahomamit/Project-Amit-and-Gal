@@ -2,7 +2,7 @@
 
 <resources>
     <string name="app_name">קלינאי THEC-שורת</string>
-    <string name="sure_end_excercize">האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי</string>
+    <string name="sure_end_excercize">האם אתה מעוניין לחזור לתפריט הראשי</string>
     <string name="yes">"כן"</string>
     <string name="no">"לא"</string>
     <string name="game_find_dif_by_cat">"איזו מילה יוצאת דופן"</string>

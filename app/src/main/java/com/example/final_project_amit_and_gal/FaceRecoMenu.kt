@@ -1,5 +1,6 @@
 package com.example.final_project_amit_and_gal
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
@@ -10,6 +11,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.final_project_amit_and_gal.cards_games.*
@@ -32,6 +34,27 @@ class FaceRecoMenu : AppCompatActivity() {
 
 
     }
+
+    override fun onBackPressed() {
+        back_btn()
+    }
+    fun back_btn(){
+
+        val builder = AlertDialog.Builder(this)
+        builder.setMessage("האם אתה מעוניין לסיים את התרגול ולחזור לתפריט הראשי?")
+            .setCancelable(false)
+            .setPositiveButton("כן") { dialogInterface: DialogInterface, i: Int ->
+                val intent = Intent(this, MainMenu::class.java)
+                startActivity(intent)
+            }
+            .setNegativeButton("לא") { dialog, id ->
+                // Dismiss the dialog
+                dialog.dismiss()
+            }
+        val alert = builder.create()
+        alert.show()
+    }
+
     fun  buildArr(type:String){
         when(type){
             getString(R.string.face_jaw) -> list_all_Tasks.addAll(

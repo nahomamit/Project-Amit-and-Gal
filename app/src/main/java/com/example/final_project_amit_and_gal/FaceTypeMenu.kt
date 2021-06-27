@@ -2,15 +2,10 @@ package com.example.final_project_amit_and_gal
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import com.example.final_project_amit_and_gal.cards_games.*
 
 class FaceTypeMenu : AppCompatActivity() {
@@ -19,8 +14,10 @@ class FaceTypeMenu : AppCompatActivity() {
         setContentView(R.layout.activity_face_type_menu)
         buttonText()
         buttonOptions()
-        val back = findViewById<ImageView>(R.id.return_btn)
-        back.setOnClickListener{back_btn()}
+
+    }
+    override fun onBackPressed() {
+        back_btn()
     }
     fun back_btn(){
 
