@@ -1,73 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/sky_background"
-    tools:context=".MainMenu"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".MainMenu">
+
     <TextView
         android:id="@+id/hello_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_marginLeft="@android:dimen/app_icon_size"
-        android:layout_marginRight="@android:dimen/app_icon_size"
-        android:layout_marginTop="30dp"
+        android:fontFamily="@font/tmp"
         android:text="שלום עמית"
         android:textColor="#F4EFEF"
+        android:textSize="50dp"
+        app:layout_constraintBottom_toTopOf="@+id/random_play"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/random_play"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:background="@drawable/custom_bottom"
         android:fontFamily="@font/tmp"
-        android:textSize="50dp" />
+        android:gravity="center"
+        android:text="תרגול רץ"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/by_category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hello_name"></Button>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:text="תרגול רץ"
-            android:id="@+id/random_play"
-            android:fontFamily="@font/tmp"
-            android:layout_marginTop="@android:dimen/app_icon_size"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:background="@drawable/custom_bottom">
-        </Button>
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:text="בחר מטלה לתרגול"
-            android:id="@+id/by_category"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:layout_gravity="center"
-            android:fontFamily="@font/tmp"
+    <Button
+        android:id="@+id/by_category"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:background="@drawable/custom_bottom"
+        android:fontFamily="@font/tmp"
+        android:gravity="center"
+        android:text="בחר מטלה לתרגול"
 
-            android:layout_marginRight="@android:dimen/app_icon_size"
-            android:layout_marginTop="@android:dimen/app_icon_size"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:background="@drawable/custom_bottom">
-        </Button>
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:text="משימות שבועיות"
-            android:fontFamily="@font/tmp"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:id="@+id/weekly_practice"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:layout_marginRight="@android:dimen/app_icon_size"
-            android:layout_marginTop="@android:dimen/app_icon_size"
-            android:layout_marginLeft="@android:dimen/app_icon_size"
-            android:background="@drawable/custom_bottom">
-        </Button>
-    </LinearLayout>
-</LinearLayout>
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/weekly_practice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/random_play"></Button>
+
+    <Button
+        android:id="@+id/weekly_practice"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@android:dimen/app_icon_size"
+        android:background="@drawable/custom_bottom"
+        android:fontFamily="@font/tmp"
+        android:gravity="center"
+        android:text="משימות שבועיות"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/by_category"></Button>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
