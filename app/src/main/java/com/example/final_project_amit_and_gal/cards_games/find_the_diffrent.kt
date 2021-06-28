@@ -124,7 +124,7 @@ class find_the_diffrent : SharedFunctions() {
 
         do {
             mainCategory = categories[(0..categories.size-1).random()]
-        } while (mainCategory == "כללי")
+        } while (mainCategory == "אחר" || mainCategory == "אירועים ומקומות")
 
         do {
             diffCategory = categories[(0..categories.size-1).random()]

@@ -149,10 +149,11 @@ class fix_letter_order : SharedFunctions() {
 
     private fun getTabs(): Tab {
 
-
-        val tab = tabsDao.getOneTabWithCate()
+        var tab: Tab
+        do {
+            tab = tabsDao.getOneTabWithCate()
+        } while (tab.name.contains('-'))
         var correct = 0
-        //Log.i("Shuffle", "correct is: " +correct)
 
         return tab
     }

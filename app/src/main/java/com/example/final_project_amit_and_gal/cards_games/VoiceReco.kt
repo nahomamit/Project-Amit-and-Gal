@@ -62,8 +62,6 @@ class VoiceReco : SharedFunctions() {
 
 
     private fun setAnswers() {
-
-
         do {
             tabs = getTab()
         } while(tabs == null)

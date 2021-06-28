@@ -177,9 +177,11 @@ class letters_choose : SharedFunctions() {
     private fun getTabs(): Tab {
 
 
-        val tab = tabsDao.getOneTab()
+        var tab: Tab
+        do {
+            tab = tabsDao.getOneTab()
+        } while (tab.name.contains('-'))
         var correct = 0
-        //Log.i("Shuffle", "correct is: " +correct)
 
         return tab
     }

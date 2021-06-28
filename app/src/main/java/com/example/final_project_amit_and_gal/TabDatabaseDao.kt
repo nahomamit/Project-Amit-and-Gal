@@ -45,6 +45,9 @@ interface TabDatabaseDao {
     @Query("SELECT * FROM tabs_table WHERE url != '' ORDER BY RANDOM()")
     fun getOneTab(): Tab
 
+    @Query("SELECT * FROM tabs_table WHERE url != '' AND subcategory != 'מילים חברתיות' AND subcategory != 'מילות מרחב' ORDER BY RANDOM()")
+    fun getOneTabVoice(): Tab
+
     @Query("SELECT * FROM tabs_table WHERE url != '' AND subcategory != 'אחר' ORDER BY RANDOM()")
     fun getOneTabWithCate(): Tab
 
