@@ -1,7 +1,9 @@
 package com.example.final_project_amit_and_gal;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,10 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import androidx.core.content.ContextCompat;
+
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;
 import org.opencv.android.OpenCVLoader;
+import org.opencv.core.Core;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Point;
@@ -92,7 +97,7 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
 
         javaCameraView=(JavaCameraView)findViewById(R.id.my_camera_view);
         javaCameraView.setCvCameraViewListener(this);
-        javaCameraView.setCameraIndex(2);
+        javaCameraView.setCameraIndex(1);
         final VideoView videoView = findViewById(R.id.video_view);
         //String videoPath = nameToUTL(name_id);
         String videoPath = nameUrlTaskMap.get(name_id)[0];
@@ -149,7 +154,9 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
     public Mat onCameraFrame(CameraBridgeViewBase.CvCameraViewFrame inputFrame) {
 
         mRGBA= inputFrame.rgba();
-        mGREY = inputFrame.gray();
+        Core.flip(mRGBA, mRGBA, 1);
+
+        /*mGREY = inputFrame.gray();
 
         MatOfRect faceDetections = new MatOfRect();
         face_detector.detectMultiScale(mGREY,faceDetections);
@@ -158,7 +165,7 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
             Imgproc.rectangle(mRGBA,new Point(rect.x,rect.y),
                     new Point(rect.x + rect.width, rect.y + rect.height),
                     new Scalar(255,0,0));
-        }
+        }*/
 
         return mRGBA;
     }
@@ -195,20 +202,7 @@ public class Face_Recognition extends SharedFunctions implements CameraBridgeVie
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION,this, baseLoaderCallback);
         }
     }
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        // Checks the orientation of the screen
-        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
-            setContentView(R.layout.activity_face_recognition);
 
-
-        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT){
-            Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
-            setContentView(R.layout.activity_first_time_enter);
-        }
-    }
 
     private Map<String, String[]> getMap() {
         Map<String, String[]> myMap = new HashMap<String, String[]>();
